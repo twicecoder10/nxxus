@@ -1,5 +1,8 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import warrenImage from '../../pics/warren.webp';
+import tomImage from '../../pics/tom.webp';
+import aviImage from '../../pics/avi.jpg';
 
 export function TeamSection() {
   const containerRef = useRef(null);
@@ -13,19 +16,19 @@ export function TeamSection() {
       name: 'Warren Wright',
       title: 'CEO',
       bio: '35 years of experience leading enterprise-scale software and technology deployments.',
-      image: 'https://images.unsplash.com/photo-1737574821698-862e77f044c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NTY0MDEwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: warrenImage,
     },
     {
       name: 'Tom Coppa',
       title: 'CTO',
       bio: 'Technology leader specializing in medical imaging platform architecture and development.',
-      image: 'https://images.unsplash.com/photo-1649151139875-ae8ea07082e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWNoJTIwZXhlY3V0aXZlJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY1NzI2MTczfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: tomImage,
     },
     {
       name: 'Avi Grossman',
       title: 'Head of Strategic Marketing',
       bio: 'Leads positioning and strategic marketing, with experience across capital markets, product development, and early-stage technology.',
-      image: 'https://images.unsplash.com/photo-1758599543154-76ec1c4257df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGV4ZWN1dGl2ZSUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90fGVufDF8fHx8MTc2NTcyNjY5Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: aviImage,
     },
   ];
 

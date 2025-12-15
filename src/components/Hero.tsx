@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import ctScanImage from 'figma:asset/5de0f045d0c88779c5b824dca3ce03963357ba8b.png';
+import heroVideo from '../../pics/hero video.mp4';
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -19,7 +19,7 @@ export function Hero() {
       className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden"
     >
       <motion.div 
-        className="w-full max-w-[1800px] mx-auto px-8 lg:px-16 py-32 lg:py-40"
+        className="w-full max-w-[1800px] mx-auto px-8 lg:px-16 py-32 lg:py-40 relative"
         style={{ opacity, scale }}
       >
         {/* Main Content */}
@@ -41,14 +41,14 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Headline - Factory-style large typography */}
-          <div className="overflow-hidden mb-12">
+          {/* Headline - Reduced size, 1/4 above video */}
+          <div className="overflow-visible mb-12 relative z-30">
             <motion.h1 
               className="text-[#000000]"
               style={{ 
-                fontSize: 'clamp(3.5rem, 10vw, 9rem)', 
+                fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
                 fontWeight: 700, 
-                lineHeight: 0.95, 
+                lineHeight: 1.1, 
                 letterSpacing: '-0.04em',
                 maxWidth: '1400px'
               }}
@@ -58,25 +58,16 @@ export function Hero() {
             >
               Unify Every
               <br />
-              <span className="inline-block">
-                Diagnostic 
-                <span style={{ color: '#94B3D8' }}> Stream</span>
+              <span className="inline-block" style={{ lineHeight: '1.15' }}>
+                Diagnostic  
+                <span className="inline-block relative ml-4 z-40">
+                  <span className="backdrop-blur-md bg-white/70 rounded-lg px-6 py-3 shadow-lg relative z-50" style={{ color: '#94B3D8' }}>
+                    Stream
+                  </span>
+                </span>
               </span>
             </motion.h1>
           </div>
-
-          {/* Description */}
-          <motion.div
-            className="max-w-2xl mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <p className="text-[#6B7280]" style={{ fontSize: '1.25rem', lineHeight: 1.6, fontWeight: 400 }}>
-              A single, AI-powered platform that connects radiology, pathology, genomics, 
-              and clinical data into one seamless diagnostic workspace.
-            </p>
-          </motion.div>
 
           {/* CTA */}
           <motion.div 
@@ -115,62 +106,29 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Floating Visual Element - Right side */}
+        {/* Floating Visual Element - Right side, right edge aligned with Book Demo button */}
         <motion.div
-          className="absolute right-16 top-1/2 -translate-y-1/2 w-[600px] h-[600px] hidden xl:block"
-          style={{ y }}
+          className="absolute top-1/2 -translate-y-1/2 w-[900px] h-[600px] hidden xl:block z-0"
+          style={{ 
+            right: 'calc((100vw - 1800px) / 2 - 230px)', // Moved right by another 50px
+            y 
+          }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6 }}
         >
-          {/* Main medical image */}
-          <motion.div
-            className="absolute top-0 right-0 w-96 h-96 rounded-2xl overflow-hidden shadow-2xl"
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ duration: 0.4 }}
-          >
-            <img 
-              src={ctScanImage} 
-              alt="Medical Imaging"
+          {/* Hero Video - Replacing the two images */}
+          <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+            <video 
+              src={heroVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#94B3D8]/20 to-transparent" />
-          </motion.div>
-
-          {/* Accent element */}
-          <motion.div
-            className="absolute bottom-20 left-0 w-80 h-80 rounded-2xl overflow-hidden shadow-xl opacity-60"
-            whileHover={{ scale: 1.05, rotate: -2 }}
-            transition={{ duration: 0.4 }}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 0.6, x: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
-          >
-            <img 
-              src={ctScanImage} 
-              alt="Medical Imaging"
-              className="w-full h-full object-cover"
-              style={{ filter: 'hue-rotate(30deg)' }}
-            />
-          </motion.div>
-
-          {/* Floating data card */}
-          <motion.div
-            className="absolute top-32 left-12 bg-white/95 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-[#E5E7EB]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-2 h-2 bg-[#94B3D8] rounded-full animate-pulse" />
-              <span className="text-[#94B3D8] text-xs font-semibold uppercase tracking-wider">
-                AI Processing
-              </span>
-            </div>
-            <div className="text-[#000000] text-2xl font-bold mb-1">2,847</div>
-            <div className="text-[#6B7280] text-sm">Cases analyzed today</div>
-          </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#94B3D8]/10 to-transparent" />
+          </div>
         </motion.div>
       </motion.div>
 

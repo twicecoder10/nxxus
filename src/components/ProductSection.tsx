@@ -47,7 +47,7 @@ export function ProductSection() {
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
-          className="mb-20"
+          className="mb-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -57,7 +57,7 @@ export function ProductSection() {
             The Product
           </div>
           <h2 
-            className="text-white max-w-4xl"
+            className="text-white max-w-4xl mx-auto"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -69,17 +69,18 @@ export function ProductSection() {
           </h2>
         </motion.div>
 
-        {/* Split Layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Video */}
+        {/* Centered Layout - Image on top, content below */}
+        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Centered Video */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             style={{ y }}
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl max-w-4xl w-full">
               <video 
                 src="https://videos.pexels.com/video-files/8172913/8172913-uhd_2560_1440_25fps.mp4"
                 autoPlay
@@ -92,45 +93,52 @@ export function ProductSection() {
             </div>
           </motion.div>
 
-          {/* Right - Content */}
+          {/* Description Text */}
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-[#94B3D8]/90" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
-              NXXIM integrates radiology images, pathology slides, lab results, EHR records, and genomic 
+            <p className="text-[#94B3D8]/90 max-w-3xl mx-auto" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
+              <br></br>NXXIM integrates radiology images, pathology slides, lab results, EHR records, and genomic 
               data into a single, seamless clinical environment—working alongside existing systems rather 
               than replacing them.
             </p>
+          </motion.div>
 
-            <div className="space-y-4 pt-4">
-              {capabilities.map((capability, idx) => (
-                <motion.div
-                  key={idx}
-                  className="group cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 + idx * 0.1 }}
-                  whileHover={{ x: 10 }}
-                >
-                  <div className="flex items-start gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#94B3D8]/50 transition-all duration-300">
-                    <div className="w-1.5 h-1.5 bg-[#94B3D8] rounded-full mt-2 group-hover:scale-150 transition-transform" />
-                    <div>
-                      <div className="text-white mb-1" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                        {capability.title}
-                      </div>
-                      <div className="text-[#94B3D8]/60" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                        {capability.description}
-                      </div>
+          {/* Capabilities List */}
+          <motion.div
+            className="space-y-4 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {capabilities.map((capability, idx) => (
+              <motion.div
+                key={idx}
+                className="group cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
+                whileHover={{ x: 10 }}
+              >
+                <div className="flex items-start gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#94B3D8]/50 transition-all duration-300">
+                  <div className="w-1.5 h-1.5 bg-[#94B3D8] rounded-full mt-2 group-hover:scale-150 transition-transform" />
+                  <div>
+                    <div className="text-white mb-1" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                      {capability.title}
+                    </div>
+                    <div className="text-[#94B3D8]/60" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
+                      {capability.description}
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>

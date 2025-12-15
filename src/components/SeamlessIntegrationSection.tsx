@@ -15,23 +15,19 @@ export function SeamlessIntegrationSection() {
   const integrations = [
     {
       category: 'Imaging Systems',
-      systems: ['Epic Radiant', 'GE PACS', 'Philips IntelliSpace', 'Sectra PACS', 'Agfa Enterprise Imaging'],
-      icon: '📊'
+      systems: ['Epic Radiant', 'GE PACS', 'Philips IntelliSpace', 'Sectra PACS', 'Agfa Enterprise Imaging']
     },
     {
       category: 'EHR Platforms',
-      systems: ['Epic', 'Cerner', 'Meditech', 'Allscripts', 'NextGen Healthcare'],
-      icon: '🏥'
+      systems: ['Epic', 'Cerner', 'Meditech', 'Allscripts', 'NextGen Healthcare']
     },
     {
       category: 'Lab Systems',
-      systems: ['Sunquest', 'Cerner Millennium', 'Epic Beaker', 'Soft Computer', 'MEDITECH Laboratories'],
-      icon: '🔬'
+      systems: ['Sunquest', 'Cerner Millennium', 'Epic Beaker', 'Soft Computer', 'MEDITECH Laboratories']
     },
     {
       category: 'Cloud Infrastructure',
-      systems: ['AWS HealthLake', 'Azure Health Data', 'Google Cloud Healthcare', 'Private Cloud', 'Hybrid Deployment'],
-      icon: '☁️'
+      systems: ['AWS HealthLake', 'Azure Health Data', 'Google Cloud Healthcare', 'Private Cloud', 'Hybrid Deployment']
     }
   ];
 
@@ -110,15 +106,13 @@ export function SeamlessIntegrationSection() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={{ x: 5 }}
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="text-4xl">{integration.icon}</div>
-                  <div>
-                    <h3 
-                      className="text-[#000000] mb-2"
-                      style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
-                    >
-                      {integration.category}
-                    </h3>
+                <div className="mb-4">
+                  <h3 
+                    className="text-[#000000] mb-2"
+                    style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
+                  >
+                    {integration.category}
+                  </h3>
                     <div className="flex flex-wrap gap-2">
                       {integration.systems.map((system, sidx) => (
                         <span
@@ -131,7 +125,6 @@ export function SeamlessIntegrationSection() {
                       ))}
                     </div>
                   </div>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -188,7 +181,6 @@ export function SeamlessIntegrationSection() {
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   whileHover={{ x: 5 }}
                 >
-                  <div className="w-2 h-2 bg-[#94B3D8] rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <div 
                       className="text-[#000000] mb-1"

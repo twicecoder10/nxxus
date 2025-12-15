@@ -3,7 +3,6 @@ import { Hero } from './components/Hero';
 import { MissionSection } from './components/MissionSection';
 import { ClinicalSpecialtiesSection } from './components/ClinicalSpecialtiesSection';
 import { ProductSection } from './components/ProductSection';
-import { AINativePlatformSection } from './components/AINativePlatformSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
 import { SeamlessIntegrationSection } from './components/SeamlessIntegrationSection';
 import { TeamSection } from './components/TeamSection';
@@ -19,7 +18,6 @@ export default function App() {
       <MissionSection />
       <ClinicalSpecialtiesSection />
       <ProductSection />
-      <AINativePlatformSection />
       <HowItWorksSection />
       <SeamlessIntegrationSection />
       <TeamSection />
