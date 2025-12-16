@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import womenHealthImage from '../../pics/women health.jpg';
-import cardiologyImage from '../../pics/Co.jpg';
+import cardiologyImage from '../../pics/CO.jpg';
 import oncologyImage from '../../pics/CC.jpg';
 import additionalSpecialtiesImage from '../../pics/CD.jpg';
 
