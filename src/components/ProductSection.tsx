@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
-import nifiriedImage from '../../pics/nifiried.jpg';
+import nixxxmVideo from '../../pics/video nixxxm.mp4';
 
 export function ProductSection() {
   const containerRef = useRef(null);
@@ -41,7 +41,7 @@ export function ProductSection() {
     <motion.section 
       id="platform" 
       ref={containerRef}
-      className="min-h-screen bg-[#000000] relative overflow-hidden py-32"
+      className="min-h-screen bg-[#000000] relative overflow-hidden pb-40 mb-32"
       style={{ opacity, y }}
     >
       {/* Background gradient effects */}
@@ -89,11 +89,11 @@ export function ProductSection() {
         </motion.div>
 
         {/* Two-column Layout - Image on left, capabilities on right */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Image on Left */}
+        <div className="max-w-7xl mx-auto pb-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Video on Left */}
             <motion.div
-              className="flex justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start -mt-8"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -101,11 +101,13 @@ export function ProductSection() {
               style={{ y }}
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl w-full">
-                <img 
-                  src={nifiriedImage}
-                  alt="Unified Diagnostic Workspace"
+                <video 
+                  src={nixxxmVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-[500px] object-cover"
-                  style={{ filter: 'brightness(1.4) contrast(1.1)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
@@ -115,7 +117,7 @@ export function ProductSection() {
             <div>
               {/* Capabilities List */}
               <motion.div
-                className="space-y-4"
+                className="space-y-4 mb-20"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

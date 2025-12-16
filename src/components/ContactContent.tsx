@@ -31,9 +31,28 @@ export function ContactContent() {
               className="text-[#6B7280]"
               style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
             >
-              Schedule a personalized demo to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
-              <br></br>Not ready to schedule yet? Email us at info@nxxim.com and our team will follow up.
-            </p>
+              <br></br><br></br>Schedule a personalized demo to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
+              <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.
+            </p><br></br>
+            <motion.div
+              className="mt-8 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <motion.a
+                href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#000000] text-white px-8 py-3 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
+                style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              > 
+                Book Demo
+              </motion.a>
+            </motion.div>
           </motion.div>
 
           {/* Contact Options */}
@@ -44,7 +63,7 @@ export function ContactContent() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.a
+            {/* <motion.a
               href="mailto:info@nxxim.com"
               className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
               whileHover={{ y: -5 }}
@@ -57,7 +76,7 @@ export function ContactContent() {
               </div>
             </motion.a>
 
-            {/*  <motion.a
+             <motion.a
               href="mailto:info@nxxim.com?subject=Schedule a Demo"
               className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
               whileHover={{ y: -5 }}
@@ -68,7 +87,7 @@ export function ContactContent() {
               <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
                 See NXXIM in action with a personalized walkthrough
               </div>
-            </motion.a>*/}
+            </motion.a>*
 
             <motion.a
               href="mailto:info@nxxim.com?subject=Sales Inquiry"
@@ -81,7 +100,7 @@ export function ContactContent() {
               <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
                 Learn about pricing and implementation options
               </div>
-            </motion.a>
+            </motion.a> */}
           </motion.div>
         </div>
 

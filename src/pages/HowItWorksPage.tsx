@@ -29,7 +29,7 @@ export function HowItWorksPage() {
                   </Link>
                 </li>
                 <li className="text-white">/</li>
-                <li className="text-white font-medium">How It Works</li>
+                <li className="text-white font-medium">How it works?</li>
               </ol>
             </nav>
 
@@ -44,7 +44,7 @@ export function HowItWorksPage() {
                 letterSpacing: '-0.03em' 
               }}
             >
-              From Fragmentation to Diagnostic Clarity
+              How it works?
             </h1>
             <p 
               className="text-white max-w-3xl"

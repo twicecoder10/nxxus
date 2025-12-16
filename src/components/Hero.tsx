@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import heroVideo from '../../pics/nximvid.mp4';
 
 export function Hero() {
@@ -45,36 +44,32 @@ export function Hero() {
 
           {/* Headline - Reduced size, 1/4 above video */}
           <div className="overflow-visible mb-12 relative z-30">
-            <motion.div
-              className="inline-block bg-[#000000] rounded-lg px-10 py-7 lg:px-12 lg:py-9 shadow-lg"
+            <motion.h1 
+              className="text-[#000000]"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              style={{ 
+                fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
+                fontWeight: 700, 
+                lineHeight: 1.1, 
+                letterSpacing: '-0.04em',
+                maxWidth: '600px',
+                padding: '0.5rem 0',
+                margin: 0
+              }}
             >
-              <motion.h1 
-                className="text-white"
-                style={{ 
-                  fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
-                  fontWeight: 700, 
-                  lineHeight: 1.1, 
-                  letterSpacing: '-0.04em',
-                  maxWidth: '600px',
-                  padding: '0.5rem 0',
-                  margin: 0
-                }}
-              > 
-                Unify Every
-                <br />
-                <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
-                  Diagnostic &nbsp;
-                  <span className="inline-block relative ml-2 z-40">
-                    <span className="text-[#94B3D8]">
-                      System &nbsp;
-                    </span>
+              Unify Every
+              <br />
+              <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
+                Diagnostic &nbsp;
+                <span className="inline-block relative ml-2 z-40">
+                  <span className="text-[#94B3D8]">
+                    System &nbsp;
                   </span>
                 </span>
-              </motion.h1>
-            </motion.div>
+              </span>
+            </motion.h1>
             
             {/* Description */}
             <motion.p
@@ -99,25 +94,26 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <Link to="/contact">
-              <motion.button
-                className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 group"
-                style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="flex items-center gap-2">
+            <motion.a
+              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 group inline-block"
+              style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="flex items-center gap-2">
                   Book a demo
-                  <motion.span
-                    className="inline-block"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    →
-                  </motion.span>
-                </span>
-              </motion.button>
-            </Link>
+                <motion.span
+                  className="inline-block"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 5 }}
+                >
+                  →
+                </motion.span>
+              </span>
+            </motion.a>
           </motion.div>
         </div>
 
@@ -125,7 +121,7 @@ export function Hero() {
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-[250px] h-[600px] hidden xl:block z-0"
           style={{ 
-            right: 'calc((100vw - 1800px) / 2 - 31px)', // Moved further left
+            right: 'calc((100vw - 1800px) / 2 - 81px)', // Moved 50px to the right
             y 
           }}
           initial={{ opacity: 0, scale: 0.8 }}

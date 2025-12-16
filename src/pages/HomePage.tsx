@@ -17,6 +17,7 @@ export function HomePage() {
       <Hero />
       <ProductSection />
       <MeasuredImpact />
+      
        {/*<ClinicalSpecialtiesSection />
       
        {/* <HowItWorksSection />

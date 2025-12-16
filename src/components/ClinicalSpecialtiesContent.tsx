@@ -4,19 +4,22 @@ import womenHealthImage from '../../pics/women health.jpg';
 import cardiologyImage from '../../pics/CO.jpg';
 import oncologyImage from '../../pics/CC.jpg';
 import additionalSpecialtiesImage from '../../pics/CD.jpg';
+import radioImage from '../../pics/radio.jpg';
+import pathologyImage from '../../pics/pathology.jpg';
+import endoscopyImage from '../../pics/endosco.jpg';
 
 export function ClinicalSpecialtiesContent() {
   const specialties = [
     {
       name: 'Radiology',
       description: 'Unified imaging review, prioritization, and diagnostic context across modalities',
-      image: 'https://images.unsplash.com/photo-1587010580103-fd86b8ea14ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWRpb2xvZ3klMjBpbWFnaW5nJTIweHJheXxlbnwxfHx8fDE3NjU3NjQxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: radioImage,
       features: ['CT/MRI/X-Ray', 'Real-time viewing', 'AI prioritization']
     },
     {
       name: 'Pathology',
       description: 'Digital slide review with longitudinal correlation across laboratory and clinical data.',
-      image: 'https://images.unsplash.com/photo-1630959300489-63dae3a8240a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXRob2xvZ3klMjBtaWNyb3Njb3BlJTIwbGFifGVufDF8fHx8MTc2NTc2NDE5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: pathologyImage,
       features: ['WSI viewing', 'Tissue analysis', 'Lab integration']
     },
     {
@@ -40,7 +43,7 @@ export function ClinicalSpecialtiesContent() {
     {
       name: 'Endoscopy',
       description: 'Procedure imaging and findings integrated with pathology, labs, and patient history.',
-      image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmRvc2NvcHklMjBwcm9jZWR1cmV8ZW58MXx8fHwxNzY1NzY0MTk2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: endoscopyImage,
       features: ['Procedure videos', 'Findings documentation', 'Pathology correlation']
     },
     {

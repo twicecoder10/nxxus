@@ -45,10 +45,10 @@ export function AboutPage() {
               About
             </h1>
             <p 
-              className="text-white max-w-3xl"
+              className="text-white max-w-3xl text-center mx-auto"
               style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
             >
-              Meet the team behind NXXIM. Built by veterans in enterprise healthcare.
+         
             </p><br></br>
           </motion.div>
         </div>

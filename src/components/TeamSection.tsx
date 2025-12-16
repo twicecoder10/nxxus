@@ -26,7 +26,7 @@ export function TeamSection() {
     },
     {
       name: 'Avi Grossman',
-      title: 'Head of Strategic Marketing',
+      title: 'CMO',
       bio: 'Leads positioning and strategic marketing, with experience across capital markets, product development, and early-stage technology.',
       image: aviImage,
     },
@@ -50,7 +50,7 @@ export function TeamSection() {
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           </div>
           <h2 
-            className="text-[#000000] max-w-4xl"
+            className="text-[#000000] max-w-4xl text-center mx-auto"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -58,8 +58,7 @@ export function TeamSection() {
               letterSpacing: '-0.03em' 
             }}
           >
-            Built by Veterans<br />
-            in Enterprise Healthcare
+            Built by Veterans in Enterprise Healthcare
           </h2>
         </motion.div>
 

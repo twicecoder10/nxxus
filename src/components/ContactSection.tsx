@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export function ContactSection() {
   const containerRef = useRef(null);
@@ -18,8 +17,8 @@ export function ContactSection() {
     <motion.section 
       ref={containerRef}
       id="contact" 
-      className="min-h-screen bg-[#000000] relative overflow-hidden flex items-center py-20"
-      style={{ opacity, y }}
+      className="min-h-screen bg-[#000000] relative overflow-hidden flex items-center"
+      style={{ opacity, y, paddingBottom: '40px' }}
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-30">
@@ -79,16 +78,17 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Link to="/contact">
-              <motion.button
-                className="bg-white text-[#000000] px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300"
-                style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Schedule a demo
-              </motion.button>
-            </Link>
+            <motion.a
+              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-[#000000] px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300 inline-block"
+              style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Schedule a demo
+            </motion.a>
             
            
           </motion.div>

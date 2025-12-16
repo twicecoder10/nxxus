@@ -18,17 +18,18 @@ export function Navigation() {
   const navLinks = [
     { name: 'Platform', href: '/#platform' },
     { name: 'How It Works', href: '/how-it-works' },
-    { name: 'Specialties', href: '/specialties' },
+    { name: 'Specialities', href: '/specialties' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
 
-  // Always show white background on How It Works, Specialties, About, and Contact pages
+  // Always show white background on How It Works, Specialties, About, Contact, and Book Demo pages
   const isHowItWorksPage = location.pathname === '/how-it-works';
   const isSpecialtiesPage = location.pathname === '/specialties';
   const isAboutPage = location.pathname === '/about';
   const isContactPage = location.pathname === '/contact';
-  const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || scrolled;
+  const isBookDemoPage = location.pathname === '/book-demo';
+  const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
 
   return (
     <motion.nav
@@ -101,19 +102,20 @@ export function Navigation() {
         </div>
 
         {/* CTA Button */}
-        <Link to="/contact">
-          <motion.button
-            className="bg-[#000000] text-white px-8 py-3 rounded-full hover:bg-[#94B3D8] transition-all duration-300"
-            style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '-0.01em' }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            Book Demo
-          </motion.button>
-        </Link>
+        <motion.a
+          href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#000000] text-white px-8 py-3 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
+          style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          Book Demo
+        </motion.a>
       </div>
     </motion.nav>
   );

@@ -57,7 +57,7 @@ export function Footer() {
                 LinkedIn
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/nxxim"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >

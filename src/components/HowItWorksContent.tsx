@@ -5,6 +5,9 @@ import c1Image from '../../pics/c1.jpg';
 import c2Image from '../../pics/C2.jpg';
 import c4Image from '../../pics/C4.jpg';
 import c5Image from '../../pics/C5.jpg';
+import unifyImage from '../../pics/unify.jpg';
+import connectImage from '../../pics/connect.jpg';
+import optimizeImage from '../../pics/optimizie.jpg';
 
 export function HowItWorksContent() {
   const [activeStep, setActiveStep] = useState(0);
@@ -67,13 +70,13 @@ export function HowItWorksContent() {
       number: '01',
       title: 'Connect',
       description: 'Securely connects to existing EHRs, PACS, and lab systems. No system replacement.',
-      image: c1Image
+      image: connectImage
     },
     {
       number: '02',
       title: 'Unify',
       description: 'Organizes imaging, pathology, labs, and clinical data into a single real-time diagnostic view.',
-      image: c2Image
+      image: unifyImage
     },
     {
       number: '03',
@@ -85,7 +88,7 @@ export function HowItWorksContent() {
       number: '04',
       title: 'Optimize',
       description: 'Medically tuned AI supports triage, prioritization, and faster time-to-diagnosis.',
-      image: c4Image
+      image: optimizeImage
     },
     {
       number: '05',
@@ -116,7 +119,8 @@ export function HowItWorksContent() {
               letterSpacing: '-0.03em' 
             }}
           >
-            How It works?
+           From Fragmentation to Diagnostic Clarity
+
           </h2>
         </motion.div>
 
