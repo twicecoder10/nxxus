@@ -36,8 +36,8 @@ export function MissionSection() {
         className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full text-center"
         style={{ scale }}
       >
-        <motion.h2
-          className="font-bold leading-tight tracking-[-0.03em]"
+        <motion.div
+          className="leading-tight tracking-[-0.03em]"
           style={{
             fontSize: 'clamp(3rem, 8vw, 7rem)',
             color: textColor
@@ -47,10 +47,10 @@ export function MissionSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          Eliminating diagnostic fragmentation.
+          <span style={{ fontWeight: 300, fontStyle: 'italic' }}>Eliminating diagnostic fragmentation.</span>
           <br />
-          Where diagnostics finally connect.
-        </motion.h2>
+          <span style={{ fontWeight: 700 }}>Where diagnostics finally connect.</span>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

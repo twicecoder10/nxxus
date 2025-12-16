@@ -1,29 +1,20 @@
-import { Navigation } from './components/Navigation';
-import { Hero } from './components/Hero';
-import { MissionSection } from './components/MissionSection';
-import { ClinicalSpecialtiesSection } from './components/ClinicalSpecialtiesSection';
-import { ProductSection } from './components/ProductSection';
-import { HowItWorksSection } from './components/HowItWorksSection';
-import { SeamlessIntegrationSection } from './components/SeamlessIntegrationSection';
-import { TeamSection } from './components/TeamSection';
-import { PartnersSection } from './components/PartnersSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { HowItWorksPage } from './pages/HowItWorksPage';
+import { SpecialtiesPage } from './pages/SpecialtiesPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <Hero />
-      <MissionSection />
-      <ClinicalSpecialtiesSection />
-      <ProductSection />
-      <HowItWorksSection />
-      <SeamlessIntegrationSection />
-      <TeamSection />
-      <PartnersSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/specialties" element={<SpecialtiesPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

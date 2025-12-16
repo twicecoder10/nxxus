@@ -48,7 +48,6 @@ export function TeamSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            Leadership Team
           </div>
           <h2 
             className="text-[#000000] max-w-4xl"
@@ -76,36 +75,24 @@ export function TeamSection() {
 }
 
 function TeamCard({ member, index }: { member: any; index: number }) {
-  const cardRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
   return (
     <motion.div
-      ref={cardRef}
       className="group"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
     >
-      <motion.div
+      <div
         className="bg-white rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500"
-        whileHover={{ y: -10 }}
-        style={{ y }}
       >
         {/* Image Container */}
-        <div className="relative h-96 overflow-hidden">
-          <motion.img
+        <div className="relative h-[500px] overflow-hidden">
+          <img
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6 }}
+            style={{ objectPosition: 'center top' }}
           />
           
           {/* Gradient Overlay */}
@@ -130,11 +117,11 @@ function TeamCard({ member, index }: { member: any; index: number }) {
 
         {/* Bio Content */}
         <div className="p-8">
-          <p className="text-[#6B7280]" style={{ fontSize: '0.9375rem', lineHeight: 1.7 }}>
+          <p className="text-[#6B7280]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
             {member.bio}
           </p>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import nifiriedImage from '../../pics/nifiried.jpg';
 
 export function ProductSection() {
   const containerRef = useRef(null);
@@ -14,26 +15,30 @@ export function ProductSection() {
 
   const capabilities = [
     {
-      title: 'Cross-Modality Viewing',
-      description: 'View radiology, pathology, cardiology, and other imaging modalities side-by-side'
+      title: 'Clinical Decision Support',
+      description: ''
     },
     {
-      title: 'AI-Assisted Diagnosis',
-      description: 'Machine learning models highlight findings and prioritize critical cases'
+      title: 'Intelligent Workflow Automation',
+      description: ''
     },
     {
-      title: 'Real-Time Collaboration',
-      description: 'Multi-user annotations, chat, and case conferencing built into the workflow'
+      title: 'Unified Collaboration Workspace',
+      description: ''
     },
     {
-      title: 'Cloud-Native Architecture',
-      description: 'Secure, scalable infrastructure with zero-downtime deployments'
+      title: 'Auto-Classification and Tagging',
+      description: ''
+    },
+    {
+      title: 'Image Quality Assessment',
+      description: ''
     }
   ];
 
   return (
     <motion.section 
-      id="product" 
+      id="platform" 
       ref={containerRef}
       className="min-h-screen bg-[#000000] relative overflow-hidden py-32"
       style={{ opacity, scale }}
@@ -54,7 +59,6 @@ export function ProductSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            The Product
           </div>
           <h2 
             className="text-white max-w-4xl mx-auto"
@@ -67,79 +71,79 @@ export function ProductSection() {
           >
             A Unified Diagnostic Workspace
           </h2>
-        </motion.div>
-
-        {/* Centered Layout - Image on top, content below */}
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* Centered Video */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ y }}
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl max-w-4xl w-full">
-              <video 
-                src="https://videos.pexels.com/video-files/8172913/8172913-uhd_2560_1440_25fps.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </div>
-          </motion.div>
-
+          
           {/* Description Text */}
           <motion.div
-            className="text-center"
+            className="mt-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-[#94B3D8]/90 max-w-3xl mx-auto" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
-              <br></br>NXXIM integrates radiology images, pathology slides, lab results, EHR records, and genomic 
-              data into a single, seamless clinical environment—working alongside existing systems rather 
-              than replacing them.
+            <p className="text-[#94B3D8]/90 max-w-4xl mx-auto" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
+              <br></br>NXXIM brings imaging, surgery, pathology, labs, EHR data, and genomics into a single real-time workspace.
+              AI-powered workflows enable collaboration and smarter diagnostic decisions, while leveraging existing systems with no replacement required.
             </p>
           </motion.div>
+        </motion.div>
 
-          {/* Capabilities List */}
-          <motion.div
-            className="space-y-4 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {capabilities.map((capability, idx) => (
+        {/* Two-column Layout - Image on left, capabilities on right */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image on Left */}
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              style={{ y }}
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl w-full">
+                <img 
+                  src={nifiriedImage}
+                  alt="Unified Diagnostic Workspace"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+            </motion.div>
+
+            {/* Capabilities List on Right */}
+            <div>
+              {/* Capabilities List */}
               <motion.div
-                key={idx}
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="space-y-4"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
-                whileHover={{ x: 10 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="flex items-start gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#94B3D8]/50 transition-all duration-300">
-                  <div className="w-1.5 h-1.5 bg-[#94B3D8] rounded-full mt-2 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <div className="text-white mb-1" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                      {capability.title}
+                {capabilities.map((capability, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="group cursor-pointer"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
+                    whileHover={{ x: 10 }}
+                  >
+                    <div className="flex items-start gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300">
+                      <div>
+                        <div className="text-white mb-1 group-hover:text-black transition-colors duration-300" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                          {capability.title}
+                        </div>
+                        <div className="text-[#94B3D8]/60 group-hover:text-black/70 transition-colors duration-300" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
+                          {capability.description}
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-[#94B3D8]/60" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                      {capability.description}
-                    </div>
-                  </div>
-                </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </motion.section>

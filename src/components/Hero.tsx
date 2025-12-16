@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import heroVideo from '../../pics/hero video.mp4';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import heroVideo from '../../pics/nximvid.mp4';
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -32,7 +34,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.div
-              style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}
+              style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -46,11 +48,11 @@ export function Hero() {
             <motion.h1 
               className="text-[#000000]"
               style={{ 
-                fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
+                fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
                 fontWeight: 700, 
                 lineHeight: 1.1, 
                 letterSpacing: '-0.04em',
-                maxWidth: '1400px'
+                maxWidth: '600px'
               }}
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -58,15 +60,31 @@ export function Hero() {
             >
               Unify Every
               <br />
-              <span className="inline-block" style={{ lineHeight: '1.15' }}>
-                Diagnostic  
-                <span className="inline-block relative ml-4 z-40">
-                  <span className="backdrop-blur-md bg-white/70 rounded-lg px-6 py-3 shadow-lg relative z-50" style={{ color: '#94B3D8' }}>
-                    Stream
+              <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
+                Diagnostic
+                <span className="inline-block relative ml-2 z-40">
+                  <span className="backdrop-blur-md bg-white rounded-lg px-4 py-2 shadow-lg relative z-50" style={{ color: '#94B3D8' }}>
+                    System
                   </span>
                 </span>
               </span>
             </motion.h1>
+            
+            {/* Description */}
+            <motion.p
+              className="text-[#1F2937] mt-6 mb-8"
+              style={{ 
+                fontSize: '1.125rem', 
+                lineHeight: 1.7,
+                maxWidth: '600px'
+              }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <br></br>Imaging, labs, pathology, and EHRs. One real-time workspace.
+              Where diagnostic data converges, so teams can make smarter decisions together.
+            </motion.p>
           </div>
 
           {/* CTA */}
@@ -76,41 +94,33 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <motion.button
-              className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 group"
-              style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="flex items-center gap-2">
-                Book a Demo
-                <motion.span
-                  className="inline-block"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 5 }}
-                >
-                  →
-                </motion.span>
-              </span>
-            </motion.button>
-            
-            <motion.a
-              href="#mission"
-              className="text-[#000000] hover:text-[#94B3D8] transition-colors duration-300 group flex items-center gap-2"
-              style={{ fontSize: '1rem', fontWeight: 500, letterSpacing: '-0.01em' }}
-              whileHover={{ x: 3 }}
-            >
-              Learn More
-              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-            </motion.a>
+            <Link to="/contact">
+              <motion.button
+                className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 group"
+                style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="flex items-center gap-2">
+                  Book a Demo
+                  <motion.span
+                    className="inline-block"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
 
-        {/* Floating Visual Element - Right side, right edge aligned with Book Demo button */}
+        {/* Floating Visual Element - Right side, aligned with Book Demo button */}
         <motion.div
-          className="absolute top-1/2 -translate-y-1/2 w-[900px] h-[600px] hidden xl:block z-0"
+          className="absolute top-1/2 -translate-y-1/2 w-[250px] h-[600px] hidden xl:block z-0"
           style={{ 
-            right: 'calc((100vw - 1800px) / 2 - 230px)', // Moved right by another 50px
+            right: 'calc((100vw - 1800px) / 2 - 31px)', // Moved further left
             y 
           }}
           initial={{ opacity: 0, scale: 0.8 }}
@@ -130,16 +140,6 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-[#94B3D8]/10 to-transparent" />
           </div>
         </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5, repeat: Infinity, repeatType: 'reverse' }}
-      >
-        <div className="w-px h-16 bg-gradient-to-b from-transparent via-[#94B3D8] to-transparent" />
       </motion.div>
     </section>
   );

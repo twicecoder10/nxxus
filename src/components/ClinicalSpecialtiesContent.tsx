@@ -1,62 +1,54 @@
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { motion } from 'motion/react';
+import womenHealthImage from '../../pics/women health.jpg';
 
-export function ClinicalSpecialtiesSection() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.95]);
-
+export function ClinicalSpecialtiesContent() {
   const specialties = [
     {
       name: 'Radiology',
-      description: 'Complete PACS integration with AI-powered triage and analysis',
+      description: 'Unified imaging review, prioritization, and diagnostic context across modalities',
       image: 'https://images.unsplash.com/photo-1587010580103-fd86b8ea14ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWRpb2xvZ3klMjBpbWFnaW5nJTIweHJheXxlbnwxfHx8fDE3NjU3NjQxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: ['CT/MRI/X-Ray', 'Real-time viewing', 'AI prioritization']
     },
     {
       name: 'Pathology',
-      description: 'Digital pathology with whole slide imaging and AI diagnostics',
+      description: 'Digital slide review with longitudinal correlation across laboratory and clinical data.',
       image: 'https://images.unsplash.com/photo-1630959300489-63dae3a8240a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXRob2xvZ3klMjBtaWNyb3Njb3BlJTIwbGFifGVufDF8fHx8MTc2NTc2NDE5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: ['WSI viewing', 'Tissue analysis', 'Lab integration']
     },
     {
       name: 'Cardiology',
-      description: 'Cardiac imaging with advanced visualization and measurements',
+      description: ' Integrated imaging, waveforms, and longitudinal patient history in a single workspace.',
       image: 'https://images.unsplash.com/photo-1698306642516-9841228dcff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJkaW9sb2d5JTIwaGVhcnQlMjBtb25pdG9yfGVufDF8fHx8MTc2NTc2NDE5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: ['Echo/Cath', 'EKG integration', 'Cardiac metrics']
     },
     {
       name: 'Oncology',
-      description: 'Integrated tumor board with multi-modal imaging review',
+      description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics',
       image: 'https://images.unsplash.com/photo-1763310225108-9e16920156f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbmNvbG9neSUyMGNhbmNlciUyMHRyZWF0bWVudHxlbnwxfHx8fDE3NjU3NjQxOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: ['Treatment tracking', 'Genomic data', 'MDT collaboration']
     },
     {
-      name: 'And 40+ additional diagnostic specialities',
-      description: '',
-      image: 'https://images.unsplash.com/photo-1763310225108-9e16920156f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbmNvbG9neSUyMGNhbmNlciUyMHRyZWF0bWVudHxlbnwxfHx8fDE3NjU3NjQxOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      features: []
+      name: 'Surgery',
+      description: 'Intraoperative and longitudinal diagnostic context across imaging, labs, and clinical records.',
+      image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXJnZXJ5JTIwb3BlcmF0aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjU3NjQxOTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      features: ['Intraoperative imaging', 'Procedure documentation', 'Clinical context']
+    },
+    {
+      name: 'Endoscopy',
+      description: 'Procedure imaging and findings integrated with pathology, labs, and patient history.',
+      image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmRvc2NvcHklMjBwcm9jZWR1cmV8ZW58MXx8fHwxNzY1NzY0MTk2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      features: ['Procedure videos', 'Findings documentation', 'Pathology correlation']
+    },
+    {
+      name: "Women's Health",
+      description: 'Longitudinal imaging, screening, and diagnostic workflows across care episodes.',
+      image: womenHealthImage,
+      features: ['Mammography', 'OB/GYN imaging', 'Screening workflows']
     }
-    
   ];
 
   return (
-    <motion.section 
-      ref={containerRef}
-      className="min-h-screen bg-[#000000] relative overflow-hidden py-32"
-      style={{ opacity, scale }}
-    >
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#94B3D8] rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-[#94B3D8] rounded-full blur-3xl" />
-      </div>
-
+    <section className="min-h-screen bg-white relative overflow-hidden py-32">
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
@@ -67,10 +59,10 @@ export function ClinicalSpecialtiesSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            Clinical Specialities
+            
           </div>
           <h2 
-            className="text-white"
+            className="text-[#000000]"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -78,19 +70,35 @@ export function ClinicalSpecialtiesSection() {
               letterSpacing: '-0.03em' 
             }}
           >
-            Built for Every<br />
-            Diagnostic Discipline
+            Purpose-Built for <br />Diagnostic Specialities
+           
           </h2>
         </motion.div>
 
         {/* Specialties Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {specialties.map((specialty, idx) => (
             <SpecialtyCard key={idx} specialty={specialty} index={idx} />
           ))}
         </div>
+
+        {/* Additional Specialties Text */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <p 
+            className="text-[#000000]"
+            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, lineHeight: 1.4 }}
+          >
+            And 40+ additional diagnostic specialities
+          </p>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
@@ -103,18 +111,15 @@ function SpecialtyCard({ specialty, index }: { specialty: any; index: number }) 
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
     >
-      <motion.div
-        className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-white/10 hover:border-[#94B3D8] transition-all duration-500"
-        whileHover={{ y: -10 }}
+      <div
+        className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
-          <motion.img
+          <img
             src={specialty.image}
             alt={specialty.name}
             className="w-full h-full object-cover"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6 }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
         </div>
@@ -157,12 +162,13 @@ function SpecialtyCard({ specialty, index }: { specialty: any; index: number }) 
 
         {/* Number indicator */}
         <div 
-          className="absolute top-6 right-6 text-white/20 group-hover:text-[#94B3D8]/40 transition-colors duration-300"
+          className="absolute top-6 right-6 text-[#E5E7EB] group-hover:text-[#94B3D8]/40 transition-colors duration-300"
           style={{ fontSize: '4rem', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1 }}
         >
           0{index + 1}
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
+
