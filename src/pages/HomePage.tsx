@@ -19,9 +19,9 @@ export function HomePage() {
       <MeasuredImpact />
        {/*<ClinicalSpecialtiesSection />
       
-       {/* <HowItWorksSection />*/}
+       {/* <HowItWorksSection />
 
-      <SeamlessIntegrationSection />
+      <SeamlessIntegrationSection />*/}
       {/*<TeamSection /> */}
       <InlineSection />
       <ContactSection />

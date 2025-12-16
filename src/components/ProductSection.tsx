@@ -1,17 +1,18 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import React from 'react';
 import nifiriedImage from '../../pics/nifiried.jpg';
 
 export function ProductSection() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  // Smooth fade in/out when entering/leaving viewport
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
 
   const capabilities = [
     {
@@ -41,7 +42,7 @@ export function ProductSection() {
       id="platform" 
       ref={containerRef}
       className="min-h-screen bg-[#000000] relative overflow-hidden py-32"
-      style={{ opacity, scale }}
+      style={{ opacity, y }}
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-20">
@@ -80,7 +81,7 @@ export function ProductSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-[#94B3D8]/90 max-w-4xl mx-auto" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
+            <p className="text-[#94B3D8]/90 max-w-4xl mx-auto" style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>
               <br></br>NXXIM brings imaging, surgery, pathology, labs, EHR data, and genomics into a single real-time workspace.
               AI-powered workflows enable collaboration and smarter diagnostic decisions, while leveraging existing systems with no replacement required.
             </p>
@@ -104,8 +105,9 @@ export function ProductSection() {
                   src={nifiriedImage}
                   alt="Unified Diagnostic Workspace"
                   className="w-full h-[500px] object-cover"
+                  style={{ filter: 'brightness(1.4) contrast(1.1)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
             </motion.div>
 
@@ -131,7 +133,7 @@ export function ProductSection() {
                   >
                     <div className="flex items-start gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300">
                       <div>
-                        <div className="text-white mb-1 group-hover:text-black transition-colors duration-300" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                        <div className="text-white mb-1 group-hover:text-black transition-colors duration-300" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)', fontWeight: 600 }}>
                           {capability.title}
                         </div>
                         <div className="text-[#94B3D8]/60 group-hover:text-black/70 transition-colors duration-300" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>

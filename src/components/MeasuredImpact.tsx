@@ -1,6 +1,17 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
+import React from 'react';
 
 export function MeasuredImpact() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Fade in/out based on scroll position
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
   const impacts = [
     {
       title: 'Faster, Aligned Workflows',
@@ -25,7 +36,11 @@ export function MeasuredImpact() {
   ];
 
   return (
-    <section className="min-h-screen bg-white relative overflow-hidden py-32">
+    <motion.section 
+      ref={containerRef}
+      className="min-h-screen bg-white relative overflow-hidden py-32"
+      style={{ opacity, y }}
+    >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full">
         {/* Section Title */}
         <motion.div
@@ -79,6 +94,6 @@ export function MeasuredImpact() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

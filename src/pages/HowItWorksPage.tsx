@@ -1,6 +1,8 @@
+import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { HowItWorksContent } from '../components/HowItWorksContent';
+import { SeamlessIntegrationSection } from '../components/SeamlessIntegrationSection';
 import { ReadyToConnectSection } from '../components/ReadyToConnectSection';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -42,13 +44,13 @@ export function HowItWorksPage() {
                 letterSpacing: '-0.03em' 
               }}
             >
-              How It Works
+              From Fragmentation to Diagnostic Clarity
             </h1>
             <p 
               className="text-white max-w-3xl"
               style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
             >
-              Four steps to unified diagnostics. See how NXXIM transforms your diagnostic workflow.
+              
             </p><br></br>
           </motion.div>
         </div>
@@ -56,6 +58,9 @@ export function HowItWorksPage() {
 
       {/* How It Works Content */}
       <HowItWorksContent />
+
+      {/* Seamless Integration Section */}
+      <SeamlessIntegrationSection />
 
       {/* Ready to Connect Section */}
       <ReadyToConnectSection />

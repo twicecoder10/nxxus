@@ -45,36 +45,42 @@ export function Hero() {
 
           {/* Headline - Reduced size, 1/4 above video */}
           <div className="overflow-visible mb-12 relative z-30">
-            <motion.h1 
-              className="text-[#000000]"
-              style={{ 
-                fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
-                fontWeight: 700, 
-                lineHeight: 1.1, 
-                letterSpacing: '-0.04em',
-                maxWidth: '600px'
-              }}
+            <motion.div
+              className="inline-block bg-[#000000] rounded-lg px-10 py-7 lg:px-12 lg:py-9 shadow-lg"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              Unify Every
-              <br />
-              <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
-                Diagnostic
-                <span className="inline-block relative ml-2 z-40">
-                  <span className="backdrop-blur-md bg-white rounded-lg px-4 py-2 shadow-lg relative z-50" style={{ color: '#94B3D8' }}>
-                    System
+              <motion.h1 
+                className="text-white"
+                style={{ 
+                  fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
+                  fontWeight: 700, 
+                  lineHeight: 1.1, 
+                  letterSpacing: '-0.04em',
+                  maxWidth: '600px',
+                  padding: '0.5rem 0',
+                  margin: 0
+                }}
+              > 
+                Unify Every
+                <br />
+                <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
+                  Diagnostic &nbsp;
+                  <span className="inline-block relative ml-2 z-40">
+                    <span className="text-[#94B3D8]">
+                      System &nbsp;
+                    </span>
                   </span>
                 </span>
-              </span>
-            </motion.h1>
+              </motion.h1>
+            </motion.div>
             
             {/* Description */}
             <motion.p
               className="text-[#1F2937] mt-6 mb-8"
               style={{ 
-                fontSize: '1.125rem', 
+                fontSize: '1.140rem', 
                 lineHeight: 1.7,
                 maxWidth: '600px'
               }}
@@ -82,8 +88,7 @@ export function Hero() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <br></br>Imaging, labs, pathology, and EHRs. One real-time workspace.
-              Where diagnostic data converges, so teams can make smarter decisions together.
+              <br></br>Imaging, labs, pathology, and EHRs in one real-time workspace where diagnostic data converges, so teams can make smarter decisions together.
             </motion.p>
           </div>
 
@@ -102,7 +107,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
               >
                 <span className="flex items-center gap-2">
-                  Book a Demo
+                  Book a demo
                   <motion.span
                     className="inline-block"
                     initial={{ x: 0 }}

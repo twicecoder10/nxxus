@@ -1,7 +1,17 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import React from 'react';
 
 export function InlineSection() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Fade in/out based on scroll position
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -30]);
   const certifications = [
     { text: 'FDA 510(k) Pathway' },
     { text: 'HIPAA Compliant' },
@@ -9,7 +19,11 @@ export function InlineSection() {
   ];
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden border-t border-[#E5E7EB]">
+    <motion.section 
+      ref={containerRef}
+      className="py-32 bg-[#FAFAFA] relative overflow-hidden border-t border-[#E5E7EB]"
+      style={{ opacity, y }}
+    >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16">
         <motion.div
           className="flex flex-col items-center justify-center"
@@ -27,7 +41,7 @@ export function InlineSection() {
                 letterSpacing: '-0.02em' 
               }}
             >
-              Inline
+              
             </span>
             <span 
               className="text-[#94B3D8]" 
@@ -43,7 +57,7 @@ export function InlineSection() {
                 <span 
                   className="text-[#000000]" 
                   style={{ 
-                    fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', 
+                    fontSize: 'clamp(2rem, 4vw, 3rem)', 
                     fontWeight: 600, 
                     letterSpacing: '-0.015em' 
                   }}
@@ -66,6 +80,6 @@ export function InlineSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

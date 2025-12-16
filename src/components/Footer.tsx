@@ -43,11 +43,11 @@ export function Footer() {
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:contact@nxxim.com"
+                href="mailto:info@nxxim.com"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >
-                contact@nxxim.com
+                info@nxxim.com
               </a>
               <a
                 href="#"
@@ -75,7 +75,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-6">
               <a
-                href="#privacy"
+                href="#"
                 className="text-[#94B3D8]/40 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.8125rem', fontWeight: 500 }}
               >
@@ -83,7 +83,7 @@ export function Footer() {
               </a>
               <span className="text-white/10">·</span>
               <a
-                href="#terms"
+                href="#"
                 className="text-[#94B3D8]/40 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.8125rem', fontWeight: 500 }}
               >

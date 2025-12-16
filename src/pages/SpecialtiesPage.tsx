@@ -48,7 +48,6 @@ export function SpecialtiesPage() {
               className="text-white max-w-3xl"
               style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
             >
-              NXXIM adapts to specialty-specific workflows while unifying imaging, pathology, labs, and clinical data.
             </p><br></br>
           </motion.div>
         </div>

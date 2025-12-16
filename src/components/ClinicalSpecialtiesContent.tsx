@@ -1,5 +1,9 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import womenHealthImage from '../../pics/women health.jpg';
+import cardiologyImage from '../../pics/Co.jpg';
+import oncologyImage from '../../pics/CC.jpg';
+import additionalSpecialtiesImage from '../../pics/CD.jpg';
 
 export function ClinicalSpecialtiesContent() {
   const specialties = [
@@ -18,13 +22,13 @@ export function ClinicalSpecialtiesContent() {
     {
       name: 'Cardiology',
       description: ' Integrated imaging, waveforms, and longitudinal patient history in a single workspace.',
-      image: 'https://images.unsplash.com/photo-1698306642516-9841228dcff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJkaW9sb2d5JTIwaGVhcnQlMjBtb25pdG9yfGVufDF8fHx8MTc2NTc2NDE5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: cardiologyImage,
       features: ['Echo/Cath', 'EKG integration', 'Cardiac metrics']
     },
     {
       name: 'Oncology',
       description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics',
-      image: 'https://images.unsplash.com/photo-1763310225108-9e16920156f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbmNvbG9neSUyMGNhbmNlciUyMHRyZWF0bWVudHxlbnwxfHx8fDE3NjU3NjQxOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: oncologyImage,
       features: ['Treatment tracking', 'Genomic data', 'MDT collaboration']
     },
     {
@@ -44,6 +48,12 @@ export function ClinicalSpecialtiesContent() {
       description: 'Longitudinal imaging, screening, and diagnostic workflows across care episodes.',
       image: womenHealthImage,
       features: ['Mammography', 'OB/GYN imaging', 'Screening workflows']
+    },
+    {
+      name: "And 40+ additional diagnostic specialities",
+      description: '',
+      image: additionalSpecialtiesImage,
+      features: []
     }
   ];
 
@@ -72,7 +82,9 @@ export function ClinicalSpecialtiesContent() {
           >
             Purpose-Built for <br />Diagnostic Specialities
            
-          </h2>
+          </h2><br></br>
+          <p>              NXXIM adapts to specialty-specific workflows while unifying imaging, pathology, labs, and clinical data.
+          </p>
         </motion.div>
 
         {/* Specialties Grid */}
@@ -90,12 +102,7 @@ export function ClinicalSpecialtiesContent() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p 
-            className="text-[#000000]"
-            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, lineHeight: 1.4 }}
-          >
-            And 40+ additional diagnostic specialities
-          </p>
+          
         </motion.div>
       </div>
     </section>

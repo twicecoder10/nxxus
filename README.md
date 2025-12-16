@@ -1,7 +1,7 @@
 
-  # NXXM V3
+  # NXXIM - Unify Every Diagnostic System
 
-  This is a code bundle for NXXM V3. The original project is available at https://www.figma.com/design/9kOLVoOaDcP8QGAer1frb1/NXXM-V3.
+  This is a code bundle for NXXIM. The original project is available at https://www.figma.com/design/9kOLVoOaDcP8QGAer1frb1/NXXM-V3.
 
   ## Running the code
 

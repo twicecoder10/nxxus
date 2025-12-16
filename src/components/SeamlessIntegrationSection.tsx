@@ -1,15 +1,17 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import React from 'react';
 
 export function SeamlessIntegrationSection() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.95]);
+  // Smooth fade in/out when entering/leaving viewport
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
 
   const integrations = [
     {
@@ -34,7 +36,7 @@ export function SeamlessIntegrationSection() {
     <motion.section 
       ref={containerRef}
       className="min-h-screen bg-[#000000] relative overflow-hidden py-32"
-      style={{ opacity, scale }}
+      style={{ opacity, y }}
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-20">
@@ -45,7 +47,7 @@ export function SeamlessIntegrationSection() {
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
-          className="mb-24"
+          className="mb-24 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -54,26 +56,24 @@ export function SeamlessIntegrationSection() {
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
             Seamless Integration
           </div>
-          <div className="grid lg:grid-cols-2 gap-16 items-end">
-            <h2 
-              className="text-white"
-              style={{ 
-                fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
-                fontWeight: 700, 
-                lineHeight: 1.1, 
-                letterSpacing: '-0.03em' 
-              }}
-            >
-              Works With Your<br />
-              Existing Systems
-            </h2>
-            <p 
-              className="text-[#94B3D8]/90"
-              style={{ fontSize: '1.125rem', lineHeight: 1.7 }}
-            >
-              Designed to integrate directly into enterprise health systems without disrupting workflows.
-            </p>
-          </div>
+          <h2 
+            className="text-white mb-6 mx-auto"
+            style={{ 
+              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.1, 
+              letterSpacing: '-0.03em' 
+            }}
+          >
+            Works With Your<br />
+            Existing Systems
+          </h2>
+          <p 
+            className="text-[#94B3D8]/90 max-w-3xl mx-auto"
+            style={{ fontSize: '1.125rem', lineHeight: 1.7 }}
+          >
+            Designed to integrate directly into enterprise health systems without disrupting workflows.
+          </p>
         </motion.div>
 
         {/* Integration Cards Grid */}

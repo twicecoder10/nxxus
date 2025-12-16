@@ -1,10 +1,26 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function ContactSection() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Fade in/out based on scroll position
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+
   return (
-    <section id="contact" className="min-h-screen bg-[#000000] relative overflow-hidden flex items-center py-20">
+    <motion.section 
+      ref={containerRef}
+      id="contact" 
+      className="min-h-screen bg-[#000000] relative overflow-hidden flex items-center py-20"
+      style={{ opacity, y }}
+    >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/3 left-1/3 w-[800px] h-[800px] bg-[#94B3D8] rounded-full blur-3xl" />
@@ -52,7 +68,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Join leading healthcare systems already transforming their diagnostic workflows with NXXIM's AI-native platform.
+            Join healthcare systems modernizing diagnostic workflows with NXXIM’s AI native platform
           </motion.p>
 
           {/* CTA Buttons */}
@@ -70,7 +86,7 @@ export function ContactSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Schedule a Demo
+                Schedule a demo
               </motion.button>
             </Link>
             
@@ -78,6 +94,6 @@ export function ContactSection() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
