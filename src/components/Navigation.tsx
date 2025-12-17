@@ -29,9 +29,11 @@ export function Navigation() {
   const isAboutPage = location.pathname === '/about';
   const isContactPage = location.pathname === '/contact';
   const isBookDemoPage = location.pathname === '/book-demo';
-  const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
+  const isHomePage = location.pathname === '/';
+  // On homepage, always show white background with black text since hero background is white/light
+  const shouldShowWhiteBg = isHomePage || isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
   
-  // Use white text when background is transparent (homepage at top), black when background is white
+  // Use black text when background is white, white text when background is transparent (but homepage always uses white bg now)
   const logoColor = shouldShowWhiteBg ? '#000000' : '#FFFFFF';
 
   return (
