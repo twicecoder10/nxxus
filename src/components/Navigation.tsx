@@ -76,6 +76,11 @@ export function Navigation() {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }
+              } else {
+                // For non-hash links, ensure scroll to top
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
               }
             };
             
@@ -125,7 +130,7 @@ export function Navigation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Book Demo
+          Book a Demo
         </motion.a>
       </div>
     </motion.nav>

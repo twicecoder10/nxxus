@@ -7,7 +7,7 @@ import c4Image from '../../pics/C4.jpg';
 import c5Image from '../../pics/C5.jpg';
 import unifyImage from '../../pics/unify.jpg';
 import connectImage from '../../pics/connect.jpg';
-import optimizeImage from '../../pics/optimizie.jpg';
+import optimizeImage from '../../pics/optimiz.jpg';
 
 export function HowItWorksContent() {
   const [activeStep, setActiveStep] = useState(0);
@@ -180,7 +180,7 @@ export function HowItWorksContent() {
                       {activeStep === idx && (
                         <motion.p
                           className="text-[#6B7280]"
-                          style={{ fontSize: '1.0625rem', lineHeight: 1.7 }}
+                          style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}

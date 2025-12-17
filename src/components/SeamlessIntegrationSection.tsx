@@ -70,7 +70,7 @@ export function SeamlessIntegrationSection() {
           </h2>
           <p 
             className="text-[#94B3D8]/90 max-w-3xl mx-auto"
-            style={{ fontSize: '1.125rem', lineHeight: 1.7 }}
+            style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
           >
             Designed to integrate directly into enterprise health systems without disrupting workflows.
           </p>

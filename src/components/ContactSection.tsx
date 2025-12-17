@@ -61,7 +61,7 @@ export function ContactSection() {
           {/* Description */}
           <motion.p 
             className="text-[#94B3D8]/80 mb-16 max-w-3xl mx-auto"
-            style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
+            style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -87,7 +87,7 @@ export function ContactSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              Schedule a demo
+              Book a Demo
             </motion.a>
             
            

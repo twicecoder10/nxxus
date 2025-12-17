@@ -95,7 +95,7 @@ export function MeasuredImpact() {
               </h3>
               <p 
                 className="text-[#6B7280]"
-                style={{ fontSize: '1rem', lineHeight: 1.6 }}
+                style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
               >
                 {impact.description}
               </p>
@@ -120,7 +120,7 @@ export function MeasuredImpact() {
             </h3>
             <p 
               className="text-[#6B7280]"
-              style={{ fontSize: '1rem', lineHeight: 1.6 }}
+              style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               {impacts[4].description}
             </p>

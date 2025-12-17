@@ -135,7 +135,7 @@ function SpecialtyCard({ specialty, index }: { specialty: any; index: number }) 
             </h3>
             <p 
               className="text-[#94B3D8]/80 mb-6"
-              style={{ fontSize: '1.0625rem', lineHeight: 1.6 }}
+              style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               {specialty.description}
             </p>

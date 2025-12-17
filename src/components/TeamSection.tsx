@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import warrenImage from '../../pics/warren.webp';
-import tomImage from '../../pics/tom.webp';
+import tomImage from '../../pics/genericpic.jpg';
 import aviImage from '../../pics/avi.jpg';
 
 export function TeamSection() {
@@ -58,12 +58,12 @@ export function TeamSection() {
               letterSpacing: '-0.03em' 
             }}
           >
-            Built by Veterans in Enterprise Healthcare
+            Built by Enterprise Healthcare Leaders
           </h2>
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} index={idx} />
           ))}
@@ -76,14 +76,14 @@ export function TeamSection() {
 function TeamCard({ member, index }: { member: any; index: number }) {
   return (
     <motion.div
-      className="group"
+      className="group h-full"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
     >
       <div
-        className="bg-white rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500"
+        className="bg-white rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500 flex flex-col h-full"
       >
         {/* Image Container */}
         <div className="relative h-[500px] overflow-hidden">
@@ -115,8 +115,8 @@ function TeamCard({ member, index }: { member: any; index: number }) {
         </div>
 
         {/* Bio Content */}
-        <div className="p-8">
-          <p className="text-[#6B7280]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
+        <div className="p-8 flex-1 flex flex-col">
+          <p className="text-[#6B7280]" style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>
             {member.bio}
           </p>
         </div>

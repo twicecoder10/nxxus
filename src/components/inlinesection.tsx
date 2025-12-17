@@ -23,8 +23,8 @@ export function InlineSection() {
   return (
     <motion.section 
       ref={containerRef}
-      className="bg-[#FAFAFA] relative overflow-hidden border-t border-[#E5E7EB]"
-      style={{ opacity, y, paddingTop: '40px', paddingBottom: '40px' }} // Reduced from 80px to 40px
+      className="relative overflow-hidden border-t border-[#D1D5DB]"
+      style={{ opacity, y, paddingTop: '40px', paddingBottom: '40px', backgroundColor: '#D1D5DB' }} // Reduced from 80px to 40px
     >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16">
         <motion.div

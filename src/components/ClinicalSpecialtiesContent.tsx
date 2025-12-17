@@ -61,7 +61,7 @@ export function ClinicalSpecialtiesContent() {
   ];
 
   return (
-    <section className="min-h-screen bg-white relative overflow-hidden py-32">
+    <section className="min-h-screen bg-white relative overflow-hidden pt-32 pb-12">
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
@@ -86,7 +86,7 @@ export function ClinicalSpecialtiesContent() {
             Purpose-Built for <br />Diagnostic Specialities
            
           </h2><br></br>
-          <p>              NXXIM adapts to specialty-specific workflows while unifying imaging, pathology, labs, and clinical data.
+          <p style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>              NXXIM adapts to specialty-specific workflows while unifying imaging, pathology, labs, and clinical data.
           </p>
         </motion.div>
 
@@ -150,7 +150,7 @@ function SpecialtyCard({ specialty, index }: { specialty: any; index: number }) 
             </h3>
             <p 
               className="text-[#94B3D8]/80 mb-6"
-              style={{ fontSize: '1.0625rem', lineHeight: 1.6 }}
+              style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               {specialty.description}
             </p>

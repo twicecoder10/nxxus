@@ -125,7 +125,7 @@ export function HowItWorksSection() {
                       {activeStep === idx && (
                         <motion.p
                           className="text-[#6B7280]"
-                          style={{ fontSize: '1.0625rem', lineHeight: 1.7 }}
+                          style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}

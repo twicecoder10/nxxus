@@ -1,10 +1,11 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import React from 'react';
 import nixxxmVideo from '../../pics/video nixxxm.mp4';
 
 export function ProductSection() {
   const containerRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -13,6 +14,96 @@ export function ProductSection() {
   // Smooth fade in/out when entering/leaving viewport
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+
+  // Seamless video looping with precise frame timing
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let frameCallbackId: number | null = null;
+    let isSeeking = false;
+
+    const handleSeeking = () => {
+      isSeeking = true;
+    };
+
+    const handleSeeked = () => {
+      isSeeking = false;
+    };
+
+    const handleTimeUpdate = () => {
+      if (isSeeking) return;
+      
+      // Use a very small threshold - reset just before the last frame
+      // Most videos are 30fps, so 1/30 = ~0.033 seconds per frame
+      // We'll reset at 2 frames before the end to avoid any visible jump
+      if (video.duration && video.currentTime >= video.duration - 0.066) {
+        isSeeking = true;
+        // Reset to a very small offset to ensure smooth loop
+        video.currentTime = 0.001;
+      }
+    };
+
+    // Use requestVideoFrameCallback if available for frame-perfect timing
+    const checkFrame = () => {
+      if (!video || isSeeking) {
+        if (video) {
+          frameCallbackId = (video as any).requestVideoFrameCallback?.(checkFrame) || null;
+          if (!frameCallbackId) {
+            requestAnimationFrame(checkFrame);
+          }
+        }
+        return;
+      }
+
+      if (video.duration && video.readyState >= 2) {
+        // Reset at 2 frames before the end (assuming 30fps)
+        if (video.currentTime >= video.duration - 0.066) {
+          isSeeking = true;
+          video.currentTime = 0.001;
+        }
+      }
+
+      if ((video as any).requestVideoFrameCallback) {
+        frameCallbackId = (video as any).requestVideoFrameCallback(checkFrame);
+      } else {
+        requestAnimationFrame(checkFrame);
+      }
+    };
+
+    const handleLoadedMetadata = () => {
+      video.play().catch(() => {});
+      checkFrame();
+    };
+
+    const handleEnded = () => {
+      isSeeking = true;
+      video.currentTime = 0.001;
+      video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 2) {
+      handleLoadedMetadata();
+    } else {
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    }
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('seeking', handleSeeking);
+    video.addEventListener('seeked', handleSeeked);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      if (frameCallbackId && (video as any).cancelVideoFrameCallback) {
+        (video as any).cancelVideoFrameCallback(frameCallbackId);
+      }
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('seeking', handleSeeking);
+      video.removeEventListener('seeked', handleSeeked);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   const capabilities = [
     {
@@ -100,16 +191,17 @@ export function ProductSection() {
               transition={{ duration: 0.8 }}
               style={{ y }}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl w-full">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl w-full h-[500px]">
                 <video 
+                  ref={videoRef}
                   src={nixxxmVideo}
                   autoPlay
-                  loop
                   muted
                   playsInline
-                  className="w-full h-[500px] object-cover"
+                  preload="auto"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-20 pointer-events-none" />
               </div>
             </motion.div>
 

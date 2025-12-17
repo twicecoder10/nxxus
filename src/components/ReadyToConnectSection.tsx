@@ -32,7 +32,7 @@ export function ReadyToConnectSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Book Demo
+            Book a Demo
           </motion.a>
         </motion.div>
       </div>

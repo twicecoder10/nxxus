@@ -73,7 +73,7 @@ export function AINativePlatformSection() {
             </h2>
             <p 
               className="text-[#6B7280]"
-              style={{ fontSize: '1.125rem', lineHeight: 1.7 }}
+              style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               Unlike legacy systems retrofitted with AI, NXXIM was engineered from the ground up 
               with machine learning at its core—delivering smarter diagnostics from day one.
@@ -178,7 +178,7 @@ export function AINativePlatformSection() {
               </div>
               <p 
                 className="text-[#6B7280]"
-                style={{ fontSize: '0.9375rem', lineHeight: 1.7 }}
+                style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
               >
                 {feature.description}
               </p>

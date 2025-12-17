@@ -29,11 +29,11 @@ export function ContactContent() {
             </h2>
             <p 
               className="text-[#6B7280]"
-              style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
+              style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               <br></br><br></br>Schedule a personalized demo to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
               <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.
-            </p><br></br>
+            </p><br></br><br></br>
             <motion.div
               className="mt-8 flex justify-center"
               initial={{ opacity: 0, y: 20 }}
@@ -45,12 +45,12 @@ export function ContactContent() {
                 href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#000000] text-white px-8 py-3 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
-                style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+                className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
+                style={{ fontSize: '3.25rem', fontWeight: 600, letterSpacing: '-0.01em' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               > 
-                Book Demo
+                Book a Demo
               </motion.a>
             </motion.div>
           </motion.div>
