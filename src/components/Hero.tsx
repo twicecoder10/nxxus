@@ -12,135 +12,139 @@ export function Hero() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   return (
     <section 
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden"
+      className="min-h-screen relative overflow-hidden bg-black"
     >
+      {/* Full-screen Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video 
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      {/* Content Overlay */}
       <motion.div 
-        className="w-full max-w-[1800px] mx-auto px-8 lg:px-16 py-32 lg:py-40 relative"
+        className="relative z-10 min-h-screen flex items-center justify-center px-8 lg:px-16"
         style={{ opacity, scale }}
       >
-        {/* Main Content */}
-        <div className="max-w-7xl">
-          {/* Eyebrow */}
-          <motion.div
-            className="text-[#94B3D8] mb-8 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+        <div className="max-w-7xl w-full py-32 lg:py-40">
+          {/* Main Content Container */}
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
             <motion.div
-              style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-8 overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              AI-Native Enterprise Imaging
+              <motion.div
+                className="text-white text-lg font-semibold tracking-wider uppercase"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 0.9, 
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
+                AI-Native Enterprise Imaging
+              </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Headline - Reduced size, 1/4 above video */}
-          <div className="overflow-visible mb-12 relative z-30">
-            <motion.h1 
-              className="text-[#000000]"
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              style={{ 
-                fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
-                fontWeight: 700, 
-                lineHeight: 1.1, 
-                letterSpacing: '-0.04em',
-                maxWidth: '600px',
-                padding: '0.5rem 0',
-                margin: 0
-              }}
-            >
-              Unify Every
-              <br />
-              <span className="inline-block" style={{ lineHeight: '1.15', whiteSpace: 'nowrap' }}>
-                Diagnostic &nbsp;
-                <span className="inline-block relative ml-2 z-40">
-                  <span className="text-[#94B3D8]">
-                    System &nbsp;
-                  </span>
+            {/* Headline */}
+            <div className="mb-12 overflow-hidden">
+              <motion.h1 
+                className="text-white"
+                initial={{ y: 120, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 1.2, 
+                  delay: 0.5, 
+                  ease: [0.22, 1, 0.36, 1] 
+                }}
+                style={{ 
+                  fontSize: 'clamp(3rem, 8vw, 7rem)', 
+                  fontWeight: 700, 
+                  lineHeight: 1.1, 
+                  letterSpacing: '-0.03em',
+                }}
+              >
+                <span className="block">Unify Every</span>
+                <span className="block mt-2">
+                  <span>Diagnostic </span>
+                  <span className="text-white">System</span>
                 </span>
-              </span>
-            </motion.h1>
+              </motion.h1>
+            </div>
             
             {/* Description */}
-            <motion.p
-              className="text-[#1F2937] mt-6 mb-8"
-              style={{ 
-                fontSize: '1.140rem', 
-                lineHeight: 1.7,
-                maxWidth: '600px'
-              }}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+            <motion.div
+              className="mb-12 overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
             >
-              <br></br>Imaging, labs, pathology, and EHRs in one real-time workspace where diagnostic data converges, so teams can make smarter decisions together.
-            </motion.p>
-          </div>
+              <motion.p
+                className="text-white text-xl lg:text-2xl leading-relaxed max-w-3xl"
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 1, 
+                  delay: 0.8,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
+                Imaging, labs, pathology, and EHRs in one real-time workspace where diagnostic data converges, so teams can make smarter decisions together.
+              </motion.p>
+            </motion.div>
 
-          {/* CTA */}
-          <motion.div 
-            className="flex items-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <motion.a
-              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 group inline-block"
-              style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+            {/* CTA */}
+            <motion.div 
+              className="flex items-center gap-6 overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
             >
-              <span className="flex items-center gap-2">
+              <motion.a
+                href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300 group inline-block font-semibold text-lg"
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 1, 
+                  delay: 1.1,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="flex items-center gap-2">
                   Book a demo
-                <motion.span
-                  className="inline-block"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 5 }}
-                >
-                  →
-                </motion.span>
-              </span>
-            </motion.a>
-          </motion.div>
-        </div>
-
-        {/* Floating Visual Element - Right side, aligned with Book Demo button */}
-        <motion.div
-          className="absolute top-1/2 -translate-y-1/2 w-[250px] h-[600px] hidden xl:block z-0"
-          style={{ 
-            right: 'calc((100vw - 1800px) / 2 - 81px)', // Moved 50px to the right
-            y 
-          }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.6 }}
-        >
-          {/* Hero Video - Replacing the two images */}
-          <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
-            <video 
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#94B3D8]/10 to-transparent" />
+                  <motion.span
+                    className="inline-block"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+              </motion.a>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

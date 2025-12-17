@@ -30,6 +30,9 @@ export function Navigation() {
   const isContactPage = location.pathname === '/contact';
   const isBookDemoPage = location.pathname === '/book-demo';
   const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
+  
+  // Use white text when background is transparent (homepage at top), black when background is white
+  const logoColor = shouldShowWhiteBg ? '#000000' : '#FFFFFF';
 
   return (
     <motion.nav
@@ -49,9 +52,9 @@ export function Navigation() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <span style={{ color: '#000000' }}>N</span>
+            <span style={{ color: logoColor }}>N</span>
             <span style={{ color: '#94B3D8' }}>XX</span>
-            <span style={{ color: '#000000' }}>IM</span>
+            <span style={{ color: logoColor }}>IM</span>
           </motion.div>
         </Link>
 
@@ -84,7 +87,11 @@ export function Navigation() {
               >
                 <motion.div
                   className={`transition-colors duration-300 relative group ${
-                    isActive ? 'text-[#94B3D8]' : 'text-[#000000] hover:text-[#94B3D8]'
+                    isActive 
+                      ? 'text-[#94B3D8]' 
+                      : shouldShowWhiteBg 
+                        ? 'text-[#000000] hover:text-[#94B3D8]' 
+                        : 'text-white hover:text-[#94B3D8]'
                   }`}
                   style={{ fontSize: '0.9375rem', fontWeight: 500, letterSpacing: '-0.01em' }}
                   initial={{ opacity: 0, y: -10 }}
@@ -106,7 +113,11 @@ export function Navigation() {
           href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#000000] text-white px-8 py-3 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
+          className={`px-8 py-3 rounded-full transition-all duration-300 inline-block ${
+            shouldShowWhiteBg
+              ? 'bg-[#000000] text-white hover:bg-[#94B3D8]'
+              : 'bg-white text-black hover:bg-[#94B3D8] hover:text-white'
+          }`}
           style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '-0.01em' }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
