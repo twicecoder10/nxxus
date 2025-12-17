@@ -14,11 +14,24 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
   return (
-    <section 
-      ref={containerRef}
-      className="min-h-screen relative overflow-hidden"
-      style={{ backgroundColor: '#000000' }}
-    >
+    <>
+      <style>{`
+        @media (max-width: 767px) {
+          .hero-text-content {
+            margin-left: 0 !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .hero-text-content {
+            margin-left: clamp(0px, 22vw, 350px);
+          }
+        }
+      `}</style>
+      <section 
+        ref={containerRef}
+        className="min-h-screen relative overflow-hidden"
+        style={{ backgroundColor: '#000000' }}
+      >
       {/* Video Background - positioned on right side, constrained width, starts below nav bar - matches Factory design */}
       <div className="absolute top-20 sm:top-24 lg:top-28 right-0 bottom-0 w-[70%] sm:w-[65%] lg:w-[55%] xl:w-[50%] z-0 overflow-hidden">
         <div className="relative w-full h-full">
@@ -44,16 +57,15 @@ export function Hero() {
 
       {/* Content Container - matches Factory layout */}
       <motion.div 
-        className="relative z-10 min-h-screen flex items-center px-8 lg:px-16"
+        className="relative z-10 min-h-screen flex items-center px-4 sm:px-8 lg:px-16"
         style={{ opacity, scale }}
       >
-        <div className="max-w-[1800px] mx-auto w-full flex items-center py-32 lg:py-40">
+        <div className="max-w-[1800px] mx-auto w-full flex items-center py-20 sm:py-32 lg:py-40">
           
           {/* Text Content - shifted rightwards to partially overlay video like Factory */}
           <div 
-            className="relative z-10 max-w-2xl lg:max-w-3xl"
+            className="hero-text-content relative z-10 max-w-2xl lg:max-w-3xl text-left"
             style={{
-              marginLeft: 'clamp(0px, 22vw, 350px)',
               background: 'linear-gradient(to right, transparent 0%, transparent 35%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.6) 100%)',
               backdropFilter: 'blur(15px) saturate(180%)',
               WebkitBackdropFilter: 'blur(15px) saturate(180%)'
@@ -67,7 +79,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.div
-                className="text-white text-lg font-semibold tracking-wider uppercase"
+                className="text-white text-lg font-semibold tracking-wider uppercase text-left"
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ 
@@ -83,7 +95,7 @@ export function Hero() {
             {/* Headline */}
             <div className="mb-12 overflow-hidden">
               <motion.h1 
-                className="text-white"
+                className="text-white text-left"
                 initial={{ y: 120, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ 
@@ -114,7 +126,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.7 }}
             >
               <motion.p
-                className="text-white text-xl lg:text-2xl leading-relaxed"
+                className="text-white text-xl lg:text-2xl leading-relaxed text-left"
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ 
@@ -167,5 +179,6 @@ export function Hero() {
         </div>
       </motion.div>
     </section>
+    </>
   );
 }
