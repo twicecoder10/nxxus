@@ -28,8 +28,15 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover"
         />
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Very light gradient overlay for better text readability - modern style */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+        {/* Subtle radial gradient overlay focused on text area */}
+        <div 
+          className="absolute inset-0 opacity-60"
+          style={{
+            background: 'radial-gradient(ellipse 60% 100% at left center, rgba(0,0,0,0.08) 0%, transparent 70%)'
+          }}
+        />
       </div>
 
       {/* Content Overlay */}
@@ -39,7 +46,7 @@ export function Hero() {
       >
         <div className="max-w-7xl w-full py-32 lg:py-40">
           {/* Main Content Container */}
-          <div className="max-w-4xl">
+          <div className="max-w-4xl relative">
             {/* Eyebrow */}
             <motion.div
               className="mb-8 overflow-hidden"
