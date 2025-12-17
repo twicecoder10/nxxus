@@ -12,12 +12,12 @@ export function Hero() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   return (
     <section 
       ref={containerRef}
       className="min-h-screen relative overflow-hidden"
+      style={{ backgroundColor: '#000000' }}
     >
       {/* Video Background - positioned on right side, constrained width, starts below nav bar - matches Factory design */}
       <div className="absolute top-20 sm:top-24 lg:top-28 right-0 bottom-0 w-[70%] sm:w-[65%] lg:w-[55%] xl:w-[50%] z-0 overflow-hidden">
@@ -28,8 +28,7 @@ export function Hero() {
             loop
             muted
             playsInline
-            className="h-full object-cover"
-            style={{ width: '90%' }}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
@@ -55,11 +54,9 @@ export function Hero() {
             className="relative z-10 max-w-2xl lg:max-w-3xl"
             style={{
               marginLeft: 'clamp(0px, 22vw, 350px)',
-              background: 'linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.7) 100%)',
+              background: 'linear-gradient(to right, transparent 0%, transparent 35%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.6) 100%)',
               backdropFilter: 'blur(15px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(15px) saturate(180%)',
-              padding: '2rem',
-              borderRadius: '0.5rem'
+              WebkitBackdropFilter: 'blur(15px) saturate(180%)'
             }}
           >
             {/* Eyebrow */}
@@ -104,7 +101,7 @@ export function Hero() {
                 <span className="block">Unify Every</span>
                 <span className="block mt-2">
                   <span>Diagnostic </span>
-                  <span className="text-[#94B3D8]">System</span>
+                  <span className="text-white">System</span>
                 </span>
               </motion.h1>
             </div>

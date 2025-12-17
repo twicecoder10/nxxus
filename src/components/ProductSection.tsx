@@ -132,8 +132,8 @@ export function ProductSection() {
     <motion.section 
       id="platform" 
       ref={containerRef}
-      className="min-h-screen bg-[#000000] relative overflow-hidden pb-40 mb-32"
-      style={{ opacity, y }}
+      className="min-h-screen relative overflow-hidden pb-40 mb-32"
+      style={{ opacity, y, backgroundColor: '#1a1a1a' }}
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-20">

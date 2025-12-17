@@ -29,11 +29,9 @@ export function Navigation() {
   const isAboutPage = location.pathname === '/about';
   const isContactPage = location.pathname === '/contact';
   const isBookDemoPage = location.pathname === '/book-demo';
-  const isHomePage = location.pathname === '/';
-  // On homepage, always show white background with black text since hero background is white/light
-  const shouldShowWhiteBg = isHomePage || isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
+  const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
   
-  // Use black text when background is white, white text when background is transparent (but homepage always uses white bg now)
+  // Use white text when background is transparent (homepage at top), black when background is white
   const logoColor = shouldShowWhiteBg ? '#000000' : '#FFFFFF';
 
   return (
@@ -78,11 +76,6 @@ export function Navigation() {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }
-              } else {
-                // For non-hash links, ensure scroll to top
-                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                document.documentElement.scrollTop = 0;
-                document.body.scrollTop = 0;
               }
             };
             
@@ -132,7 +125,7 @@ export function Navigation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Book a Demo
+          Book Demo
         </motion.a>
       </div>
     </motion.nav>
