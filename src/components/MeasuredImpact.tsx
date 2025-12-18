@@ -41,10 +41,15 @@ export function MeasuredImpact() {
   return (
     <motion.section 
       ref={containerRef}
-      className="bg-white relative overflow-hidden pt-16"
-      style={{ opacity, y, paddingBottom: '40px' }} // Added 40px bottom padding
+      className="relative overflow-hidden pt-16"
+      style={{ opacity, y, paddingBottom: '40px', backgroundColor: '#000000' }} // Added 40px bottom padding
     >
-      <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full">
+      {/* Background gradient effects */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#94B3D8] rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#94B3D8] rounded-full blur-3xl" />
+      </div>
+      <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
           className="mb-24 text-center"
@@ -57,7 +62,7 @@ export function MeasuredImpact() {
            
           </div>
           <h2 
-            className="text-[#000000] max-w-4xl mx-auto"
+            className="text-white max-w-4xl mx-auto"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -76,7 +81,7 @@ export function MeasuredImpact() {
           {impacts.slice(0, 4).map((impact, idx) => (
             <motion.div
               key={idx}
-              className={`bg-[#FAFAFA] rounded-2xl p-8 border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 text-center max-w-md w-full ${
+              className={`bg-white/5 rounded-2xl p-8 border border-white/10 hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300 text-center max-w-md w-full group ${
                 idx === 0 ? 'md:col-start-1 lg:col-start-1' : 
                 idx === 1 ? 'md:col-start-2 lg:col-start-2' : 
                 idx === 2 ? 'md:col-start-1 lg:col-start-1' : 
@@ -88,13 +93,13 @@ export function MeasuredImpact() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
               <h3 
-                className="text-[#000000] mb-4"
+                className="text-white mb-4 group-hover:text-black transition-colors duration-300"
                 style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}
               >
                 {impact.title}
               </h3>
               <p 
-                className="text-[#6B7280]"
+                className="text-[#94B3D8]/80 group-hover:text-white transition-colors duration-300"
                 style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
               >
                 {impact.description}
@@ -106,20 +111,20 @@ export function MeasuredImpact() {
         {/* Centered 5th Card */}
         <div className="flex justify-center" style={{ marginTop: '2rem' }}>
           <motion.div
-            className="bg-[#FAFAFA] rounded-2xl p-8 border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 text-center max-w-md"
+            className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300 text-center max-w-md group"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <h3 
-              className="text-[#000000] mb-4"
+              className="text-white mb-4 group-hover:text-black transition-colors duration-300"
               style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}
             >
               {impacts[4].title}
             </h3>
             <p 
-              className="text-[#6B7280]"
+              className="text-[#94B3D8]/80 group-hover:text-white transition-colors duration-300"
               style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               {impacts[4].description}

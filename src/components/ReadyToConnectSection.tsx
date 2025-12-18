@@ -24,7 +24,7 @@ export function ReadyToConnectSection() {
             
           </p>
           <motion.a
-            href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+            href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#000000] text-white px-10 py-4 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"

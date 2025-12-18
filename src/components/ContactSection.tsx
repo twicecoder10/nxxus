@@ -18,7 +18,7 @@ export function ContactSection() {
       ref={containerRef}
       id="contact" 
       className="min-h-screen bg-[#000000] relative overflow-hidden flex items-center"
-      style={{ opacity, y, paddingBottom: '40px' }}
+      style={{ opacity, y, paddingBottom: '40px', marginBottom: '-64px' }}
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 opacity-30">
@@ -79,7 +79,7 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <motion.a
-              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+              href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-[#000000] px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300 inline-block"

@@ -79,7 +79,7 @@ export function BookDemoPage() {
               Click the button below to open our calendar and select a time that works best for you. We'll walk you through how NXXIM can transform your diagnostic workflow.
             </p>
             <motion.a
-              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+              href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block"

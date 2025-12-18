@@ -1474,6 +1474,18 @@
   }
 
   @media (hover: hover) {
+    .group-hover\:text-white:is(:where(.group):hover *) {
+      color: var(--color-white);
+    }
+  }
+
+  @media (hover: hover) {
+    .group-hover\:text-black:is(:where(.group):hover *) {
+      color: var(--color-black);
+    }
+  }
+
+  @media (hover: hover) {
     .group-hover\:opacity-80:is(:where(.group):hover *) {
       opacity: .8;
     }
@@ -1482,6 +1494,12 @@
   @media (hover: hover) {
     .hover\:border-\[\#94B3D8\]:hover {
       border-color: #94b3d8;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:border-black:hover {
+      border-color: var(--color-black);
     }
   }
 
@@ -1500,6 +1518,12 @@
   @media (hover: hover) {
     .hover\:bg-\[\#94B3D8\]:hover {
       background-color: #94b3d8;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-black:hover {
+      background-color: var(--color-black);
     }
   }
 

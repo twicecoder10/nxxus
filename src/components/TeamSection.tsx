@@ -1,8 +1,19 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import React from 'react';
 import warrenImage from '../../pics/warren.webp';
 import tomImage from '../../pics/genericpic.jpg';
 import aviImage from '../../pics/avi.jpg';
+import genericImage from '../../pics/genericpic.jpg';
+// Core Team images
+import josephBambergerImage from '../../pics/Geneva-PE-Joseph-Bamberger.webp';
+import akivaPodolskyImage from '../../pics/Geneva-PE-Akiva-Podolsky.webp';
+import drJosephChalilImage from '../../pics/Geneva-PE-Dr.-Joseph-M-Chalil.webp';
+import philipKahnImage from '../../pics/Philip-Kahn-CPA.webp';
+// Medical Advisory Board images
+import barryMangelImage from '../../pics/Barry-David-Mangel.jpg';
+import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.webp';
+import gauravMalikImage from '../../pics/Gaurav-Malik.webp';
 
 export function TeamSection() {
   const containerRef = useRef(null);
@@ -11,7 +22,7 @@ export function TeamSection() {
     offset: ["start end", "end start"]
   });
 
-  const team = [
+  const enterpriseLeaders = [
     {
       name: 'Warren Wright',
       title: 'CEO',
@@ -20,15 +31,75 @@ export function TeamSection() {
     },
     {
       name: 'Tom Coppa',
-      title: 'CTO',
+      title: 'Director of Product Development',
       bio: 'Technology leader specializing in medical imaging platform architecture and development.',
       image: tomImage,
     },
     {
-      name: 'Avi Grossman',
+      name: '',
       title: 'CMO',
-      bio: 'Leads positioning and strategic marketing, with experience across capital markets, product development, and early-stage technology.',
+      bio: '',
+      image: tomImage,
+    },
+  ];
+
+  const coreTeam = [
+    {
+      name: 'Joseph Bamberger',
+      title: 'Founder and CEO',
+      bio: 'Founder of Geneva PE. Previously founded Jade Capital advising UHNW clients in PE and venture.',
+      image: josephBambergerImage,
+    },
+    {
+      name: 'Akiva Podolsky',
+      title: 'Co-Founder, Managing Partner',
+      bio: 'Co Founder of Geneva PE with deep experience in alternative investments and large scale portfolio management.',
+      image: akivaPodolskyImage,
+    },
+    {
+      name: 'Dr. Joseph M. Chalil',
+      title: 'Chief Medical Advisor',
+      bio: '20 years in healthcare leadership with senior roles at Abbott, Roche, Boehringer, and ICHORtec. U.S. Navy Medical Corps veteran and published author.',
+      image: drJosephChalilImage,
+    },
+    {
+      name: 'Philip Kahn, CPA',
+      title: 'Chief Financial Officer',
+      bio: 'Former PwC and Integra Connect finance leader. Deep healthcare finance and operations expertise.',
+      image: philipKahnImage,
+    },
+    {
+      name: 'Warren Wright',
+      title: 'Chief Information Officer',
+      bio: '35 years in software and technology leadership. Former CEO of SEAD Software and Director at DCR Insite Corp.',
+      image: warrenImage,
+    },
+    {
+      name: 'Avi Grossman, MBA',
+      title: 'Director of Investor Relations and Strategic Marketing',
+      bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
+    },
+  ];
+
+  const medicalAdvisoryBoard = [
+    {
+      name: 'Dr. Barry D. Mangel',
+      title: 'Chief of Clinical Service Lines at Wellstar',
+      bio: 'Harvard-trained, board-certified interventional cardiologist with thirty years of practice and sixteen years of prior leadership as Chief Cardiology Officer.',
+      image: barryMangelImage,
+    },
+    {
+      name: 'Dr. Rephael Yechieli',
+      title: 'Associate Professor of Radiation Oncology at the University of Miami',
+      bio: '60 plus peer reviewed publications and multiple medical director roles.',
+      image: drRephaelYechieliImage,
+    },
+    {
+      name: 'Gaurav Malik',
+      title: 'VP at Quest Diagnostics',
+      bio: 'Supporting care for over 20 million patients. 25 years across GE Healthcare, GE Capital, and Quest.',
+      image: gauravMalikImage,
     },
   ];
 
@@ -39,9 +110,9 @@ export function TeamSection() {
       className="min-h-screen bg-[#FAFAFA] relative overflow-hidden py-32"
     >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full">
-        {/* Section Title */}
+        {/* First Section: Built by Enterprise Healthcare Leaders */}
         <motion.div
-          className="mb-24"
+          className="mb-32"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -50,7 +121,7 @@ export function TeamSection() {
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           </div>
           <h2 
-            className="text-[#000000] max-w-4xl text-center mx-auto"
+            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -60,14 +131,70 @@ export function TeamSection() {
           >
             Built by Enterprise Healthcare Leaders
           </h2>
+
+          {/* Team Grid */}
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            {enterpriseLeaders.map((member, idx) => (
+              <TeamCard key={idx} member={member} index={idx} />
+            ))}
+          </div>
         </motion.div>
 
-        {/* Team Grid */}
-        <div className="grid md:grid-cols-3 gap-8 items-stretch">
-          {team.map((member, idx) => (
-            <TeamCard key={idx} member={member} index={idx} />
-          ))}
-        </div>
+        {/* Second Section: Backed by Geneva Private Equity */}
+        <motion.div
+          className="mb-32"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 
+            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
+            style={{ 
+              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.1, 
+              letterSpacing: '-0.03em' 
+            }}
+          ><br></br>
+            Backed by Geneva Private Equity
+          </h2>
+
+          {/* Core Team Grid */}
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            {coreTeam.map((member, idx) => (
+              <TeamCard key={idx} member={member} index={idx} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Third Section: Medical Advisory Board */}
+        <motion.div
+          className="mb-32"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 
+            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
+            style={{ 
+              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.1, 
+              letterSpacing: '-0.03em' 
+            }}
+          ><br></br>
+            Medical Advisory Board
+          </h2>
+
+          {/* Medical Advisory Board Grid */}
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            {medicalAdvisoryBoard.map((member, idx) => (
+              <TeamCard key={idx} member={member} index={idx} />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -110,7 +110,7 @@ export function Navigation() {
 
         {/* CTA Button */}
         <motion.a
-          href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+          href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={`px-8 py-3 rounded-full transition-all duration-300 inline-block ${

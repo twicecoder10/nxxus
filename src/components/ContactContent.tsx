@@ -42,7 +42,7 @@ export function ContactContent() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <motion.a
-                href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+                href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
