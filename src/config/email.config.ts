@@ -21,7 +21,7 @@ export const emailConfig = {
     name: 'NXXIM',
     email: 'support@ivoirebagagexpress.com'
   },
-  adminEmail: 'info@nxxim.com',
+  adminEmail: 'ag@geneva.pe',
 
   // Email Templates
   templates: {
