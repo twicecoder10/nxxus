@@ -157,10 +157,7 @@ export function Navigation() {
           {/* Desktop CTA Button and Mobile Hamburger Container */}
           <div className="flex items-center gap-4">
             {/* Desktop CTA Button - Hidden on mobile */}
-            <motion.a
-              href="/contact#meeting-form"
-              target="_blank"
-              rel="noopener noreferrer"
+                        <motion.div
               className={`hidden lg:flex px-8 py-3 rounded-full transition-all duration-300 ${
                 shouldShowWhiteBg
                   ? 'bg-[#000000] text-white hover:bg-[#94B3D8]'
@@ -173,8 +170,22 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Schedule a Meeting
-            </motion.a>
+              <Link
+                to="/contact#meeting-form"
+                className="text-inherit no-underline"
+                onClick={(e) => {
+                  if (location.pathname === '/contact') {
+                    e.preventDefault();
+                    const formElement = document.getElementById('meeting-form');
+                    if (formElement) {
+                      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                }}
+              >
+                Schedule a Meeting
+              </Link>
+            </motion.div>
 
             {/* Mobile Hamburger Button - Only render on mobile/tablet */}
             {isMobile && (
@@ -306,9 +317,9 @@ export function Navigation() {
 
       {/* Mobile CTA Button */}
       <a
-        href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/contact#meeting-form"
+        
+        
         onClick={(e) => {
           e.stopPropagation();
           setMobileMenuOpen(false);
@@ -335,3 +346,5 @@ export function Navigation() {
     </>
   );
 }
+
+

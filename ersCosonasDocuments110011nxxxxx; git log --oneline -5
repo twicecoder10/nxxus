@@ -1,0 +1,5 @@
+[33me94e0e5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update Hero section: centered video, reduced transparency, improved button animation
+[33m5a145b5[m Update Hero component
+[33m4a3947a[m Update ProductSection background color for better visual flow transition from hero section
+[33m88e22c0[m Fix hero section text colors and video width adjustments - Updated hero section text colors to white for better visibility on video overlay - Fixed navigation bar text colors for white background - Adjusted video width to 90% with proper styling
+[33m2be0b64[m Fix video loop jump in ProductSection: Implement frame-perfect timing with requestVideoFrameCallback for seamless looping

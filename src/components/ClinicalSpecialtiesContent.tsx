@@ -12,7 +12,7 @@ export function ClinicalSpecialtiesContent() {
   const specialties = [
     {
       name: 'Radiology',
-      description: 'Unified imaging review, prioritization, and diagnostic context across modalities',
+      description: 'Unified imaging review, prioritization, and diagnostic context across modalities.',
       image: radioImage,
       features: ['CT/MRI/X-Ray', 'Real-time viewing', 'AI prioritization']
     },
@@ -30,7 +30,7 @@ export function ClinicalSpecialtiesContent() {
     },
     {
       name: 'Oncology',
-      description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics',
+      description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics.',
       image: oncologyImage,
       features: ['Treatment tracking', 'Genomic data', 'MDT collaboration']
     },
@@ -53,7 +53,7 @@ export function ClinicalSpecialtiesContent() {
       features: ['Mammography', 'OB/GYN imaging', 'Screening workflows']
     },
     {
-      name: "And 40+ additional diagnostic specialities",
+      name: "And 40+ additional diagnostic specialities.",
       description: '',
       image: additionalSpecialtiesImage,
       features: []
