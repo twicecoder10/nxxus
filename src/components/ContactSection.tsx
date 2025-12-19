@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function ContactSection() {
   const containerRef = useRef(null);
@@ -67,7 +68,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Join healthcare systems modernizing diagnostic workflows with NXXIM’s AI native platform
+            NXXIM’s AI-native platform modernizes how care teams work together.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -78,17 +79,19 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <motion.a
-              href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
               className="bg-white text-[#000000] px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300 inline-block"
               style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              Book a Demo
-            </motion.a>
+              <Link
+                to="/contact#meeting-form"
+                className="text-inherit no-underline"
+              >
+                Schedule a Meeting
+              </Link>
+            </motion.div>
             
            
           </motion.div>

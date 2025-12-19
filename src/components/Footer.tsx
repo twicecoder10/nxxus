@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Handle scrolling to platform section when hash is present
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash === '#platform') {
+      setTimeout(() => {
+        const element = document.getElementById('platform');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.pathname, location.hash]);
+
+  const handlePlatformClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation, then scroll
+      setTimeout(() => {
+        const element = document.getElementById('platform');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    } else {
+      const element = document.getElementById('platform');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <footer className="bg-[#000000] border-t border-white/10 py-16">
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16">
@@ -14,26 +49,46 @@ export function Footer() {
               <span style={{ color: '#ffffff' }}>IM</span>
             </div>
             <p className="text-[#94B3D8]/60" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-              AI-Native Enterprise<br />Medical Imaging Platform
+              AI-Native Enterprise<br />Unify Every
+              Diagnostic System
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <div className="text-white mb-4" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-              Platform
+              NXXIM
             </div>
             <div className="space-y-3">
-              {['Features', 'Security', 'Integration', 'Pricing'].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
-                  style={{ fontSize: '0.875rem', fontWeight: 500 }}
-                >
-                  {link}
-                </a>
-              ))}
+              <a
+                href="/#platform"
+                className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
+                style={{ fontSize: '0.875rem', fontWeight: 500 }}
+                onClick={handlePlatformClick}
+              >
+                Platform
+              </a>
+              <Link
+                to="/how-it-works"
+                className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
+                style={{ fontSize: '0.875rem', fontWeight: 500 }}
+              >
+                How it works
+              </Link>
+              <Link
+                to="/specialties"
+                className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
+                style={{ fontSize: '0.875rem', fontWeight: 500 }}
+              >
+                Specialities
+              </Link>
+              <Link
+                to="/about"
+                className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
+                style={{ fontSize: '0.875rem', fontWeight: 500 }}
+              >
+                About
+              </Link>
             </div>
           </div>
 
@@ -51,14 +106,14 @@ export function Footer() {
                 info@nxxim.com
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/nxxim"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >
                 LinkedIn
               </a>
               <a
-                href="https://www.linkedin.com/company/nxxim"
+                href="#"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >

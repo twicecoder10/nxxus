@@ -30,20 +30,32 @@ export function TeamSection() {
       image: warrenImage,
     },
     {
-      name: 'Tom Coppa',
-      title: 'Director of Product Development',
+      name: '',
+      title: 'CTO',
       bio: 'Technology leader specializing in medical imaging platform architecture and development.',
       image: tomImage,
     },
+    {
+      name: 'Philip Kahn, CPA',
+      title: 'Chief Financial Officer',
+      bio: 'Former PwC and Integra Connect finance leader. Deep healthcare finance and operations expertise.',
+      image: philipKahnImage,
+    },
+  ];
+
+  const coreTeam = [
     {
       name: '',
       title: 'CMO',
       bio: '',
       image: tomImage,
     },
-  ];
-
-  const coreTeam = [
+    {
+      name: 'Tom Coppa',
+      title: 'Director of Product Development',
+      bio: 'Technology leader specializing in medical imaging platform architecture and development.',
+      image: tomImage,
+    },
     {
       name: 'Joseph Bamberger',
       title: 'Founder and CEO',
@@ -61,18 +73,6 @@ export function TeamSection() {
       title: 'Chief Medical Advisor',
       bio: '20 years in healthcare leadership with senior roles at Abbott, Roche, Boehringer, and ICHORtec. U.S. Navy Medical Corps veteran and published author.',
       image: drJosephChalilImage,
-    },
-    {
-      name: 'Philip Kahn, CPA',
-      title: 'Chief Financial Officer',
-      bio: 'Former PwC and Integra Connect finance leader. Deep healthcare finance and operations expertise.',
-      image: philipKahnImage,
-    },
-    {
-      name: 'Warren Wright',
-      title: 'Chief Information Officer',
-      bio: '35 years in software and technology leadership. Former CEO of SEAD Software and Director at DCR Insite Corp.',
-      image: warrenImage,
     },
     {
       name: 'Avi Grossman, MBA',
@@ -107,7 +107,7 @@ export function TeamSection() {
     <section 
       id="team" 
       ref={containerRef}
-      className="min-h-screen bg-[#FAFAFA] relative overflow-hidden py-32"
+      className="min-h-screen bg-white relative overflow-hidden py-32"
     >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full">
         {/* First Section: Built by Enterprise Healthcare Leaders */}

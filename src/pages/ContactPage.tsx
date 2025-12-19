@@ -3,8 +3,23 @@ import { Footer } from '../components/Footer';
 import { ContactContent } from '../components/ContactContent';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export function ContactPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#meeting-form') {
+      setTimeout(() => {
+        const element = document.getElementById('meeting-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />

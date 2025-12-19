@@ -158,7 +158,7 @@ export function Navigation() {
           <div className="flex items-center gap-4">
             {/* Desktop CTA Button - Hidden on mobile */}
             <motion.a
-              href="https://outlook.office.com/book/Gc6a333cc0be743e2a5ec806df6f942ba@cosonascloud.onmicrosoft.com/"
+              href="/contact#meeting-form"
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden lg:flex px-8 py-3 rounded-full transition-all duration-300 ${
@@ -173,7 +173,7 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Book Demo
+              Schedule a Meeting
             </motion.a>
 
             {/* Mobile Hamburger Button - Only render on mobile/tablet */}
@@ -325,7 +325,7 @@ export function Navigation() {
           textAlign: 'center'
         }}
       >
-        Book Demo
+        Schedule a Meeting
       </a>
     </div>
   </div>

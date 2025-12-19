@@ -1,7 +1,93 @@
 import { motion } from 'motion/react';
+import { useState } from 'react';
 import React from 'react';
+import { sendDemoRequestEmails } from '../services/email.service';
 
 export function ContactContent() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    workEmail: '',
+    organization: '',
+    role: '',
+    primaryAreaOfInterest: [] as string[],
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await sendDemoRequestEmails({
+        fullName: formData.fullName,
+        workEmail: formData.workEmail,
+        organization: formData.organization,
+        role: formData.role,
+        primaryAreaOfInterest: formData.primaryAreaOfInterest,
+        message: formData.message,
+      });
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! We\'ve received your request and will contact you soon.',
+        });
+        // Reset form
+        setFormData({
+          fullName: '',
+          workEmail: '',
+          organization: '',
+          role: '',
+          primaryAreaOfInterest: [],
+          message: '',
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleMultiSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option: HTMLOptionElement) => option.value);
+    setFormData(prev => ({
+      ...prev,
+      primaryAreaOfInterest: selectedOptions
+    }));
+  };
+
+  const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const formElement = document.getElementById('meeting-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <section className="min-h-screen bg-white relative overflow-hidden py-32">
@@ -31,8 +117,8 @@ export function ContactContent() {
               className="text-[#6B7280]"
               style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
-              <br></br><br></br>Schedule a personalized demo to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
-              <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.
+              <br></br>Schedule a personalized meeting to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real-time enterprise diagnostic workspace.
+          {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.*/}
             </p><br></br><br></br>
             <motion.div
               className="mt-8 flex justify-center"
@@ -41,66 +127,204 @@ export function ContactContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <motion.a
-                href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
+               {/*<motion.a
+                href="#meeting-form"
+                onClick={scrollToForm}
+                className="bg-[#000000] text-white px-12 py-5 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block cursor-pointer"
                 style={{ fontSize: '3.25rem', fontWeight: 600, letterSpacing: '-0.01em' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               > 
-                Book a Demo
-              </motion.a>
+                Schedule a Meeting
+              </motion.a>*/}
             </motion.div>
           </motion.div>
 
-          {/* Contact Options */}
+          {/* Contact Form */}
           <motion.div
-            className="space-y-6 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
+            id="meeting-form"
+            className="mt-16 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* <motion.a
-              href="mailto:info@nxxim.com"
-              className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
-              whileHover={{ y: -5 }}
+            <h3 
+              className="text-[#000000] mb-8 text-center"
+              style={{ 
+                fontSize: 'clamp(2rem, 4vw, 3.5rem)', 
+                fontWeight: 700, 
+                lineHeight: 1.2, 
+                letterSpacing: '-0.02em' 
+              }}
             >
-              <div className="text-[#94B3D8] mb-2" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                Email Us
+              Schedule a Meeting
+            </h3>
+            
+            <form onSubmit={handleSubmit} className="bg-[#FAFAFA] rounded-2xl border border-[#E5E7EB] p-8 lg:p-12 space-y-6">
+              {/* Full Name */}
+              <div>
+                <label htmlFor="fullName" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  required
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  style={{ fontSize: '1rem' }}
+                />
               </div>
-              <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                info@nxxim.com
-              </div>
-            </motion.a>
 
-             <motion.a
-              href="mailto:info@nxxim.com?subject=Schedule a Demo"
-              className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="text-[#94B3D8] mb-2" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                Schedule a Demo
+              {/* Work Email */}
+              <div>
+                <label htmlFor="workEmail" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Work Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="workEmail"
+                  name="workEmail"
+                  required
+                  value={formData.workEmail}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  style={{ fontSize: '1rem' }}
+                />
               </div>
-              <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                See NXXIM in action with a personalized walkthrough
-              </div>
-            </motion.a>*
 
-            <motion.a
-              href="mailto:info@nxxim.com?subject=Sales Inquiry"
-              className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="text-[#94B3D8] mb-2" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                Sales Inquiry
+              {/* Organization */}
+              <div>
+                <label htmlFor="organization" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Organization <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  required
+                  value={formData.organization}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  style={{ fontSize: '1rem' }}
+                />
               </div>
-              <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                Learn about pricing and implementation options
+
+              {/* Role */}
+              <div>
+                <label htmlFor="role" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Role <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="role"
+                  name="role"
+                  required
+                  value={formData.role}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  style={{ fontSize: '1rem' }}
+                >
+                  <option value="">Select your role</option>
+                  <option value="Radiologist">Radiologist</option>
+                  <option value="Pathologist">Pathologist</option>
+                  <option value="Cardiologist">Cardiologist</option>
+                  <option value="Oncologist">Oncologist</option>
+                  <option value="Clinician (Other)">Clinician (Other)</option>
+                  <option value="Department Head">Department Head</option>
+                  <option value="Medical Director">Medical Director</option>
+                  <option value="Chief Medical Officer (CMO)">Chief Medical Officer (CMO)</option>
+                  <option value="Chief Information Officer (CIO)">Chief Information Officer (CIO)</option>
+                  <option value="Chief Digital Officer (CDO)">Chief Digital Officer (CDO)</option>
+                  <option value="IT / Clinical Informatics">IT / Clinical Informatics</option>
+                  <option value="Operations / Administration">Operations / Administration</option>
+                  <option value="Research / Innovation">Research / Innovation</option>
+                  <option value="Vendor / Partner">Vendor / Partner</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
-            </motion.a> */}
+
+              {/* Primary Area of Interest */}
+              <div>
+                <label htmlFor="primaryAreaOfInterest" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Primary Area of Interest <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="primaryAreaOfInterest"
+                  name="primaryAreaOfInterest"
+                  required
+                  multiple
+                  value={formData.primaryAreaOfInterest}
+                  onChange={handleMultiSelectChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  style={{ fontSize: '1rem', minHeight: '120px' }}
+                  size={5}
+                >
+                  <option value="Radiology workflows">Radiology workflows</option>
+                  <option value="Pathology and digital slides">Pathology and digital slides</option>
+                  <option value="Cardiology and waveform integration">Cardiology and waveform integration</option>
+                  <option value="Oncology and longitudinal care">Oncology and longitudinal care</option>
+                  <option value="Cross-specialty collaboration">Cross-specialty collaboration</option>
+                  <option value="Enterprise diagnostic platform">Enterprise diagnostic platform</option>
+                  <option value="AI prioritization and workflow automation">AI prioritization and workflow automation</option>
+                  <option value="Data integration (EHR, PACS, LIS)">Data integration (EHR, PACS, LIS)</option>
+                  <option value="Clinical decision support">Clinical decision support</option>
+                  <option value="Evaluation or pilot discussion">Evaluation or pilot discussion</option>
+                </select>
+                <p className="text-[#6B7280] mt-2" style={{ fontSize: '0.875rem' }}>
+                  Hold Ctrl (Windows) or Cmd (Mac) to select multiple options
+                </p>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all resize-none"
+                  style={{ fontSize: '1rem' }}
+                />
+              </div>
+
+              {/* Submit Status Message */}
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-lg ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-50 border border-green-200 text-green-800'
+                      : 'bg-red-50 border border-red-200 text-red-800'
+                  }`}
+                >
+                  <p style={{ fontSize: '0.9375rem', margin: 0 }}>
+                    {submitStatus.message}
+                  </p>
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-4 rounded-lg transition-all duration-300 ${
+                  isSubmitting
+                    ? 'bg-[#94B3D8] text-white cursor-not-allowed'
+                    : 'bg-[#000000] text-white hover:bg-[#94B3D8]'
+                }`}
+                style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em' }}
+                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </motion.button>
+            </form>
           </motion.div>
         </div>
 

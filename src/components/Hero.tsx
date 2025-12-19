@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
-import heroVideo from '../../pics/nximvid.mp4';
+import { Link } from 'react-router-dom';
+import heroVideo from '../../pics/newherovid.mp4';
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -91,8 +92,8 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.div
-                  className="text-lg font-semibold tracking-wider uppercase text-left"
-                  style={{ color: '#94B3D8' }}
+                  className="font-semibold tracking-wider uppercase text-left"
+                  style={{ color: '#94B3D8', fontSize: '24px' }}
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ 
@@ -139,7 +140,8 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.7 }}
               >
                 <motion.p
-                  className="text-white text-xl lg:text-2xl leading-relaxed text-left"
+                  className="text-white leading-relaxed text-left"
+                  style={{ fontSize: '22.4px' }}
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ 
@@ -161,10 +163,7 @@ export function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <motion.a
-                  href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <motion.div
                   className="bg-white text-black px-12 py-5 rounded-full hover:bg-[#94B3D8] hover:text-white transition-all duration-300 group inline-block font-semibold text-lg"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -176,8 +175,11 @@ export function Hero() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span className="flex items-center gap-2">
-                    Book a demo
+                  <Link
+                    to="/contact#meeting-form"
+                    className="flex items-center gap-2 text-inherit no-underline"
+                  >
+                    Schedule a Meeting
                     <motion.span
                       className="inline-block"
                       initial={{ x: 0 }}
@@ -186,8 +188,8 @@ export function Hero() {
                     >
                       →
                     </motion.span>
-                  </span>
-                </motion.a>
+                  </Link>
+                </motion.div>
               </motion.div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export function ReadyToConnectSection() {
   return (
@@ -23,17 +24,19 @@ export function ReadyToConnectSection() {
           >
             
           </p>
-          <motion.a
-            href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             className="bg-[#000000] text-white px-10 py-4 rounded-full hover:bg-[#94B3D8] transition-all duration-300 inline-block"
             style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Book a Demo
-          </motion.a>
+            <Link
+              to="/contact#meeting-form"
+              className="text-inherit no-underline"
+            >
+              Schedule a Meeting
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

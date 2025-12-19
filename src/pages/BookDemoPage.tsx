@@ -25,7 +25,7 @@ export function BookDemoPage() {
                   </Link>
                 </li>
                 <li className="text-white">/</li>
-                <li className="text-white font-medium">Book Demo</li>
+                <li className="text-white font-medium">Schedule a Meeting</li>
               </ol>
             </nav>
 
@@ -40,7 +40,7 @@ export function BookDemoPage() {
                 letterSpacing: '-0.03em' 
               }}
             >
-              Book a Demo
+              Schedule a Meeting
             </h1>
             <p 
               className="text-white max-w-3xl"

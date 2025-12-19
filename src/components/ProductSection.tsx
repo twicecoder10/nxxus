@@ -34,6 +34,10 @@ export function ProductSection() {
     {
       title: 'Image Quality Assessment',
       description: ''
+    },
+    {
+      title: 'Voice Documentation',
+      description: ''
     }
   ];
 
@@ -86,10 +90,10 @@ export function ProductSection() {
 
         {/* Two-column Layout - Image on left, capabilities on right */}
         <div className="max-w-7xl mx-auto pb-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Video on Left */}
             <motion.div
-              className="flex justify-center lg:justify-start -mt-8"
+              className="flex justify-center lg:justify-start mt-8"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
