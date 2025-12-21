@@ -20,7 +20,6 @@ const emailConfig = {
   smtp: {
     host: process.env.SMTP_HOST || 'smtp.stackmail.com',
     port: parseInt(process.env.SMTP_PORT || '465', 10),
-    secure: process.env.SMTP_PORT === '465' || !process.env.SMTP_PORT,
     auth: {
       user: process.env.SMTP_USER || 'support@ivoirebagagexpress.com',
       password: process.env.SMTP_PASSWORD || 'Lk254def0'
@@ -35,11 +34,20 @@ const emailConfig = {
 
 // Create transporter (recreated on each invocation for serverless)
 function createTransporter() {
+  const port = emailConfig.smtp.port;
+  const secure = port === 465; // Port 465 uses SSL/TLS
+  
   return nodemailer.createTransport({
     host: emailConfig.smtp.host,
-    port: emailConfig.smtp.port,
-    secure: emailConfig.smtp.secure,
-    auth: emailConfig.smtp.auth
+    port: port,
+    secure: secure,
+    auth: emailConfig.smtp.auth,
+    connectionTimeout: 10000, // 10 seconds
+    greetingTimeout: 10000, // 10 seconds
+    socketTimeout: 10000, // 10 seconds
+    tls: {
+      rejectUnauthorized: false // Allow self-signed certificates if needed
+    }
   });
 }
 
@@ -79,8 +87,31 @@ module.exports = async (req, res) => {
       });
     }
 
+    // Validate SMTP configuration
+    if (!emailConfig.smtp.host || !emailConfig.smtp.auth.user || !emailConfig.smtp.auth.password) {
+      console.error('SMTP configuration missing:', {
+        host: emailConfig.smtp.host ? 'set' : 'missing',
+        user: emailConfig.smtp.auth.user ? 'set' : 'missing',
+        password: emailConfig.smtp.auth.password ? 'set' : 'missing'
+      });
+      return res.status(500).json({
+        success: false,
+        message: 'Email server configuration error. Please contact support.',
+        error: 'SMTP configuration incomplete'
+      });
+    }
+
     // Create transporter
     const transporter = createTransporter();
+
+    // Verify connection (optional but helpful for debugging)
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('SMTP connection verification failed:', verifyError);
+      // Continue anyway - some servers don't support verify
+    }
 
     // Prepare mail options
     const mailOptions = {
@@ -103,6 +134,9 @@ module.exports = async (req, res) => {
     });
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error name:', error.name);
+    console.error('Error code:', error.code);
     
     // More detailed error logging
     if (error.response) {
@@ -112,10 +146,16 @@ module.exports = async (req, res) => {
       console.error('Error Code:', error.code);
     }
 
+    // Return more detailed error in production for debugging
     return res.status(500).json({
       success: false,
       message: 'Failed to send email',
-      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+      error: error.message || 'Unknown error',
+      code: error.code || 'UNKNOWN',
+      details: process.env.VERCEL_ENV === 'production' ? undefined : {
+        stack: error.stack,
+        name: error.name
+      }
     });
   }
 };
