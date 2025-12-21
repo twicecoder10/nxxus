@@ -4,14 +4,22 @@ const nodemailer = require("nodemailer");
 function createTransporter() {
   const port = Number(process.env.SMTP_PORT || 465);
   const secure = port === 465;
+  
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASSWORD?.trim();
+  
+  // Ensure credentials are present
+  if (!user || !pass) {
+    throw new Error(`Missing SMTP credentials: user=${!!user}, pass=${!!pass}`);
+  }
 
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: process.env.SMTP_HOST?.trim(),
     port,
     secure,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD, // ✅ KEY FIX
+      user,
+      pass, // ✅ KEY FIX
     },
     // Optional; keep if your provider needs it
     tls: { rejectUnauthorized: false },
@@ -39,11 +47,21 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Validate env
-    const missing = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASSWORD", "SMTP_FROM_EMAIL"].filter(
-      (k) => !process.env[k]
+    // Validate env - check for both existence and non-empty values
+    const requiredEnvVars = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASSWORD", "SMTP_FROM_EMAIL"];
+    const missing = requiredEnvVars.filter(
+      (k) => !process.env[k] || process.env[k].trim() === ""
     );
+    
     if (missing.length) {
+      console.error("❌ Missing or empty environment variables:", missing);
+      // Log which vars are set (without values for security)
+      const envStatus = requiredEnvVars.reduce((acc, key) => {
+        acc[key] = process.env[key] ? "set" : "missing";
+        return acc;
+      }, {});
+      console.error("Environment variable status:", envStatus);
+      
       return res.status(500).json({
         success: false,
         message: "Server email config missing",
@@ -51,7 +69,39 @@ module.exports = async (req, res) => {
       });
     }
 
-    const transporter = createTransporter();
+    // Log that env vars are present (without values)
+    console.log("✅ Environment variables present:", requiredEnvVars.map(k => `${k}=${process.env[k] ? '***' : 'MISSING'}`).join(", "));
+    
+    // Log credential lengths for debugging (without values)
+    console.log("🔐 Credential check:", {
+      userLength: process.env.SMTP_USER?.length || 0,
+      passLength: process.env.SMTP_PASSWORD?.length || 0,
+      userAfterTrim: process.env.SMTP_USER?.trim().length || 0,
+      passAfterTrim: process.env.SMTP_PASSWORD?.trim().length || 0,
+    });
+
+    let transporter;
+    try {
+      transporter = createTransporter();
+      console.log("✅ Transporter created successfully");
+    } catch (transporterError) {
+      console.error("❌ Failed to create transporter:", transporterError.message);
+      console.error("Transporter error stack:", transporterError.stack);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to initialize email service",
+        error: transporterError.message,
+      });
+    }
+    
+    // Log transporter config (without sensitive data)
+    console.log("📧 Transporter config:", {
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT || 465),
+      secure: Number(process.env.SMTP_PORT || 465) === 465,
+      hasUser: !!process.env.SMTP_USER,
+      hasPass: !!process.env.SMTP_PASSWORD,
+    });
 
     // If verify fails, you'll see it in Vercel logs (still try send)
     try {
