@@ -16,7 +16,7 @@ export function InlineSection() {
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -30]);
   const certifications = [
     { text: 'HIPAA Compliant' },
-    { text: 'SOC 2 Type II' },
+    { text: '' },
   ];
 
 

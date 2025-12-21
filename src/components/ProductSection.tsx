@@ -90,10 +90,10 @@ export function ProductSection() {
 
         {/* Two-column Layout - Image on left, capabilities on right */}
         <div className="max-w-7xl mx-auto pb-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Video on Left */}
             <motion.div
-              className="flex justify-center lg:justify-start mt-8"
+              className="flex justify-center lg:justify-start"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -107,7 +107,7 @@ export function ProductSection() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[680px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
@@ -133,14 +133,16 @@ export function ProductSection() {
                     transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
                     whileHover={{ x: 10 }}
                   >
-                    <div className="group flex items-start gap-4 p-6 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300">
-                      <div>
-                        <div className="text-[#000000] mb-1 group-hover:text-white transition-colors duration-300" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)', fontWeight: 600 }}>
+                    <div className="group flex items-center gap-4 p-6 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:bg-[#94B3D8] hover:border-[#94B3D8] transition-all duration-300 h-[100px]">
+                      <div className="w-full">
+                        <div className="text-[#000000] group-hover:text-white transition-colors duration-300" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)', fontWeight: 600 }}>
                           {capability.title}
                         </div>
-                        <div className="text-[#6B7280] group-hover:text-white transition-colors duration-300" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                          {capability.description}
-                        </div>
+                        {capability.description && (
+                          <div className="text-[#6B7280] group-hover:text-white transition-colors duration-300" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
+                            {capability.description}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>

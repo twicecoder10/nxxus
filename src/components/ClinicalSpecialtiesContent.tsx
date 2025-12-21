@@ -12,43 +12,43 @@ export function ClinicalSpecialtiesContent() {
   const specialties = [
     {
       name: 'Radiology',
-      description: 'Unified imaging review, prioritization, and diagnostic context across modalities.',
+      description: 'Unified imaging review, prioritization, and diagnostic context across modalities',
       image: radioImage,
       features: ['CT/MRI/X-Ray', 'Real-time viewing', 'AI prioritization']
     },
     {
       name: 'Pathology',
-      description: 'Digital slide review with longitudinal correlation across laboratory and clinical data.',
+      description: 'Digital slide review with longitudinal correlation across laboratory and clinical data',
       image: pathologyImage,
       features: ['WSI viewing', 'Tissue analysis', 'Lab integration']
     },
     {
       name: 'Cardiology',
-      description: ' Integrated imaging, waveforms, and longitudinal patient history in a single workspace.',
+      description: ' Integrated imaging, waveforms, and longitudinal patient history in a single workspace',
       image: cardiologyImage,
       features: ['Echo/Cath', 'EKG integration', 'Cardiac metrics']
     },
     {
       name: 'Oncology',
-      description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics.',
+      description: 'Multi-modal diagnostics spanning imaging, pathology, labs, and genomics',
       image: oncologyImage,
       features: ['Treatment tracking', 'Genomic data', 'MDT collaboration']
     },
     {
       name: 'Surgery',
-      description: 'Intraoperative and longitudinal diagnostic context across imaging, labs, and clinical records.',
+      description: 'Intraoperative and longitudinal diagnostic context across imaging, labs, and clinical records',
       image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXJnZXJ5JTIwb3BlcmF0aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjU3NjQxOTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: ['Intraoperative imaging', 'Procedure documentation', 'Clinical context']
     },
     {
       name: 'Endoscopy',
-      description: 'Procedure imaging and findings integrated with pathology, labs, and patient history.',
+      description: 'Procedure imaging and findings integrated with pathology, labs, and patient history',
       image: endoscopyImage,
       features: ['Procedure videos', 'Findings documentation', 'Pathology correlation']
     },
     {
       name: "Women's Health",
-      description: 'Longitudinal imaging, screening, and diagnostic workflows across care episodes.',
+      description: 'Longitudinal imaging, screening, and diagnostic workflows across care episodes',
       image: womenHealthImage,
       features: ['Mammography', 'OB/GYN imaging', 'Screening workflows']
     },

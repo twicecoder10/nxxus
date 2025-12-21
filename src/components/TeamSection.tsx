@@ -41,9 +41,18 @@ export function TeamSection() {
       bio: 'Former PwC and Integra Connect finance leader. Deep healthcare finance and operations expertise.',
       image: philipKahnImage,
     },
-  ];
-
-  const coreTeam = [
+    {
+      name: '',
+      title: 'Vice President',
+      bio: '',
+      image: tomImage,
+    },
+    {
+      name: '',
+      title: 'Client Relations',
+      bio: '',
+      image: tomImage,
+    },
     {
       name: '',
       title: 'CMO',
@@ -56,6 +65,11 @@ export function TeamSection() {
       bio: 'Technology leader specializing in medical imaging platform architecture and development.',
       image: tomImage,
     },
+    
+  ];
+
+  const coreTeam = [
+  
     {
       name: 'Joseph Bamberger',
       title: 'Founder and CEO',
@@ -79,6 +93,24 @@ export function TeamSection() {
       title: 'Director of Investor Relations and Strategic Marketing',
       bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
+    },
+    {
+      name: 'David Hill',
+      title: '',
+      bio: '',
+      image: tomImage,
+    },
+    {
+      name: 'Stem Cell',
+      title: '',
+      bio: '',
+      image: tomImage,
+    },
+    {
+      name: 'Jeff Maibus',
+      title: '',
+      bio: '',
+      image: tomImage,
     },
   ];
 
@@ -104,11 +136,19 @@ export function TeamSection() {
   ];
 
   return (
-    <section 
-      id="team" 
-      ref={containerRef}
-      className="min-h-screen bg-white relative overflow-hidden py-32"
-    >
+    <>
+      <style>{`
+        @media (min-width: 768px) {
+          .tom-coppa-card {
+            grid-column: 2 / 3;
+          }
+        }
+      `}</style>
+      <section 
+        id="team" 
+        ref={containerRef}
+        className="min-h-screen bg-white relative overflow-hidden pt-32 pb-28"
+      >
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full">
         {/* First Section: Built by Enterprise Healthcare Leaders */}
         <motion.div
@@ -134,9 +174,18 @@ export function TeamSection() {
 
           {/* Team Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {enterpriseLeaders.map((member, idx) => (
-              <TeamCard key={idx} member={member} index={idx} />
-            ))}
+            {enterpriseLeaders.map((member, idx) => {
+              // Tom Coppa (index 6) should be directly under Client Relations (index 4, column 2)
+              const isTomCoppa = idx === 6 && member.name === 'Tom Coppa';
+              return (
+                <TeamCard 
+                  key={idx} 
+                  member={member} 
+                  index={idx} 
+                  shouldCenter={isTomCoppa}
+                />
+              );
+            })}
           </div>
         </motion.div>
 
@@ -157,20 +206,25 @@ export function TeamSection() {
               letterSpacing: '-0.03em' 
             }}
           ><br></br>
-            Backed by Geneva Private Equity
+             Backed by Geneva Private Equity
           </h2>
 
           {/* Core Team Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {coreTeam.map((member, idx) => (
-              <TeamCard key={idx} member={member} index={idx} />
+              <TeamCard 
+                key={idx} 
+                member={member} 
+                index={idx} 
+                shouldCenter={idx === 6 && coreTeam.length % 3 === 1}
+              />
             ))}
           </div>
         </motion.div>
 
         {/* Third Section: Medical Advisory Board */}
         <motion.div
-          className="mb-32"
+          className="mb-0"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -194,16 +248,18 @@ export function TeamSection() {
               <TeamCard key={idx} member={member} index={idx} />
             ))}
           </div>
+          <br></br> <br></br>
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
 
-function TeamCard({ member, index }: { member: any; index: number }) {
+function TeamCard({ member, index, shouldCenter = false }: { member: any; index: number; shouldCenter?: boolean }) {
   return (
     <motion.div
-      className="group h-full"
+      className={`group h-full ${shouldCenter ? 'tom-coppa-card' : ''}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

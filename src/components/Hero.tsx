@@ -36,12 +36,12 @@ export function Hero() {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: '#000000' }}
       >
-      {/* Video Background - fixed size 975x780px, centered */}
+      {/* Video Background - fixed size 975x780px, positioned to the right */}
       <div 
         className="absolute z-0"
         style={{ 
           top: '50%',
-          left: '50%',
+          left: '58%',
           transform: 'translate(-50%, -50%)',
           marginTop: '40px',
           width: '975px',

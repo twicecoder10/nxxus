@@ -9,7 +9,7 @@ export function ContactContent() {
     workEmail: '',
     organization: '',
     role: '',
-    primaryAreaOfInterest: [] as string[],
+    primaryAreaOfInterest: '',
     message: '',
   });
 
@@ -45,7 +45,7 @@ export function ContactContent() {
           workEmail: '',
           organization: '',
           role: '',
-          primaryAreaOfInterest: [],
+          primaryAreaOfInterest: '',
           message: '',
         });
       } else {
@@ -73,13 +73,6 @@ export function ContactContent() {
     }));
   };
 
-  const handleMultiSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOptions = Array.from(e.target.selectedOptions, (option: HTMLOptionElement) => option.value);
-    setFormData(prev => ({
-      ...prev,
-      primaryAreaOfInterest: selectedOptions
-    }));
-  };
 
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -255,13 +248,12 @@ export function ContactContent() {
                   id="primaryAreaOfInterest"
                   name="primaryAreaOfInterest"
                   required
-                  multiple
                   value={formData.primaryAreaOfInterest}
-                  onChange={handleMultiSelectChange}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
-                  style={{ fontSize: '1rem', minHeight: '120px' }}
-                  size={5}
+                  style={{ fontSize: '1rem' }}
                 >
+                  <option value="">Select primary area of interest</option>
                   <option value="Radiology workflows">Radiology workflows</option>
                   <option value="Pathology and digital slides">Pathology and digital slides</option>
                   <option value="Cardiology and waveform integration">Cardiology and waveform integration</option>
@@ -273,9 +265,6 @@ export function ContactContent() {
                   <option value="Clinical decision support">Clinical decision support</option>
                   <option value="Evaluation or pilot discussion">Evaluation or pilot discussion</option>
                 </select>
-                <p className="text-[#6B7280] mt-2" style={{ fontSize: '0.875rem' }}>
-                  Hold Ctrl (Windows) or Cmd (Mac) to select multiple options
-                </p>
               </div>
 
               {/* Message */}
