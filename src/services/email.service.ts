@@ -29,8 +29,8 @@ export interface EmailResponse {
  */
 export async function sendThankYouEmail(userEmail: string, userName: string): Promise<EmailResponse> {
   try {
-    // Use environment variable for API URL or default to backend server on port 3001
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://nxxmv3.vercel.app/api/send-email';
+    // Use environment variable for API URL or default to relative path
+    const apiUrl = import.meta.env.VITE_API_URL || '/api/send-email';
     
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -81,7 +81,7 @@ export async function sendThankYouEmail(userEmail: string, userName: string): Pr
 export async function sendAdminNotification(formData: EmailFormData): Promise<EmailResponse> {
   try {
     // Use environment variable for API URL or default to backend server on port 3001
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://nxxmv3.vercel.app/api/send-email';
+    const apiUrl = import.meta.env.VITE_API_URL || "/api/send-email";
     
     const response = await fetch(apiUrl, {
       method: 'POST',
