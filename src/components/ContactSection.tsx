@@ -56,7 +56,7 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Ready to Unify<br />
-            Your Diagnostics?
+            Your Workspaces?
           </motion.h2>
 
           {/* Description */}

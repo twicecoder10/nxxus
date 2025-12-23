@@ -16,15 +16,15 @@ export function SeamlessIntegrationSection() {
   const integrations = [
     {
       category: 'EHRs',
-      systems: ['Oracle Health (Cerner)', 'Epic', 'MEDITECH', 'Allscripts', 'athenahealth']
+      systems: ['Oracle Health (Cerner)', 'Epic', 'MEDITECH', 'Allscripts', 'athenahealth', 'Others ']
     },
     {
       category: 'PACS / VNA',
-      systems: ['Change Healthcare', 'Fujifilm Synapse', 'Philips', 'GE', 'Hyland']
+      systems: ['Change Healthcare', 'Fujifilm Synapse', 'Philips', 'GE', 'Hyland', 'Others ']
     },
     {
       category: 'Lab Systems',
-      systems: ['LabCorp', 'Quest Diagnostics', 'Cerner PathNet', 'Sunquest', 'Orchard']
+      systems: ['LabCorp', 'Quest Diagnostics', 'Cerner PathNet', 'Sunquest', 'Orchard', 'Others ']
     },
     {
       category: 'Standards',

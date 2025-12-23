@@ -17,23 +17,23 @@ export function MeasuredImpact() {
   const impacts = [
     {
       title: 'Faster, Aligned Workflows',
-      description: 'AI-powered triage and unified diagnostics keep teams moving together.'
+      description: 'AI-powered triage and unified diagnostics keep teams moving together'
     },
     {
       title: 'Real-Time Collaboration',
-      description: 'Shared diagnostic views reduce handoff friction across specialties.'
+      description: 'Shared image and data views improve handoff across specialties'
     },
     {
       title: 'Smarter Prioritization',
-      description: 'Clear worklists reflect clinical urgency based on shared context.'
+      description: 'Clear worklists reflect clinical urgency based on shared context'
     },
     {
       title: 'Lower Imaging Costs',
-      description: 'Fewer duplicate studies through smarter routing and coordination.'
+      description: 'Fewer duplicate studies through discovery, smart routing and coordination'
     },
     {
       title: 'Enterprise Reliability',
-      description: 'No system replacement. Secure, compliant workflows with 99.9% uptime.'
+      description: 'No system replacement. Secure, compliant workflows with 99.9% uptime'
     }
   ];
 

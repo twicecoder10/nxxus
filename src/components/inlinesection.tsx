@@ -59,7 +59,7 @@ export function InlineSection() {
                 <span 
                   className="text-[#000000]" 
                   style={{ 
-                    fontSize: 'clamp(2rem, 4vw, 3rem)', 
+                    fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', 
                     fontWeight: 600, 
                     letterSpacing: '-0.015em' 
                   }}

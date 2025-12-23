@@ -75,13 +75,13 @@ export function HowItWorksContent() {
     {
       number: '02',
       title: 'Unify',
-      description: 'Organizes imaging, pathology, labs, and clinical data into a single real-time diagnostic view.',
+      description: 'Organizes imaging, pathology, labs, and clinical data into a single real-time clinical view.',
       image: unifyImage
     },
     {
       number: '03',
       title: 'Collaborate',
-      description: 'A consistent diagnostic workspace for clinicians across specialties and care teams.',
+      description: ' A converged patient-centric workspace for clinicians across specialties and care teams.',
       image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=1080&q=80&auto=format&fit=crop' // Medical team collaboration, doctors working together
     },
     {
@@ -119,7 +119,7 @@ export function HowItWorksContent() {
               letterSpacing: '-0.03em' 
             }}
           >
-           From Fragmentation to Diagnostic Clarity
+           From Fragmentation to Clarity
 
           </h2>
         </motion.div>

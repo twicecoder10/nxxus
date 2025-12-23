@@ -14,6 +14,7 @@ export interface EmailFormData {
   fullName: string;
   workEmail: string;
   organization: string;
+  title?: string;
   role: string;
   primaryAreaOfInterest: string | string[];
   message: string;

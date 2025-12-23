@@ -1,10 +1,12 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import React from 'react';
-import nixxxmVideo from '../../pics/video nixxxm.mp4';
+import unifiedVideo from '../../pics/unifiedvideo.mp4';
 
 export function ProductSection() {
   const containerRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -13,6 +15,78 @@ export function ProductSection() {
   // Smooth fade in/out when entering/leaving viewport
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Preload the video aggressively
+    video.load();
+    
+    const handleCanPlay = () => {
+      setVideoLoaded(true);
+    };
+    
+    video.addEventListener('canplay', handleCanPlay);
+
+    // Seamless loop handling to prevent jumps
+    let frameCallbackId: number | null = null;
+    
+    const handleSeamlessLoop = () => {
+      if (!video) return;
+      
+      // Check if we're at or very close to the end
+      const duration = video.duration;
+      const currentTime = video.currentTime;
+      
+      // If we're within 0.1 seconds of the end, reset to start before the jump
+      if (duration && currentTime >= duration - 0.1) {
+        video.currentTime = 0;
+      }
+      
+      // Continue monitoring
+      if (video.requestVideoFrameCallback) {
+        frameCallbackId = video.requestVideoFrameCallback(handleSeamlessLoop);
+      }
+    };
+
+    // Start the seamless loop monitoring once video is ready
+    const startLoopMonitoring = () => {
+      if (video.requestVideoFrameCallback) {
+        frameCallbackId = video.requestVideoFrameCallback(handleSeamlessLoop);
+      } else {
+        // Fallback for browsers without requestVideoFrameCallback
+        const timeUpdateHandler = () => {
+          const duration = video.duration;
+          const currentTime = video.currentTime;
+          if (duration && currentTime >= duration - 0.05) {
+            video.currentTime = 0.01; // Reset slightly before the end
+          }
+        };
+        video.addEventListener('timeupdate', timeUpdateHandler);
+        
+        return () => {
+          video.removeEventListener('timeupdate', timeUpdateHandler);
+        };
+      }
+    };
+
+    const handleLoadedMetadata = () => {
+      startLoopMonitoring();
+    };
+
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    
+    return () => {
+      if (video) {
+        video.removeEventListener('canplay', handleCanPlay);
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        if (frameCallbackId !== null && video.cancelVideoFrameCallback) {
+          video.cancelVideoFrameCallback(frameCallbackId);
+        }
+      }
+    };
+  }, []);
 
   const capabilities = [
     {
@@ -70,7 +144,7 @@ export function ProductSection() {
               letterSpacing: '-0.03em' 
             }}
           >
-            A Unified Diagnostic Workspace
+            A Unified Medical Workspace
           </h2>
           
           {/* Description Text */}
@@ -98,18 +172,51 @@ export function ProductSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              style={{ y }}
+              style={{ y, minWidth: 0, flexShrink: 0 }}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-2xl w-full">
+              <div 
+                className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-2xl" 
+                style={{ 
+                  height: '680px',
+                  width: '100%',
+                  minWidth: 0,
+                  maxWidth: '100%',
+                  backgroundColor: '#000000',
+                  flexShrink: 0
+                }}
+              >
                 <video 
-                  src={nixxxmVideo}
+                  ref={videoRef}
+                  src={unifiedVideo}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-[680px] object-cover"
+                  preload="auto"
+                  className="w-full h-full object-cover"
+                  style={{ 
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    opacity: videoLoaded ? 1 : 0,
+                    transition: 'opacity 0.2s ease-in-out',
+                    pointerEvents: 'none'
+                  }}
+                  onLoadedData={() => setVideoLoaded(true)}
+                  onCanPlay={() => setVideoLoaded(true)}
+                  onLoadedMetadata={() => setVideoLoaded(true)}
+                  onEnded={(e) => {
+                    // Ensure seamless restart
+                    const video = e.currentTarget;
+                    video.currentTime = 0;
+                    video.play();
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
               </div>
             </motion.div>
 

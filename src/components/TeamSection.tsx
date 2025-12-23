@@ -43,16 +43,11 @@ export function TeamSection() {
     },
     {
       name: '',
-      title: 'Vice President',
+      title: 'Vice President of Client Relations ',
       bio: '',
       image: tomImage,
     },
-    {
-      name: '',
-      title: 'Client Relations',
-      bio: '',
-      image: tomImage,
-    },
+    
     {
       name: '',
       title: 'CMO',
@@ -94,43 +89,26 @@ export function TeamSection() {
       bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
     },
-    {
-      name: 'David Hill',
-      title: '',
-      bio: '',
-      image: tomImage,
-    },
-    {
-      name: 'Stem Cell',
-      title: '',
-      bio: '',
-      image: tomImage,
-    },
-    {
-      name: 'Jeff Maibus',
-      title: '',
-      bio: '',
-      image: tomImage,
-    },
+    
   ];
 
   const medicalAdvisoryBoard = [
     {
-      name: 'Dr. Barry D. Mangel',
-      title: 'Chief of Clinical Service Lines at Wellstar',
-      bio: 'Harvard-trained, board-certified interventional cardiologist with thirty years of practice and sixteen years of prior leadership as Chief Cardiology Officer.',
+      name: 'Dr. Barry D. Mangel, MD',
+      title: ' Chief, Clinical Services, Wellstar',
+      bio: 'Harvard-trained interventional cardiologist with 30-plus years leading enterprise clinical strategy, cardiovascular services, quality performance, and operational excellence.',
       image: barryMangelImage,
     },
     {
-      name: 'Dr. Rephael Yechieli',
-      title: 'Associate Professor of Radiation Oncology at the University of Miami',
-      bio: '60 plus peer reviewed publications and multiple medical director roles.',
+      name: 'Dr. Rephael  L.Yechieli, MD',
+      title: 'Associate Professor, Radiation Oncology, University of Miami',
+      bio: 'Nationally recognized radiation oncologist specializing in advanced noninvasive cancer therapies, with extensive academic leadership and peer-reviewed research experience.',
       image: drRephaelYechieliImage,
     },
     {
       name: 'Gaurav Malik',
-      title: 'VP at Quest Diagnostics',
-      bio: 'Supporting care for over 20 million patients. 25 years across GE Healthcare, GE Capital, and Quest.',
+      title: 'VP, Patient Services and Business Development, Quest',
+      bio: 'Healthcare operations executive with 25 years scaling patient services, diagnostics, and regional growth across Fortune 500 healthcare organizations.',
       image: gauravMalikImage,
     },
   ];
@@ -173,7 +151,7 @@ export function TeamSection() {
           </h2>
 
           {/* Team Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
             {enterpriseLeaders.map((member, idx) => {
               // Tom Coppa (index 6) should be directly under Client Relations (index 4, column 2)
               const isTomCoppa = idx === 6 && member.name === 'Tom Coppa';
@@ -189,42 +167,9 @@ export function TeamSection() {
           </div>
         </motion.div>
 
-        {/* Second Section: Backed by Geneva Private Equity */}
+        {/* Second Section: Medical Advisory Board */}
         <motion.div
           className="mb-32"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 
-            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
-            style={{ 
-              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
-              fontWeight: 700, 
-              lineHeight: 1.1, 
-              letterSpacing: '-0.03em' 
-            }}
-          ><br></br>
-             Backed by Geneva Private Equity
-          </h2>
-
-          {/* Core Team Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {coreTeam.map((member, idx) => (
-              <TeamCard 
-                key={idx} 
-                member={member} 
-                index={idx} 
-                shouldCenter={idx === 6 && coreTeam.length % 3 === 1}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Third Section: Medical Advisory Board */}
-        <motion.div
-          className="mb-0"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -243,9 +188,42 @@ export function TeamSection() {
           </h2>
 
           {/* Medical Advisory Board Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
             {medicalAdvisoryBoard.map((member, idx) => (
               <TeamCard key={idx} member={member} index={idx} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Third Section: Backed by Geneva Private Equity */}
+        <motion.div
+          className="mb-0"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 
+            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
+            style={{ 
+              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.1, 
+              letterSpacing: '-0.03em' 
+            }}
+          ><br></br>
+             Backed by Geneva Private Equity
+          </h2>
+
+          {/* Core Team Grid */}
+          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
+            {coreTeam.map((member, idx) => (
+              <TeamCard 
+                key={idx} 
+                member={member} 
+                index={idx} 
+                shouldCenter={idx === 6 && coreTeam.length % 3 === 1}
+              />
             ))}
           </div>
           <br></br> <br></br>
@@ -269,7 +247,7 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
         className="bg-white rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500 flex flex-col h-full"
       >
         {/* Image Container */}
-        <div className="relative h-[500px] overflow-hidden">
+        <div className="relative h-[400px] overflow-hidden">
           <img
             src={member.image}
             alt={member.name}
@@ -282,24 +260,24 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
           
           {/* Name overlay on image */}
           <motion.div
-            className="absolute bottom-0 left-0 right-0 p-8"
+            className="absolute bottom-0 left-0 right-0 p-6"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
           >
-            <div className="text-white mb-2" style={{ fontSize: '1.75rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+            <div className="text-white mb-2" style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
               {member.name}
             </div>
-            <div className="text-[#94B3D8]" style={{ fontSize: '0.9375rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            <div className="text-[#94B3D8]" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               {member.title}
             </div>
           </motion.div>
         </div>
 
         {/* Bio Content */}
-        <div className="p-8 flex-1 flex flex-col">
-          <p className="text-[#6B7280]" style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>
+        <div className="p-6 flex-1 flex flex-col">
+          <p className="text-[#6B7280]" style={{ fontSize: '1.25rem', lineHeight: 1.7, fontWeight: 300 }}>
             {member.bio}
           </p>
         </div>

@@ -36,16 +36,16 @@ export function Hero() {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: '#000000' }}
       >
-      {/* Video Background - fixed size 975x780px, positioned to the right */}
+      {/* Video Background - fixed size 875x700px, positioned to the right */}
       <div 
         className="absolute z-0"
         style={{ 
           top: '50%',
-          left: '58%',
+          left: '65%',
           transform: 'translate(-50%, -50%)',
           marginTop: '40px',
-          width: '975px',
-          height: '780px'
+          width: '875px',
+          height: '700px'
         }}
       >
         <video 
@@ -55,8 +55,8 @@ export function Hero() {
           muted
           playsInline
           style={{ 
-            width: '975px', 
-            height: '780px',
+            width: '875px', 
+            height: '700px',
             objectFit: 'cover',
             display: 'block'
           }}
@@ -72,7 +72,7 @@ export function Hero() {
         <div className="max-w-[1800px] mx-auto w-full flex items-center py-20 sm:py-32 lg:py-40">
           
           {/* Text Content - 2/3 width container to overlay on video */}
-          <div className="hero-text-content relative z-10 text-left">
+          <div className="hero-text-content relative z-10 text-left" style={{ marginTop: '60px' }}>
             {/* Content wrapper with transparency effect */}
             <div 
               className="inline-block"
@@ -126,8 +126,8 @@ export function Hero() {
                 >
                   <span className="block">Unify Every</span>
                   <span className="block mt-2">
-                    <span>Diagnostic </span>
-                    <span className="text-white">System</span>
+                    <span>Intelligence </span>
+                    <span className="text-white">Platform</span>
                   </span>
                 </motion.h1>
               </div>
@@ -150,9 +150,7 @@ export function Hero() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                 >
-                  Imaging, labs, pathology, and EHRs in one real-time workspace<br />
-                  where diagnostic data converges, so teams can make<br />
-                  smarter decisions together.
+                  Imaging, labs, pathology, and EHRs converged <br></br>to a single pane of glass for better decisions<br></br> and coordinated care
                 </motion.p>
               </motion.div>
 

@@ -53,7 +53,7 @@ export function ClinicalSpecialtiesContent() {
       features: ['Mammography', 'OB/GYN imaging', 'Screening workflows']
     },
     {
-      name: "And 40+ additional diagnostic specialities.",
+      name: "And 40+ additional specialities",
       description: '',
       image: additionalSpecialtiesImage,
       features: []
@@ -83,7 +83,7 @@ export function ClinicalSpecialtiesContent() {
               letterSpacing: '-0.03em' 
             }}
           >
-            Purpose-Built for <br />Diagnostic Specialities
+            Purpose-Built for <br />Most Specialities
            
           </h2><br></br>
           <p style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>              NXXIM adapts to specialty-specific workflows while unifying imaging, pathology, labs, and clinical data.

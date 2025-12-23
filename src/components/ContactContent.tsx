@@ -8,6 +8,7 @@ export function ContactContent() {
     fullName: '',
     workEmail: '',
     organization: '',
+    title: '',
     role: '',
     primaryAreaOfInterest: '',
     message: '',
@@ -29,6 +30,7 @@ export function ContactContent() {
         fullName: formData.fullName,
         workEmail: formData.workEmail,
         organization: formData.organization,
+        title: formData.title,
         role: formData.role,
         primaryAreaOfInterest: formData.primaryAreaOfInterest,
         message: formData.message,
@@ -44,6 +46,7 @@ export function ContactContent() {
           fullName: '',
           workEmail: '',
           organization: '',
+          title: '',
           role: '',
           primaryAreaOfInterest: '',
           message: '',
@@ -104,7 +107,7 @@ export function ContactContent() {
                 letterSpacing: '-0.03em' 
               }}
             >
-              Ready to Transform Your Diagnostic Workflow?
+              Ready to Transform Your Workspaces?
             </h2>
             <p 
               className="text-[#6B7280]"
@@ -155,6 +158,30 @@ export function ContactContent() {
             </h3>
             
             <form onSubmit={handleSubmit} className="bg-[#FAFAFA] rounded-2xl border border-[#E5E7EB] p-8 lg:p-12 space-y-6">
+               {/* Title */}
+               <div>
+                <label htmlFor="title" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
+                  Title
+                </label>
+                <select
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
+                  style={{ fontSize: '1rem' }}
+                >
+                  <option value="">Select your title</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Prof.">Prof.</option>
+                </select>
+              </div>
+
+             
+             
               {/* Full Name */}
               <div>
                 <label htmlFor="fullName" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
@@ -167,7 +194,7 @@ export function ContactContent() {
                   required
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
                   style={{ fontSize: '1rem' }}
                 />
               </div>
@@ -184,7 +211,7 @@ export function ContactContent() {
                   required
                   value={formData.workEmail}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
                   style={{ fontSize: '1rem' }}
                 />
               </div>
@@ -201,11 +228,12 @@ export function ContactContent() {
                   required
                   value={formData.organization}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
                   style={{ fontSize: '1rem' }}
                 />
               </div>
 
+            
               {/* Role */}
               <div>
                 <label htmlFor="role" className="block text-[#000000] mb-2" style={{ fontSize: '0.9375rem', fontWeight: 600 }}>
@@ -217,25 +245,13 @@ export function ContactContent() {
                   required
                   value={formData.role}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
                   style={{ fontSize: '1rem' }}
                 >
                   <option value="">Select your role</option>
-                  <option value="Radiologist">Radiologist</option>
-                  <option value="Pathologist">Pathologist</option>
-                  <option value="Cardiologist">Cardiologist</option>
-                  <option value="Oncologist">Oncologist</option>
-                  <option value="Clinician (Other)">Clinician (Other)</option>
-                  <option value="Department Head">Department Head</option>
-                  <option value="Medical Director">Medical Director</option>
-                  <option value="Chief Medical Officer (CMO)">Chief Medical Officer (CMO)</option>
-                  <option value="Chief Information Officer (CIO)">Chief Information Officer (CIO)</option>
-                  <option value="Chief Digital Officer (CDO)">Chief Digital Officer (CDO)</option>
-                  <option value="IT / Clinical Informatics">IT / Clinical Informatics</option>
-                  <option value="Operations / Administration">Operations / Administration</option>
-                  <option value="Research / Innovation">Research / Innovation</option>
-                  <option value="Vendor / Partner">Vendor / Partner</option>
-                  <option value="Other">Other</option>
+                  <option value="Clinical / Research">Clinical / Research</option>
+                  <option value="Leadership / Administration">Leadership / Administration</option>
+                  <option value="Technology / IT">Technology / IT</option>
                 </select>
               </div>
 
@@ -250,20 +266,15 @@ export function ContactContent() {
                   required
                   value={formData.primaryAreaOfInterest}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all"
                   style={{ fontSize: '1rem' }}
                 >
                   <option value="">Select primary area of interest</option>
-                  <option value="Radiology workflows">Radiology workflows</option>
-                  <option value="Pathology and digital slides">Pathology and digital slides</option>
-                  <option value="Cardiology and waveform integration">Cardiology and waveform integration</option>
-                  <option value="Oncology and longitudinal care">Oncology and longitudinal care</option>
-                  <option value="Cross-specialty collaboration">Cross-specialty collaboration</option>
-                  <option value="Enterprise diagnostic platform">Enterprise diagnostic platform</option>
-                  <option value="AI prioritization and workflow automation">AI prioritization and workflow automation</option>
-                  <option value="Data integration (EHR, PACS, LIS)">Data integration (EHR, PACS, LIS)</option>
-                  <option value="Clinical decision support">Clinical decision support</option>
-                  <option value="Evaluation or pilot discussion">Evaluation or pilot discussion</option>
+                  <option value="Imaging Workflows">Imaging Workflows</option>
+                  <option value="Data Convergence and Consolidation">Data Convergence and Consolidation</option>
+                  <option value="AI for Prioritization, Analysis, and Workflow Optimization">AI for Prioritization, Analysis, and Workflow Optimization</option>
+                  <option value="Cross-Specialty Collaboration">Cross-Specialty Collaboration</option>
+                  <option value="Clinical Decision Support">Clinical Decision Support</option>
                 </select>
               </div>
 
@@ -278,7 +289,7 @@ export function ContactContent() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#94B3D8] focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-[#E5E7EB] bg-white text-[#000000] focus:outline-none focus:border-[#94B3D8] transition-all resize-none"
                   style={{ fontSize: '1rem' }}
                 />
               </div>
@@ -302,7 +313,7 @@ export function ContactContent() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-8 py-4 rounded-lg transition-all duration-300 ${
+                className={`w-full px-8 py-4 rounded-full transition-all duration-300 ${
                   isSubmitting
                     ? 'bg-[#94B3D8] text-white cursor-not-allowed'
                     : 'bg-[#000000] text-white hover:bg-[#94B3D8]'
