@@ -175,13 +175,12 @@ export function ProductSection() {
               style={{ y, minWidth: 0, flexShrink: 0 }}
             >
               <div 
-                className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-2xl" 
+                className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white" 
                 style={{ 
-                  height: '680px',
+                  height: '630px',
                   width: '100%',
                   minWidth: 0,
                   maxWidth: '100%',
-                  backgroundColor: '#000000',
                   flexShrink: 0
                 }}
               >
@@ -204,7 +203,8 @@ export function ProductSection() {
                     objectFit: 'cover',
                     opacity: videoLoaded ? 1 : 0,
                     transition: 'opacity 0.2s ease-in-out',
-                    pointerEvents: 'none'
+                    pointerEvents: 'none',
+                    backgroundColor: 'transparent'
                   }}
                   onLoadedData={() => setVideoLoaded(true)}
                   onCanPlay={() => setVideoLoaded(true)}
@@ -216,7 +216,6 @@ export function ProductSection() {
                     video.play();
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
               </div>
             </motion.div>
 

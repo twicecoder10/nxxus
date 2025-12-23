@@ -19,15 +19,96 @@ export function Hero() {
       <style>{`
         @media (max-width: 767px) {
           .hero-text-content {
-            margin-left: 0 !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
             max-width: 100% !important;
             width: 100% !important;
+            text-align: center !important;
+          }
+          .hero-text-wrapper {
+            text-align: center !important;
+          }
+          .hero-text-wrapper > div {
+            text-align: center !important;
+            margin: 0 auto !important;
+          }
+          .hero-content-wrapper {
+            display: block !important;
+            text-align: center !important;
+            padding: 1.5rem 1.5rem !important;
+          }
+          .hero-text-wrapper .text-left {
+            text-align: center !important;
+          }
+          .hero-video-container {
+            left: 50% !important;
+            width: 90vw !important;
+            height: 72vw !important;
+            max-width: 500px !important;
+            max-height: 400px !important;
+            marginTop: 20px !important;
+          }
+          .hero-video {
+            width: 100% !important;
+            height: 100% !important;
           }
         }
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .hero-text-content {
+            width: 50% !important;
+            max-width: 50% !important;
+          }
+          .hero-text-wrapper {
+            margin-top: 40px !important;
+          }
+          .hero-video-container {
+            left: 60% !important;
+            width: 50vw !important;
+            height: 40vw !important;
+            max-width: 700px !important;
+            max-height: 560px !important;
+          }
+          .hero-video {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+        @media (min-width: 1024px) and (max-width: 1439px) {
           .hero-text-content {
             width: 66.67%;
             max-width: 66.67%;
+          }
+          .hero-text-wrapper {
+            margin-top: 50px !important;
+          }
+          .hero-video-container {
+            left: 63% !important;
+            width: 45vw !important;
+            height: 36vw !important;
+            max-width: 875px !important;
+            max-height: 700px !important;
+          }
+          .hero-video {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+        @media (min-width: 1440px) {
+          .hero-text-content {
+            width: 66.67%;
+            max-width: 66.67%;
+          }
+          .hero-text-wrapper {
+            margin-top: 60px !important;
+          }
+          .hero-video-container {
+            left: 65% !important;
+            width: 875px !important;
+            height: 700px !important;
+          }
+          .hero-video {
+            width: 875px !important;
+            height: 700px !important;
           }
         }
       `}</style>
@@ -36,9 +117,9 @@ export function Hero() {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: '#000000' }}
       >
-      {/* Video Background - fixed size 875x700px, positioned to the right */}
+      {/* Video Background - responsive size, positioned to the right */}
       <div 
-        className="absolute z-0"
+        className="absolute z-0 hero-video-container"
         style={{ 
           top: '50%',
           left: '65%',
@@ -54,6 +135,7 @@ export function Hero() {
           loop
           muted
           playsInline
+          className="hero-video"
           style={{ 
             width: '875px', 
             height: '700px',
@@ -72,10 +154,10 @@ export function Hero() {
         <div className="max-w-[1800px] mx-auto w-full flex items-center py-20 sm:py-32 lg:py-40">
           
           {/* Text Content - 2/3 width container to overlay on video */}
-          <div className="hero-text-content relative z-10 text-left" style={{ marginTop: '60px' }}>
+          <div className="hero-text-content relative z-10 text-left hero-text-wrapper">
             {/* Content wrapper with transparency effect */}
             <div 
-              className="inline-block"
+              className="inline-block hero-content-wrapper"
               style={{
                 background: 'linear-gradient(to right, transparent 0%, transparent 20%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.12) 70%, rgba(255,255,255,0.15) 85%, transparent 100%)',
                 backdropFilter: 'blur(10px)',
