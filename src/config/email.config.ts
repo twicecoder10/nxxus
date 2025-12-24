@@ -7,21 +7,21 @@
 export const emailConfig = {
   // SMTP Configuration
   smtp: {
-    host: 'smtp.stackmail.com',
-    port: 465,
+    host: 'smtp.stackmail.comsmtp.office365.com',
+    port: 587,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'support@ivoirebagagexpress.com',
-      password: 'Lk254def0'
+      user: 'info@nxxim.com',
+      password: 'wqvjwyphfrqwpqdx'
     }
   },
 
   // Email Addresses
   from: {
     name: 'NXXIM',
-    email: 'support@ivoirebagagexpress.com'
+    email: 'info@nxxim.com'
   },
-  adminEmail: 'ag@geneva.pe',
+  adminEmail: 'info@nxxim.com',
 
   // Email Templates
   templates: {
