@@ -2,7 +2,9 @@
 const nodemailer = require("nodemailer");
 
 function createTransporter() {
-  const port = Number(process.env.SMTP_PORT || 465);
+  const port = Number(process.env.SMTP_PORT || 587);
+  // Office365/Outlook uses port 587 with STARTTLS (secure: false)
+  // Port 465 uses SSL (secure: true)
   const secure = port === 465;
   
   const user = process.env.SMTP_USER?.trim();
@@ -13,20 +15,32 @@ function createTransporter() {
     throw new Error(`Missing SMTP credentials: user=${!!user}, pass=${!!pass}`);
   }
 
-  return nodemailer.createTransport({
+  const transporterConfig = {
     host: process.env.SMTP_HOST?.trim(),
     port,
     secure,
     auth: {
       user,
-      pass, // ✅ KEY FIX
+      pass,
     },
-    // Optional; keep if your provider needs it
-    tls: { rejectUnauthorized: false },
     connectionTimeout: 10000,
     greetingTimeout: 10000,
     socketTimeout: 10000,
-  });
+  };
+
+  // For Office365/Outlook on port 587, we need STARTTLS
+  if (port === 587) {
+    transporterConfig.requireTLS = true;
+    transporterConfig.tls = {
+      rejectUnauthorized: false,
+      minVersion: 'TLSv1.2',
+    };
+  } else {
+    // For other ports (like 465), use standard TLS
+    transporterConfig.tls = { rejectUnauthorized: false };
+  }
+
+  return nodemailer.createTransport(transporterConfig);
 }
 
 module.exports = async (req, res) => {
