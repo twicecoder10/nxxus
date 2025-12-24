@@ -23,9 +23,11 @@ function createTransporter() {
       user,
       pass,
     },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000,
+    // Try different authentication methods
+    authMethod: 'LOGIN',
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 15000,
   };
 
   // For Office365/Outlook on port 587, we need STARTTLS
@@ -35,6 +37,9 @@ function createTransporter() {
       rejectUnauthorized: false,
       minVersion: 'TLSv1.2',
     };
+    // Office365 specific settings
+    transporterConfig.ignoreTLS = false;
+    transporterConfig.requireTLS = true;
   } else {
     // For other ports (like 465), use standard TLS
     transporterConfig.tls = { rejectUnauthorized: false };
@@ -136,11 +141,29 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true, messageId: info.messageId });
   } catch (error) {
     console.error("❌ Send error:", error);
+    
+    // Provide helpful error messages for common Office365 issues
+    let userMessage = "Failed to send email";
+    let troubleshooting = "";
+    
+    if (error?.code === 'EAUTH' || error?.responseCode === 535) {
+      userMessage = "Email authentication failed. This is usually an Office365 account policy issue.";
+      troubleshooting = `
+Possible solutions:
+1. If this is a work/school account, SMTP AUTH might be disabled. Contact your IT administrator to enable SMTP AUTH.
+2. Check if the account has conditional access policies blocking SMTP.
+3. Verify the app-specific password is correct and hasn't expired.
+4. Try creating a new app-specific password.
+5. For business accounts, SMTP AUTH may need to be enabled in Microsoft 365 admin center.
+      `;
+    }
+    
     return res.status(500).json({
       success: false,
-      message: "Failed to send email",
+      message: userMessage,
       error: error?.message,
       code: error?.code,
+      troubleshooting: troubleshooting.trim(),
     });
   }
 };
