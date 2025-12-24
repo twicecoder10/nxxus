@@ -57,6 +57,7 @@ export function Hero() {
           .hero-text-content {
             width: 50% !important;
             max-width: 50% !important;
+            margin-left: 30px !important;
           }
           .hero-text-wrapper {
             margin-top: 40px !important;
@@ -77,6 +78,7 @@ export function Hero() {
           .hero-text-content {
             width: 66.67%;
             max-width: 66.67%;
+            margin-left: 40px !important;
           }
           .hero-text-wrapper {
             margin-top: 50px !important;
@@ -85,8 +87,8 @@ export function Hero() {
             left: 63% !important;
             width: 45vw !important;
             height: 36vw !important;
-            max-width: 875px !important;
-            max-height: 700px !important;
+            max-width: 800px !important;
+            max-height: 650px !important;
           }
           .hero-video {
             width: 100% !important;
@@ -97,18 +99,19 @@ export function Hero() {
           .hero-text-content {
             width: 66.67%;
             max-width: 66.67%;
+            margin-left: 40px !important;
           }
           .hero-text-wrapper {
             margin-top: 60px !important;
           }
           .hero-video-container {
             left: 65% !important;
-            width: 875px !important;
-            height: 700px !important;
+            width: 800px !important;
+            height: 650px !important;
           }
           .hero-video {
-            width: 875px !important;
-            height: 700px !important;
+            width: 800px !important;
+            height: 650px !important;
           }
         }
       `}</style>
@@ -125,8 +128,8 @@ export function Hero() {
           left: '65%',
           transform: 'translate(-50%, -50%)',
           marginTop: '40px',
-          width: '875px',
-          height: '700px'
+          width: '800px',
+          height: '650px'
         }}
       >
         <video 
@@ -137,8 +140,8 @@ export function Hero() {
           playsInline
           className="hero-video"
           style={{ 
-            width: '875px', 
-            height: '700px',
+            width: '800px', 
+            height: '650px',
             objectFit: 'cover',
             display: 'block'
           }}

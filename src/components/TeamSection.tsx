@@ -108,7 +108,7 @@ export function TeamSection() {
     {
       name: 'Gaurav Malik',
       title: 'VP, Patient Services and Business Development, Quest',
-      bio: 'Healthcare operations executive with 25 years scaling patient services, diagnostics, and regional growth across Fortune 500 healthcare organizations.',
+      bio: '25-year AI and digital executive with five exits, leading Fortune 100 transformations, driving sustained revenue growth, and enterprise value.',
       image: gauravMalikImage,
     },
   ];
@@ -139,7 +139,7 @@ export function TeamSection() {
           <div className="text-[#94B3D8] mb-6" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           </div>
           <h2 
-            className="text-[#000000] max-w-4xl text-center mx-auto mb-24"
+            className="text-[#000000] max-w-4xl text-center mx-auto mb-8"
             style={{ 
               fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', 
               fontWeight: 700, 
@@ -149,6 +149,12 @@ export function TeamSection() {
           >
             Built by Enterprise Healthcare Leaders
           </h2>
+          <p 
+            className="text-[#000000] max-w-3xl text-center mx-auto mb-24"
+            style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
+          >
+            Our team brings decades of experience building, scaling, and operating technology inside large healthcare systems
+          </p>
 
           {/* Team Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
@@ -269,7 +275,7 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
             <div className="text-white mb-2" style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
               {member.name}
             </div>
-            <div className="text-[#94B3D8]" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            <div className="text-white" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               {member.title}
             </div>
           </motion.div>
