@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import c1Image from '../../pics/c1.jpg';
@@ -13,8 +13,13 @@ export function HowItWorksContent() {
   const [activeStep, setActiveStep] = useState(0);
   const containerRef = useRef(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
 
-  // Calculate which step should be active based on scroll position (ONLY for image switching, NOT for transforms)
+  // Calculate which step should be active based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const stepElements = stepRefs.current.filter(Boolean);
@@ -59,15 +64,6 @@ export function HowItWorksContent() {
     
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  // Handle click navigation - scroll to step smoothly
-  const handleStepClick = (index: number) => {
-    setActiveStep(index);
-    const stepElement = stepRefs.current[index];
-    if (stepElement) {
-      stepElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
 
   const steps = [
     {
@@ -141,7 +137,7 @@ export function HowItWorksContent() {
                 className={`cursor-pointer py-10 border-b border-[#E5E7EB] transition-all duration-500 ${
                   activeStep === idx ? 'border-[#94B3D8]' : 'hover:border-[#94B3D8]/30'
                 }`}
-                onClick={() => handleStepClick(idx)}
+                onClick={() => setActiveStep(idx)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -200,64 +196,58 @@ export function HowItWorksContent() {
             ))}
           </div>
 
-          {/* Right - Image Display (FIXED Container - NO transforms) */}
-          <div 
-            className="sticky rounded-2xl overflow-hidden shadow-2xl"
-            style={{ 
-              position: 'sticky',
-              top: '80px',
-              height: 'calc(100vh - 160px)',
-              minHeight: '600px',
-              overflow: 'hidden'
-            }}
-          >
-            {/* Image container - opacity-based crossfade only */}
-            <div className="relative w-full h-full">
-              {steps.map((step, index) => (
+          {/* Right - Image Display (Factory Style) */}
+          <div className="sticky top-32 h-[600px] lg:h-[700px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStep}
+                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <img
-                  key={index}
-                  src={step.image}
-                  alt={step.title}
-                  className="absolute inset-0 w-full h-full"
-                  style={{
-                    opacity: activeStep === index ? 1 : 0,
-                    transition: 'opacity 0.4s ease-in-out',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    pointerEvents: 'none'
-                  }}
+                  src={steps[activeStep].image}
+                  alt={steps[activeStep].title}
+                  className="w-full h-full object-cover"
                 />
-              ))}
-              
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Step indicator on image */}
-              <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-lg rounded-xl p-6 shadow-lg pointer-events-none">
-                <div className="flex items-center gap-4">
-                  <div 
-                    className="text-[#94B3D8]"
-                    style={{ fontSize: '2rem', fontWeight: 700, letterSpacing: '-0.02em' }}
-                  >
-                    {steps[activeStep].number}
-                  </div>
-                  <div>
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                
+                {/* Step indicator on image */}
+                <motion.div
+                  className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-lg rounded-xl p-6 shadow-lg"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <div className="flex items-center gap-4">
                     <div 
-                      className="text-[#000000] mb-1"
-                      style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
+                      className="text-[#94B3D8]"
+                      style={{ fontSize: '2rem', fontWeight: 700, letterSpacing: '-0.02em' }}
                     >
-                      {steps[activeStep].title}
+                      {steps[activeStep].number}
                     </div>
-                    <div 
-                      className="text-[#6B7280]"
-                      style={{ fontSize: '0.875rem', fontWeight: 500 }}
-                    >
-                      Step {activeStep + 1} of 5
+                    <div>
+                      <div 
+                        className="text-[#000000] mb-1"
+                        style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
+                      >
+                        {steps[activeStep].title}
+                      </div>
+                      <div 
+                        className="text-[#6B7280]"
+                        style={{ fontSize: '0.875rem', fontWeight: 500 }}
+                      >
+                        Step {activeStep + 1} of 5
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

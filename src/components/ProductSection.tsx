@@ -29,19 +29,23 @@ export function ProductSection() {
     
     video.addEventListener('canplay', handleCanPlay);
 
-    // Seamless loop handling to prevent jumps
+    // Enhanced seamless loop handling to prevent jumps
     let frameCallbackId: number | null = null;
+    let timeUpdateHandler: (() => void) | null = null;
     
     const handleSeamlessLoop = () => {
       if (!video) return;
       
-      // Check if we're at or very close to the end
       const duration = video.duration;
       const currentTime = video.currentTime;
       
-      // If we're within 0.1 seconds of the end, reset to start before the jump
-      if (duration && currentTime >= duration - 0.1) {
+      // More aggressive detection - reset earlier to prevent visible skip
+      // Using 1 frame threshold (typically 0.033s at 30fps, 0.016s at 60fps)
+      if (duration && currentTime >= duration - 0.033) {
         video.currentTime = 0;
+        if (!video.paused) {
+          video.play().catch(() => {}); // Ensure it keeps playing
+        }
       }
       
       // Continue monitoring
@@ -50,24 +54,27 @@ export function ProductSection() {
       }
     };
 
+    // Enhanced timeupdate fallback with better precision
+    const createTimeUpdateHandler = () => {
+      return () => {
+        if (!video) return;
+        const duration = video.duration;
+        const currentTime = video.currentTime;
+        // Use smaller threshold for smoother transition
+        if (duration && currentTime >= duration - 0.033) {
+          video.currentTime = 0;
+        }
+      };
+    };
+
     // Start the seamless loop monitoring once video is ready
     const startLoopMonitoring = () => {
       if (video.requestVideoFrameCallback) {
         frameCallbackId = video.requestVideoFrameCallback(handleSeamlessLoop);
       } else {
         // Fallback for browsers without requestVideoFrameCallback
-        const timeUpdateHandler = () => {
-          const duration = video.duration;
-          const currentTime = video.currentTime;
-          if (duration && currentTime >= duration - 0.05) {
-            video.currentTime = 0.01; // Reset slightly before the end
-          }
-        };
-        video.addEventListener('timeupdate', timeUpdateHandler);
-        
-        return () => {
-          video.removeEventListener('timeupdate', timeUpdateHandler);
-        };
+        timeUpdateHandler = createTimeUpdateHandler();
+        video.addEventListener('timeupdate', timeUpdateHandler, { passive: true });
       }
     };
 
@@ -81,6 +88,9 @@ export function ProductSection() {
       if (video) {
         video.removeEventListener('canplay', handleCanPlay);
         video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        if (timeUpdateHandler) {
+          video.removeEventListener('timeupdate', timeUpdateHandler);
+        }
         if (frameCallbackId !== null && video.cancelVideoFrameCallback) {
           video.cancelVideoFrameCallback(frameCallbackId);
         }
@@ -177,11 +187,12 @@ export function ProductSection() {
               <div 
                 className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white" 
                 style={{ 
-                  height: '630px',
+                  height: '600px',
                   width: '100%',
                   minWidth: 0,
                   maxWidth: '100%',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  marginTop: '3px'
                 }}
               >
                 <video 
@@ -210,10 +221,19 @@ export function ProductSection() {
                   onCanPlay={() => setVideoLoaded(true)}
                   onLoadedMetadata={() => setVideoLoaded(true)}
                   onEnded={(e) => {
-                    // Ensure seamless restart
+                    // Ensure seamless restart - reset immediately when ended event fires
                     const video = e.currentTarget;
                     video.currentTime = 0;
-                    video.play();
+                    video.play().catch(() => {
+                      // Silently handle play errors
+                    });
+                  }}
+                  onTimeUpdate={(e) => {
+                    // Additional safety check for seamless looping
+                    const video = e.currentTarget;
+                    if (video.duration && video.currentTime >= video.duration - 0.033) {
+                      video.currentTime = 0;
+                    }
                   }}
                 />
               </div>

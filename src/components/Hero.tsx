@@ -209,7 +209,7 @@ export function Hero() {
                     letterSpacing: '-0.03em',
                   }}
                 >
-                  <span className="block">Unify Imaging </span>
+                  <span className="block">Unified Imaging </span>
                   <span className="block mt-2">
                     <span>Intelligence </span>
                     <span className="text-white">Platform</span>
