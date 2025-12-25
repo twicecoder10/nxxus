@@ -32,7 +32,7 @@ export function TeamSection() {
     {
       name: '',
       title: 'CTO',
-      bio: 'Technology leader specializing in medical imaging platform architecture and development.',
+      bio: '25-year AI and digital executive with five exits, leading Fortune 100 transformations, driving sustained revenue growth, and enterprise value.',
       image: tomImage,
     },
     {
@@ -108,7 +108,7 @@ export function TeamSection() {
     {
       name: 'Gaurav Malik',
       title: 'VP, Patient Services and Business Development, Quest',
-      bio: '25-year AI and digital executive with five exits, leading Fortune 100 transformations, driving sustained revenue growth, and enterprise value.',
+      bio: 'VP at Quest Diagnostics supporting care for over 20 million patients. 25 years across GE Healthcare, GE Capital, and Quest.',
       image: gauravMalikImage,
     },
   ];
@@ -118,6 +118,9 @@ export function TeamSection() {
       <style>{`
         @media (min-width: 768px) {
           .tom-coppa-card {
+            grid-column: 2 / 3;
+          }
+          .avi-grossman-card {
             grid-column: 2 / 3;
           }
         }
@@ -223,14 +226,17 @@ export function TeamSection() {
 
           {/* Core Team Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
-            {coreTeam.map((member, idx) => (
-              <TeamCard 
-                key={idx} 
-                member={member} 
-                index={idx} 
-                shouldCenter={idx === 6 && coreTeam.length % 3 === 1}
-              />
-            ))}
+            {coreTeam.map((member, idx) => {
+              const isAviGrossman = member.name === 'Avi Grossman, MBA';
+              return (
+                <TeamCard 
+                  key={idx} 
+                  member={member} 
+                  index={idx} 
+                  shouldCenter={isAviGrossman}
+                />
+              );
+            })}
           </div>
           <br></br> <br></br>
         </motion.div>
@@ -241,9 +247,10 @@ export function TeamSection() {
 }
 
 function TeamCard({ member, index, shouldCenter = false }: { member: any; index: number; shouldCenter?: boolean }) {
+  const isAviGrossman = member.name === 'Avi Grossman, MBA';
   return (
     <motion.div
-      className={`group h-full ${shouldCenter ? 'tom-coppa-card' : ''}`}
+      className={`group h-full ${shouldCenter ? (isAviGrossman ? 'avi-grossman-card' : 'tom-coppa-card') : ''}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
