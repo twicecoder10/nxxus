@@ -115,7 +115,7 @@ export function ContactContent() {
             >
               <br></br>Schedule a personalized meeting to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real-time enterprise diagnostic workspace.
           {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.*/}
-            </p><br></br><br></br>
+            </p>
             <motion.div
               className="mt-8 flex justify-center"
               initial={{ opacity: 0, y: 20 }}
