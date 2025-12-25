@@ -29,7 +29,7 @@ export function MeasuredImpact() {
     },
     {
       title: 'Lower Imaging Costs',
-      description: 'Fewer duplicate studies through discovery, smart routing and coordination'
+      description: 'Fewer duplicate studies through discovery, smart routing, and coordination'
     },
     {
       title: 'Enterprise Reliability',

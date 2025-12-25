@@ -192,7 +192,7 @@ export function Hero() {
               </motion.div>
 
               {/* Headline */}
-              <div className="mb-12 overflow-hidden">
+              <div className="mb-12 overflow-visible" style={{ paddingBottom: '0.5rem' }}>
                 <motion.h1 
                   className="text-white text-left"
                   initial={{ y: 120, opacity: 0 }}
@@ -205,11 +205,11 @@ export function Hero() {
                   style={{ 
                     fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
                     fontWeight: 700, 
-                    lineHeight: 1.1, 
+                    lineHeight: 1.15, 
                     letterSpacing: '-0.03em',
                   }}
                 >
-                  <span className="block">Unify Every</span>
+                  <span className="block">Unify Imaging </span>
                   <span className="block mt-2">
                     <span>Intelligence </span>
                     <span className="text-white">Platform</span>
@@ -235,7 +235,7 @@ export function Hero() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                 >
-                  Imaging, labs, pathology, and EHRs converged <br></br>to a single pane of glass for better decisions<br></br> and coordinated care
+                  Imaging, labs, pathology, and EHRs converge <br></br>into a single pane of glass for better decisions<br></br> and coordinated care
                 </motion.p>
               </motion.div>
 
