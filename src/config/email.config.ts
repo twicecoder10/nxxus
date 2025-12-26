@@ -28,7 +28,9 @@ export const emailConfig = {
     // Thank you email sent to user
     thankYou: {
       subject: "We've received your request",
-      getHtml: (userName: string) => `
+      getHtml: (userName: string) => {
+        const name = userName || 'there';
+        return `
         <!DOCTYPE html>
         <html>
         <head>
@@ -36,25 +38,34 @@ export const emailConfig = {
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>We've received your request</title>
         </head>
-        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <div style="background-color: #ffffff; padding: 40px; border-radius: 8px;">
-            <p style="font-size: 16px; margin-bottom: 20px;">
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; text-align: left;">
+          <div style="background-color: #ffffff; padding: 40px; border-radius: 8px; text-align: left;">
+            <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
+              Hi ${name},
+            </p>
+            
+            <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
               Thank you for contacting NXXIM.
             </p>
             
-            <p style="font-size: 16px; margin-bottom: 20px;">
+            <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
               We have received your request. A member of our team will follow up to schedule a meeting.
             </p>
             
-            <p style="font-size: 16px; margin-top: 30px;">
+            <p style="font-size: 16px; margin-top: 30px; text-align: left;">
               Best regards,<br>
               <strong>The NXXIM Team</strong>
             </p>
           </div>
         </body>
         </html>
-      `,
-      getText: (userName: string) => `
+      `;
+      },
+      getText: (userName: string) => {
+        const name = userName || 'there';
+        return `
+Hi ${name},
+
 Thank you for contacting NXXIM.
 
 We have received your request. A member of our team will follow up to schedule a meeting.
@@ -62,7 +73,8 @@ We have received your request. A member of our team will follow up to schedule a
 Best regards,
 
 The NXXIM Team
-      `
+      `;
+      }
     },
 
     // Notification email sent to admin
