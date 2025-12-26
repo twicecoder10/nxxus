@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import c1Image from '../../pics/c1.jpg';
@@ -12,12 +12,34 @@ import optimizeImage from '../../pics/optimiz.jpg';
 export function HowItWorksContent() {
   const [activeStep, setActiveStep] = useState(0);
   const containerRef = useRef(null);
+  const stepsContainerRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
+  const [imageHeight, setImageHeight] = useState<number | string>('auto');
+
+  // Match image height to steps container height
+  useEffect(() => {
+    const updateImageHeight = () => {
+      if (stepsContainerRef.current && imageContainerRef.current) {
+        const stepsHeight = stepsContainerRef.current.offsetHeight;
+        setImageHeight(`${stepsHeight}px`);
+      }
+    };
+
+    // Initial measurement
+    updateImageHeight();
+
+    // Update on step change (when description expands/collapses)
+    const timeoutId = setTimeout(updateImageHeight, 100);
+
+    // Update on window resize
+    window.addEventListener('resize', updateImageHeight);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', updateImageHeight);
+    };
+  }, [activeStep]);
 
   // Calculate which step should be active based on scroll position
   useEffect(() => {
@@ -127,26 +149,27 @@ export function HowItWorksContent() {
         {/* Factory-style Layout */}
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           {/* Left - Step List (Factory Style) */}
-          <div className="space-y-0">
+          <div ref={stepsContainerRef} className="space-y-0 flex flex-col">
             {steps.map((step, idx) => (
               <motion.div
                 key={idx}
                 ref={(el) => {
                   stepRefs.current[idx] = el;
                 }}
-                className={`cursor-pointer py-10 border-b border-[#E5E7EB] transition-all duration-500 ${
+                className={`cursor-pointer border-b border-[#E5E7EB] transition-all duration-500 flex ${
                   activeStep === idx ? 'border-[#94B3D8]' : 'hover:border-[#94B3D8]/30'
                 }`}
                 onClick={() => setActiveStep(idx)}
+                style={{ minHeight: 'auto' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="flex items-start gap-8">
+                <div className="flex items-start gap-8 w-full py-4">
                   {/* Number */}
                   <div 
-                    className={`transition-all duration-500 ${
+                    className={`transition-all duration-500 flex-shrink-0 ${
                       activeStep === idx ? 'text-[#94B3D8]' : 'text-[#D1D5DB]'
                     }`}
                     style={{ 
@@ -160,7 +183,7 @@ export function HowItWorksContent() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 pt-1">
+                  <div className="flex-1 min-w-0">
                     <h3
                       className={`mb-4 transition-all duration-500 ${
                         activeStep === idx ? 'text-[#000000]' : 'text-[#6B7280]'
@@ -197,7 +220,7 @@ export function HowItWorksContent() {
           </div>
 
           {/* Right - Image Display (Factory Style) */}
-          <div className="sticky top-32 h-[600px] lg:h-[700px]">
+          <div ref={imageContainerRef} className="sticky top-32" style={{ height: imageHeight }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep}
