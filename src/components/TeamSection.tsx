@@ -13,7 +13,8 @@ import philipKahnImage from '../../pics/Philip-Kahn-CPA.webp';
 // Medical Advisory Board images
 import barryMangelImage from '../../pics/Barry-David-Mangel.jpg';
 import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.webp';
-import gauravMalikImage from '../../pics/Gaurav-Malik.webp';
+import gauravMalikImage from '../../pics/GauravMalik.jpeg';
+import robGondaImage from '../../pics/RobGonda.jpeg';
 
 export function TeamSection() {
   const containerRef = useRef(null);
@@ -30,10 +31,10 @@ export function TeamSection() {
       image: warrenImage,
     },
     {
-      name: '',
+      name: 'Rob Gonda',
       title: 'CTO',
       bio: '25-year AI and digital executive with five exits, leading Fortune 100 transformations, driving sustained revenue growth, and enterprise value.',
-      image: tomImage,
+      image: robGondaImage,
     },
     {
       name: 'Philip Kahn, CPA',
@@ -248,6 +249,7 @@ export function TeamSection() {
 
 function TeamCard({ member, index, shouldCenter = false }: { member: any; index: number; shouldCenter?: boolean }) {
   const isAviGrossman = member.name === 'Avi Grossman, MBA';
+  const isRobGonda = member.name === 'Rob Gonda';
   return (
     <motion.div
       className={`group h-full ${shouldCenter ? (isAviGrossman ? 'avi-grossman-card' : 'tom-coppa-card') : ''}`}
@@ -265,7 +267,7 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
-            style={{ objectPosition: 'center top' }}
+            style={{ objectPosition: isRobGonda ? 'center 35%' : 'center top' }}
           />
           
           {/* Gradient Overlay */}

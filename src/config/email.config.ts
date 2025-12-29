@@ -38,8 +38,8 @@ export const emailConfig = {
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>We've received your request</title>
         </head>
-        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; text-align: left;">
-          <div style="background-color: #ffffff; padding: 40px; border-radius: 8px; text-align: left;">
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0; padding: 20px; text-align: left;">
+          <div style="background-color: #ffffff; padding: 40px; border-radius: 8px; text-align: left; width: 100%;">
             <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
               Hi ${name},
             </p>
