@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import React from 'react';
-import unifiedVideo from '../../pics/unifiedvideo.mp4';
+import unifiedVideo from '../../pics/unifiedvideo2.mp4';
 
 export function ProductSection() {
   const containerRef = useRef(null);
@@ -20,7 +20,7 @@ export function ProductSection() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Preload the video aggressively
+    // Preload the video
     video.load();
     
     const handleCanPlay = () => {
@@ -28,72 +28,10 @@ export function ProductSection() {
     };
     
     video.addEventListener('canplay', handleCanPlay);
-
-    // Enhanced seamless loop handling to prevent jumps
-    let frameCallbackId: number | null = null;
-    let timeUpdateHandler: (() => void) | null = null;
-    
-    const handleSeamlessLoop = () => {
-      if (!video) return;
-      
-      const duration = video.duration;
-      const currentTime = video.currentTime;
-      
-      // More aggressive detection - reset earlier to prevent visible skip
-      // Using 1 frame threshold (typically 0.033s at 30fps, 0.016s at 60fps)
-      if (duration && currentTime >= duration - 0.033) {
-        video.currentTime = 0;
-        if (!video.paused) {
-          video.play().catch(() => {}); // Ensure it keeps playing
-        }
-      }
-      
-      // Continue monitoring
-      if (video.requestVideoFrameCallback) {
-        frameCallbackId = video.requestVideoFrameCallback(handleSeamlessLoop);
-      }
-    };
-
-    // Enhanced timeupdate fallback with better precision
-    const createTimeUpdateHandler = () => {
-      return () => {
-        if (!video) return;
-        const duration = video.duration;
-        const currentTime = video.currentTime;
-        // Use smaller threshold for smoother transition
-        if (duration && currentTime >= duration - 0.033) {
-          video.currentTime = 0;
-        }
-      };
-    };
-
-    // Start the seamless loop monitoring once video is ready
-    const startLoopMonitoring = () => {
-      if (video.requestVideoFrameCallback) {
-        frameCallbackId = video.requestVideoFrameCallback(handleSeamlessLoop);
-      } else {
-        // Fallback for browsers without requestVideoFrameCallback
-        timeUpdateHandler = createTimeUpdateHandler();
-        video.addEventListener('timeupdate', timeUpdateHandler, { passive: true });
-      }
-    };
-
-    const handleLoadedMetadata = () => {
-      startLoopMonitoring();
-    };
-
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
     
     return () => {
       if (video) {
         video.removeEventListener('canplay', handleCanPlay);
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-        if (timeUpdateHandler) {
-          video.removeEventListener('timeupdate', timeUpdateHandler);
-        }
-        if (frameCallbackId !== null && video.cancelVideoFrameCallback) {
-          video.cancelVideoFrameCallback(frameCallbackId);
-        }
       }
     };
   }, []);
@@ -220,21 +158,6 @@ export function ProductSection() {
                   onLoadedData={() => setVideoLoaded(true)}
                   onCanPlay={() => setVideoLoaded(true)}
                   onLoadedMetadata={() => setVideoLoaded(true)}
-                  onEnded={(e) => {
-                    // Ensure seamless restart - reset immediately when ended event fires
-                    const video = e.currentTarget;
-                    video.currentTime = 0;
-                    video.play().catch(() => {
-                      // Silently handle play errors
-                    });
-                  }}
-                  onTimeUpdate={(e) => {
-                    // Additional safety check for seamless looping
-                    const video = e.currentTarget;
-                    if (video.duration && video.currentTime >= video.duration - 0.033) {
-                      video.currentTime = 0;
-                    }
-                  }}
                 />
               </div>
             </motion.div>

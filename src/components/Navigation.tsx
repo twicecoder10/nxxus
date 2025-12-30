@@ -76,8 +76,6 @@ export function Navigation() {
   const isContactPage = location.pathname === '/contact';
   const isBookDemoPage = location.pathname === '/book-demo';
   const shouldShowWhiteBg = isHowItWorksPage || isSpecialtiesPage || isAboutPage || isContactPage || isBookDemoPage || scrolled;
-  
-  const logoColor = shouldShowWhiteBg ? '#000000' : '#FFFFFF';
 
   return (
     <>
@@ -93,14 +91,15 @@ export function Navigation() {
           {/* Logo */}
           <Link to="/">
             <motion.div 
-              className="tracking-tight cursor-pointer z-50" 
-              style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', fontWeight: 700, letterSpacing: '-0.03em' }}
+              className="cursor-pointer z-50" 
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <span style={{ color: logoColor }}>N</span>
-              <span style={{ color: '#94B3D8' }}>XX</span>
-              <span style={{ color: logoColor }}>IM</span>
+              <img 
+                src={shouldShowWhiteBg ? '/Final long_Long Logo White BG.png' : '/Final long_Long Logo Black BG.png'}
+                alt="NXXIM Logo"
+                style={{ height: 'clamp(2rem, 5vw, 3rem)', width: 'auto' }}
+              />
             </motion.div>
           </Link>
 

@@ -109,7 +109,7 @@ export function TeamSection() {
     {
       name: 'Gaurav Malik',
       title: 'VP, Patient Services and Business Development, Quest',
-      bio: 'VP at Quest Diagnostics supporting care for over 20 million patients. 25 years across GE Healthcare, GE Capital, and Quest.',
+      bio: 'VP at Quest Diagnostics supporting care for over 20 million patients with 25 years across GE Healthcare, GE Capital, and Quest.',
       image: gauravMalikImage,
     },
   ];
@@ -154,7 +154,7 @@ export function TeamSection() {
             Built by Enterprise Healthcare Leaders
           </h2>
           <p 
-            className="text-[#000000] max-w-3xl text-center mx-auto mb-24"
+            className="text-[#000000] max-w-3xl text-center mx-auto mb-8"
             style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
           >
             Our team brings decades of experience building, scaling, and operating technology inside large healthcare systems

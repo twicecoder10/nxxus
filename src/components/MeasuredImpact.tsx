@@ -21,7 +21,7 @@ export function MeasuredImpact() {
     },
     {
       title: 'Real-Time Collaboration',
-      description: 'Shared image and data views improve handoff across specialties'
+      description: 'Shared image and data views improve handoffs across specialties'
     },
     {
       title: 'Smarter Prioritization',

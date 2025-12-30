@@ -43,10 +43,12 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           {/* Logo & Tagline */}
           <div>
-            <div className="tracking-tight mb-4" style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.03em' }}>
-              <span style={{ color: '#ffffff' }}>N</span>
-              <span style={{ color: '#94B3D8' }}>XX</span>
-              <span style={{ color: '#ffffff' }}>IM</span>
+            <div className="mb-4">
+              <img 
+                src="/Final long_Long Logo Black BG.png"
+                alt="NXXIM Logo"
+                style={{ height: '3rem', width: 'auto' }}
+              />
             </div>
             <p className="text-[#94B3D8]/60" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
               AI-Native Enterprise<br />Unify Every
