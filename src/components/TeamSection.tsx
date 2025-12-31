@@ -2,7 +2,8 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
 import warrenImage from '../../pics/warren.webp';
-import tomImage from '../../pics/genericpic.jpg';
+import tomImage from '../../pics/TomCoppaHeadShot02.jpg';
+import tomImagedol from '../../pics/genericpic.jpg';
 import aviImage from '../../pics/avi.jpg';
 import genericImage from '../../pics/genericpic.jpg';
 // Core Team images
@@ -43,17 +44,10 @@ export function TeamSection() {
       image: philipKahnImage,
     },
     {
-      name: '',
-      title: 'Vice President of Client Relations ',
-      bio: '',
-      image: tomImage,
-    },
-    
-    {
-      name: '',
-      title: 'CMO',
-      bio: '',
-      image: tomImage,
+      name: 'Jeff Mabus',
+      title: 'SVP',
+      bio: 'Healthcare technology leader with 25 years designing software, leading implementations, and advancing interoperability solutions globally.',
+      image: tomImagedol,
     },
     {
       name: 'Tom Coppa',
@@ -118,8 +112,15 @@ export function TeamSection() {
     <>
       <style>{`
         @media (min-width: 768px) {
-          .tom-coppa-card {
-            grid-column: 2 / 3;
+          .second-row-wrapper {
+            grid-column: 1 / 4;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+          }
+          .second-row-wrapper > * {
+            flex: 0 0 calc((100% - 4rem) / 3);
+            max-width: calc((100% - 4rem) / 3);
           }
           .avi-grossman-card {
             grid-column: 2 / 3;
@@ -162,18 +163,28 @@ export function TeamSection() {
 
           {/* Team Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
-            {enterpriseLeaders.map((member, idx) => {
-              // Tom Coppa (index 6) should be directly under Client Relations (index 4, column 2)
-              const isTomCoppa = idx === 6 && member.name === 'Tom Coppa';
-              return (
-                <TeamCard 
-                  key={idx} 
-                  member={member} 
-                  index={idx} 
-                  shouldCenter={isTomCoppa}
-                />
-              );
-            })}
+            {/* First Row: First 3 members */}
+            {enterpriseLeaders.slice(0, 3).map((member, idx) => (
+              <TeamCard 
+                key={idx} 
+                member={member} 
+                index={idx} 
+              />
+            ))}
+            {/* Second Row: Last 2 members centered */}
+            <div className="second-row-wrapper">
+              {enterpriseLeaders.slice(3).map((member, idx) => {
+                const isTomCoppa = member.name === 'Tom Coppa';
+                return (
+                  <TeamCard 
+                    key={idx + 3} 
+                    member={member} 
+                    index={idx + 3} 
+                    shouldCenter={isTomCoppa}
+                  />
+                );
+              })}
+            </div>
           </div>
         </motion.div>
 
@@ -250,9 +261,10 @@ export function TeamSection() {
 function TeamCard({ member, index, shouldCenter = false }: { member: any; index: number; shouldCenter?: boolean }) {
   const isAviGrossman = member.name === 'Avi Grossman, MBA';
   const isRobGonda = member.name === 'Rob Gonda';
+  const isTomCoppa = member.name === 'Tom Coppa';
   return (
     <motion.div
-      className={`group h-full ${shouldCenter ? (isAviGrossman ? 'avi-grossman-card' : 'tom-coppa-card') : ''}`}
+      className={`group h-full ${isAviGrossman ? 'avi-grossman-card' : ''}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -267,7 +279,7 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
-            style={{ objectPosition: isRobGonda ? 'center 35%' : 'center top' }}
+            style={{ objectPosition: isRobGonda ? 'center 35%' : isTomCoppa ? 'center 10%' : 'center top' }}
           />
           
           {/* Gradient Overlay */}
