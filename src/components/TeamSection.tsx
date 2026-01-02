@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import React from 'react';
 import warrenImage from '../../pics/warren.webp';
-import tomImage from '../../pics/TomCoppaHeadShot02.jpg';
+import tomImage from '../../pics/TomCoppaHeadShot01.jpg';
 import tomImagedol from '../../pics/genericpic.jpg';
 import aviImage from '../../pics/avi.jpg';
 import genericImage from '../../pics/genericpic.jpg';
@@ -262,6 +262,18 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
   const isAviGrossman = member.name === 'Avi Grossman, MBA';
   const isRobGonda = member.name === 'Rob Gonda';
   const isTomCoppa = member.name === 'Tom Coppa';
+  const isDrBarryMangel = member.name === 'Dr. Barry D. Mangel, MD';
+  
+  // Determine object position based on member
+  let objectPosition = 'center top';
+  if (isRobGonda) {
+    objectPosition = 'center 35%';
+  } else if (isTomCoppa) {
+    objectPosition = 'center 29%'; // Moved up to reduce gap at top
+  } else if (isDrBarryMangel) {
+    objectPosition = 'center 1%'; // Moved down (from 'center top' to increase gap at top)
+  }
+  
   return (
     <motion.div
       className={`group h-full ${isAviGrossman ? 'avi-grossman-card' : ''}`}
@@ -279,7 +291,7 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
-            style={{ objectPosition: isRobGonda ? 'center 35%' : isTomCoppa ? 'center 10%' : 'center top' }}
+            style={{ objectPosition }}
           />
           
           {/* Gradient Overlay */}
