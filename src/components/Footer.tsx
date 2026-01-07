@@ -47,7 +47,7 @@ export function Footer() {
               <img 
                 src="/Final long_Long Logo Black BG.png"
                 alt="NXXIM Logo"
-                style={{ height: '1.75rem', width: 'auto' }}
+                style={{ height: '2.0125rem', width: 'auto' }}
               />
             </div>
             <p className="text-[#94B3D8]/60" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>

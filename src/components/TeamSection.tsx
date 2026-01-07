@@ -16,6 +16,7 @@ import barryMangelImage from '../../pics/Barry-David-Mangel.jpg';
 import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.webp';
 import gauravMalikImage from '../../pics/GauravMalik.jpeg';
 import robGondaImage from '../../pics/RobGonda.jpeg';
+import jeffMabusImage from '../../pics/JefferyMabus.jpg';
 
 export function TeamSection() {
   const containerRef = useRef(null);
@@ -47,7 +48,7 @@ export function TeamSection() {
       name: 'Jeff Mabus',
       title: 'SVP',
       bio: 'Healthcare technology leader with 25 years designing software, leading implementations, and advancing interoperability solutions globally.',
-      image: tomImagedol,
+      image: jeffMabusImage,
     },
     {
       name: 'Tom Coppa',
@@ -59,7 +60,6 @@ export function TeamSection() {
   ];
 
   const coreTeam = [
-  
     {
       name: 'Joseph Bamberger',
       title: 'Founder and CEO',
@@ -84,7 +84,6 @@ export function TeamSection() {
       bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
     },
-    
   ];
 
   const medicalAdvisoryBoard = [
@@ -126,6 +125,33 @@ export function TeamSection() {
             grid-column: 2 / 3;
           }
         }
+        .flip-card-container {
+          perspective: 1000px;
+          height: 100%;
+          min-height: 400px;
+        }
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          min-height: 400px;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+        }
+        .flip-card-container:hover .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          min-height: 400px;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back {
+          transform: rotateY(180deg);
+        }
       `}</style>
       <section 
         id="team" 
@@ -161,30 +187,54 @@ export function TeamSection() {
             Our team brings decades of experience building, scaling, and operating technology inside large healthcare systems
           </p>
 
-          {/* Team Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
-            {/* First Row: First 3 members */}
-            {enterpriseLeaders.slice(0, 3).map((member, idx) => (
-              <TeamCard 
-                key={idx} 
-                member={member} 
-                index={idx} 
-              />
-            ))}
-            {/* Second Row: Last 2 members centered */}
-            <div className="second-row-wrapper">
-              {enterpriseLeaders.slice(3).map((member, idx) => {
-                const isTomCoppa = member.name === 'Tom Coppa';
+          {/* Team Grid - Row 1: Warren(1), Rob(2), Philip(3); Row 2: Jeff(between 1-2), Tom(between 2-3) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch max-w-[1040px] mx-auto">
+            {enterpriseLeaders.map((member, idx) => {
+              const isWarren = member.name === 'Warren Wright';
+              const isRobGonda = member.name === 'Rob Gonda';
+              const isPhilipKahn = member.name === 'Philip Kahn, CPA';
+              const isJeffMabus = member.name === 'Jeff Mabus';
+              const isTomCoppa = member.name === 'Tom Coppa';
+              
+              // Position: Row 1 - Warren(1), Rob(2), Philip(3); Row 2 - Jeff(spans 1-2, centered), Tom(spans 2-3, centered)
+              let gridStyle: React.CSSProperties = {};
+              if (isWarren) {
+                gridStyle = { gridColumn: '1', gridRow: '1' };
+              } else if (isRobGonda) {
+                gridStyle = { gridColumn: '2', gridRow: '1' };
+              } else if (isPhilipKahn) {
+                gridStyle = { gridColumn: '3', gridRow: '1' };
+              } else if (isJeffMabus) {
+                gridStyle = { gridColumn: '1 / 3', gridRow: '2' };
+              } else if (isTomCoppa) {
+                gridStyle = { gridColumn: '2 / 4', gridRow: '2' };
+              }
+              
+              // For Jeff and Tom, wrap in centered container
+              if (isJeffMabus || isTomCoppa) {
                 return (
-                  <TeamCard 
-                    key={idx + 3} 
-                    member={member} 
-                    index={idx + 3} 
-                    shouldCenter={isTomCoppa}
-                  />
+                  <div key={idx} className="w-full flex justify-center" style={gridStyle}>
+                    <div className="w-full" style={{ maxWidth: 'calc(50% - 0.5rem)' }}>
+                      <TeamCard 
+                        member={member} 
+                        index={idx} 
+                        isFlipCard={true}
+                      />
+                    </div>
+                  </div>
                 );
-              })}
-            </div>
+              }
+              
+              return (
+                <div key={idx} className="w-full" style={gridStyle}>
+                  <TeamCard 
+                    member={member} 
+                    index={idx} 
+                    isFlipCard={true}
+                  />
+                </div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -211,7 +261,7 @@ export function TeamSection() {
           {/* Medical Advisory Board Grid */}
           <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
             {medicalAdvisoryBoard.map((member, idx) => (
-              <TeamCard key={idx} member={member} index={idx} />
+              <TeamCard key={idx} member={member} index={idx} isFlipCard={true} />
             ))}
           </div>
         </motion.div>
@@ -240,13 +290,31 @@ export function TeamSection() {
           <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
             {coreTeam.map((member, idx) => {
               const isAviGrossman = member.name === 'Avi Grossman, MBA';
+              const isAkivaPodolsky = member.name === 'Akiva Podolsky';
+              const isJosephBamberger = member.name === 'Joseph Bamberger';
+              const isDrJosephChalil = member.name === 'Dr. Joseph M. Chalil';
+              
+              // Position: Row 1 - Joseph(1), Akiva(2), Dr. Joseph(3); Row 2 - Avi(2, below Akiva)
+              let gridStyle: React.CSSProperties = {};
+              if (isJosephBamberger) {
+                gridStyle = { gridColumn: '1', gridRow: '1' };
+              } else if (isAkivaPodolsky) {
+                gridStyle = { gridColumn: '2', gridRow: '1' };
+              } else if (isDrJosephChalil) {
+                gridStyle = { gridColumn: '3', gridRow: '1' };
+              } else if (isAviGrossman) {
+                gridStyle = { gridColumn: '2', gridRow: '2' };
+              }
+              
               return (
-                <TeamCard 
-                  key={idx} 
-                  member={member} 
-                  index={idx} 
-                  shouldCenter={isAviGrossman}
-                />
+                <div key={idx} className="w-full" style={gridStyle}>
+                  <TeamCard 
+                    member={member} 
+                    index={idx} 
+                    shouldCenter={isAviGrossman}
+                    isFlipCard={true}
+                  />
+                </div>
               );
             })}
           </div>
@@ -258,11 +326,12 @@ export function TeamSection() {
   );
 }
 
-function TeamCard({ member, index, shouldCenter = false }: { member: any; index: number; shouldCenter?: boolean }) {
+function TeamCard({ member, index, shouldCenter = false, isFlipCard = false }: { member: any; index: number; shouldCenter?: boolean; isFlipCard?: boolean }) {
   const isAviGrossman = member.name === 'Avi Grossman, MBA';
   const isRobGonda = member.name === 'Rob Gonda';
   const isTomCoppa = member.name === 'Tom Coppa';
   const isDrBarryMangel = member.name === 'Dr. Barry D. Mangel, MD';
+  const isJeffMabus = member.name === 'Jeff Mabus';
   
   // Determine object position based on member
   let objectPosition = 'center top';
@@ -272,8 +341,72 @@ function TeamCard({ member, index, shouldCenter = false }: { member: any; index:
     objectPosition = 'center 29%'; // Moved up to reduce gap at top
   } else if (isDrBarryMangel) {
     objectPosition = 'center 1%'; // Moved down (from 'center top' to increase gap at top)
+  } else if (isJeffMabus) {
+    objectPosition = 'center 23%'; // Moved up to reduce gap at top
   }
   
+  // Flip card version for Enterprise Leaders section
+  if (isFlipCard) {
+    return (
+      <motion.div
+        className="h-full"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.15 }}
+      >
+        <div className="flip-card-container h-full">
+          <div className="flip-card-inner">
+            {/* Front of card - Image, Name, Title */}
+            <div className="flip-card-front">
+              <div className="bg-white rounded-2xl overflow-hidden border-2 border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-500 h-full">
+                <div className="relative h-full min-h-[400px]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition, minHeight: '400px' }}
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 transition-opacity duration-500" />
+                  
+                  {/* Name overlay on image */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 p-6"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
+                  >
+                    <div className="text-white mb-2" style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                      {member.name}
+                    </div>
+                    <div className="text-white" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                      {member.title}
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+
+            {/* Back of card - Bio/Description */}
+            <div className="flip-card-back">
+              <div className="bg-white rounded-2xl overflow-hidden border-2 border-[#94B3D8] h-full flex flex-col">
+                <div className="p-4 flex-1 flex items-center justify-center">
+                  <p className="text-[#6B7280] text-center" style={{ fontSize: '20px', lineHeight: 1.6, fontWeight: 300 }}>
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+  
+  // Regular card (non-flip) for other sections
   return (
     <motion.div
       className={`group h-full ${isAviGrossman ? 'avi-grossman-card' : ''}`}

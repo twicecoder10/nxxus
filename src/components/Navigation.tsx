@@ -98,7 +98,7 @@ export function Navigation() {
               <img 
                 src={shouldShowWhiteBg ? '/Final long_Long Logo White BG.png' : '/Final long_Long Logo Black BG.png'}
                 alt="NXXIM Logo"
-                style={{ height: 'clamp(1.25rem, 3vw, 1.75rem)', width: 'auto' }}
+                style={{ height: 'clamp(1.4375rem, 3.45vw, 2.0125rem)', width: 'auto' }}
               />
             </motion.div>
           </Link>
