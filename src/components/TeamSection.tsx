@@ -187,6 +187,27 @@ export function TeamSection() {
             Our team brings decades of experience building, scaling, and operating technology inside large healthcare systems
           </p>
 
+          {/* The NXXIM Team heading */}
+          <motion.div
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 
+              className="text-[#000000] max-w-4xl mx-auto"
+              style={{ 
+                fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', 
+                fontWeight: 600, 
+                lineHeight: 1.2, 
+                letterSpacing: '-0.02em' 
+              }}
+            >
+              The NXXIM Team
+            </h3>
+          </motion.div>
+
           {/* Team Grid - Row 1: Warren(1), Rob(2), Philip(3); Row 2: Jeff(between 1-2), Tom(between 2-3) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch max-w-[1040px] mx-auto">
             {enterpriseLeaders.map((member, idx) => {
