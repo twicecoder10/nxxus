@@ -89,28 +89,36 @@ export function ProductSection() {
           }
           .unified-video-wrapper {
             position: relative !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
+            width: 156vw !important;
+            max-width: 156vw !important;
+            margin-left: calc(50% - 78vw) !important;
+            margin-right: calc(50% - 78vw) !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
-            transform: translateX(calc((100vw - 100%) / -2)) !important;
+            left: 0 !important;
+            right: 0 !important;
+          }
+          .product-section .max-w-7xl {
+            overflow-x: visible !important;
+          }
+          .product-section .grid > *:first-child {
+            grid-column: 1 / -1 !important;
           }
           .unified-video-container {
             height: auto !important;
-            min-height: 300px !important;
-            max-height: 500px !important;
-            aspect-ratio: 21 / 9 !important;
+            min-height: 400px !important;
+            max-height: 600px !important;
+            aspect-ratio: 16 / 9 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             border: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
-            border-radius: 0 !important;
+            border-radius: 1rem !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            overflow: hidden !important;
           }
           .unified-video {
             object-fit: contain !important;
@@ -123,6 +131,7 @@ export function ProductSection() {
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
+            border-radius: 1rem !important;
           }
         }
         @media (min-width: 1024px) {
