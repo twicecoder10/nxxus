@@ -64,15 +64,62 @@ export function ProductSection() {
   ];
 
   return (
-    <motion.section 
-      id="platform" 
-      ref={containerRef}
-      className="min-h-screen bg-white relative overflow-hidden pb-40 mb-32"
-      style={{ opacity, y }}
-    >
+    <>
+      <style>{`
+        @media (max-width: 1023px) {
+          .unified-video-wrapper {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            margin-left: calc(-50vw + 50%) !important;
+            margin-right: calc(-50vw + 50%) !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+          .unified-video-container {
+            height: auto !important;
+            min-height: 300px !important;
+            max-height: 500px !important;
+            aspect-ratio: 16 / 9 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 0 !important;
+          }
+          .unified-video {
+            object-fit: contain !important;
+            object-position: center center !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .unified-video-container {
+            height: 600px !important;
+          }
+          .unified-video {
+            object-fit: cover !important;
+            object-position: center center !important;
+          }
+        }
+      `}</style>
+      <motion.section 
+        id="platform" 
+        ref={containerRef}
+        className="min-h-screen bg-white relative overflow-hidden pb-40 mb-32"
+        style={{ opacity, y }}
+      >
       {/* Background gradient effects - removed for pure white background */}
 
-      <div className="max-w-[1800px] mx-auto px-8 lg:px-16 w-full relative z-10">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 w-full relative z-10">
         {/* Section Title */}
         <motion.div
           className="mb-20 text-center"
@@ -115,7 +162,7 @@ export function ProductSection() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Video on Left */}
             <motion.div
-              className="flex justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start unified-video-wrapper"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -123,7 +170,7 @@ export function ProductSection() {
               style={{ y, minWidth: 0, flexShrink: 0 }}
             >
               <div 
-                className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white" 
+                className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white unified-video-container" 
                 style={{ 
                   height: '600px',
                   width: '100%',
@@ -141,7 +188,7 @@ export function ProductSection() {
                   muted
                   playsInline
                   preload="auto"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full unified-video"
                   style={{ 
                     display: 'block',
                     position: 'absolute',
@@ -150,6 +197,7 @@ export function ProductSection() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
+                    objectPosition: 'center center',
                     opacity: videoLoaded ? 1 : 0,
                     transition: 'opacity 0.2s ease-in-out',
                     pointerEvents: 'none',
@@ -202,5 +250,6 @@ export function ProductSection() {
         </div>
       </div>
     </motion.section>
+    </>
   );
 }
