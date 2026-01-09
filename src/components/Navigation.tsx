@@ -193,7 +193,7 @@ export function Navigation() {
                   console.log('Hamburger clicked! Current state:', mobileMenuOpen);
                   setMobileMenuOpen((prev) => !prev);
                 }}
-                className="mobile-menu-toggle flex flex-col gap-1.5 items-center justify-center z-[10000] relative cursor-pointer"
+                className="mobile-menu-toggle flex flex-col gap-2 items-center justify-center z-[10000] relative cursor-pointer"
                 style={{
                   width: '2.5rem',
                   height: '2.5rem',
@@ -217,7 +217,8 @@ export function Navigation() {
                     backgroundColor: shouldShowWhiteBg ? '#000000' : '#FFFFFF',
                     borderRadius: '2px',
                     transition: 'all 0.3s ease',
-                    transform: mobileMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none'
+                    transform: mobileMenuOpen ? 'rotate(45deg) translateY(10px)' : 'none',
+                    opacity: 1
                   }}
                 />
                 <span
@@ -239,7 +240,8 @@ export function Navigation() {
                     backgroundColor: shouldShowWhiteBg ? '#000000' : '#FFFFFF',
                     borderRadius: '2px',
                     transition: 'all 0.3s ease',
-                    transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'
+                    transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-10px)' : 'none',
+                    opacity: 1
                   }}
                 />
               </button>

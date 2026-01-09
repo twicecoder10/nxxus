@@ -67,13 +67,37 @@ export function ProductSection() {
     <>
       <style>{`
         @media (max-width: 1023px) {
-          .unified-video-wrapper {
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin-left: calc(-50vw + 50%) !important;
-            margin-right: calc(-50vw + 50%) !important;
+          .product-section {
+            overflow-x: visible !important;
+            overflow: visible !important;
+          }
+          .product-section-container {
             padding-left: 0 !important;
             padding-right: 0 !important;
+            overflow-x: visible !important;
+          }
+          .product-section .max-w-7xl {
+            overflow-x: visible !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            max-width: 100% !important;
+          }
+          .product-section .grid {
+            overflow-x: visible !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+          .unified-video-wrapper {
+            position: relative !important;
+            width: 100vw !important;
+            max-width: 100vw !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            transform: translateX(calc((100vw - 100%) / -2)) !important;
           }
           .unified-video-container {
             height: auto !important;
@@ -114,12 +138,12 @@ export function ProductSection() {
       <motion.section 
         id="platform" 
         ref={containerRef}
-        className="min-h-screen bg-white relative overflow-hidden pb-40 mb-32"
+        className="min-h-screen bg-white relative overflow-hidden pb-40 mb-32 product-section"
         style={{ opacity, y }}
       >
       {/* Background gradient effects - removed for pure white background */}
 
-      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 w-full relative z-10">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 w-full relative z-10 product-section-container">
         {/* Section Title */}
         <motion.div
           className="mb-20 text-center"
