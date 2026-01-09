@@ -210,6 +210,7 @@ export function Navigation() {
               >
                 {/* Three horizontal lines for hamburger icon */}
                 <span
+                  className="hamburger-line"
                   style={{
                     display: 'block',
                     width: '24px',
@@ -217,11 +218,13 @@ export function Navigation() {
                     backgroundColor: shouldShowWhiteBg ? '#000000' : '#FFFFFF',
                     borderRadius: '2px',
                     transition: 'all 0.3s ease',
-                    transform: mobileMenuOpen ? 'rotate(45deg) translateY(10px)' : 'none',
-                    opacity: 1
+                    transform: mobileMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none',
+                    opacity: 1,
+                    visibility: 'visible'
                   }}
                 />
                 <span
+                  className="hamburger-line"
                   style={{
                     display: 'block',
                     width: '24px',
@@ -229,10 +232,12 @@ export function Navigation() {
                     backgroundColor: shouldShowWhiteBg ? '#000000' : '#FFFFFF',
                     borderRadius: '2px',
                     transition: 'all 0.3s ease',
-                    opacity: mobileMenuOpen ? 0 : 1
+                    opacity: mobileMenuOpen ? 0 : 1,
+                    visibility: mobileMenuOpen ? 'hidden' : 'visible'
                   }}
                 />
                 <span
+                  className="hamburger-line"
                   style={{
                     display: 'block',
                     width: '24px',
@@ -240,8 +245,9 @@ export function Navigation() {
                     backgroundColor: shouldShowWhiteBg ? '#000000' : '#FFFFFF',
                     borderRadius: '2px',
                     transition: 'all 0.3s ease',
-                    transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-10px)' : 'none',
-                    opacity: 1
+                    transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none',
+                    opacity: 1,
+                    visibility: 'visible'
                   }}
                 />
               </button>

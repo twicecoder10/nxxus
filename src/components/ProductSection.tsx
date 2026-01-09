@@ -103,7 +103,7 @@ export function ProductSection() {
             height: auto !important;
             min-height: 300px !important;
             max-height: 500px !important;
-            aspect-ratio: 16 / 9 !important;
+            aspect-ratio: 21 / 9 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
