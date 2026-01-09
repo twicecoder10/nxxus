@@ -110,6 +110,26 @@ export function TeamSection() {
   return (
     <>
       <style>{`
+        /* Mobile: Reset all grid positioning for consistent single column layout like Gaurav's card */
+        @media (max-width: 767px) {
+          .enterprise-leader-card-wrapper,
+          .core-team-card-wrapper {
+            grid-column: 1 !important;
+            grid-row: auto !important;
+            width: 100% !important;
+          }
+          .enterprise-leader-wrapper {
+            display: block !important;
+            justify-content: normal !important;
+            width: 100% !important;
+            grid-column: 1 !important;
+            grid-row: auto !important;
+          }
+          .enterprise-leader-wrapper > div {
+            max-width: 100% !important;
+          }
+        }
+        
         @media (min-width: 768px) {
           .second-row-wrapper {
             grid-column: 1 / 4;
@@ -209,7 +229,7 @@ export function TeamSection() {
           </motion.div>
 
           {/* Team Grid - Row 1: Warren(1), Rob(2), Philip(3); Row 2: Jeff(between 1-2), Tom(between 2-3) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch max-w-[1040px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 items-stretch max-w-[1040px] mx-auto">
             {enterpriseLeaders.map((member, idx) => {
               const isWarren = member.name === 'Warren Wright';
               const isRobGonda = member.name === 'Rob Gonda';
@@ -218,6 +238,7 @@ export function TeamSection() {
               const isTomCoppa = member.name === 'Tom Coppa';
               
               // Position: Row 1 - Warren(1), Rob(2), Philip(3); Row 2 - Jeff(spans 1-2, centered), Tom(spans 2-3, centered)
+              // Desktop positioning only - mobile will reset via CSS
               let gridStyle: React.CSSProperties = {};
               if (isWarren) {
                 gridStyle = { gridColumn: '1', gridRow: '1' };
@@ -234,7 +255,7 @@ export function TeamSection() {
               // For Jeff and Tom, wrap in centered container
               if (isJeffMabus || isTomCoppa) {
                 return (
-                  <div key={idx} className="w-full flex justify-center" style={gridStyle}>
+                  <div key={idx} className="w-full enterprise-leader-wrapper flex justify-center enterprise-leader-card-wrapper" style={gridStyle}>
                     <div className="w-full" style={{ maxWidth: 'calc(50% - 0.5rem)' }}>
                       <TeamCard 
                         member={member} 
@@ -247,7 +268,7 @@ export function TeamSection() {
               }
               
               return (
-                <div key={idx} className="w-full" style={gridStyle}>
+                <div key={idx} className="w-full enterprise-leader-card-wrapper" style={gridStyle}>
                   <TeamCard 
                     member={member} 
                     index={idx} 
@@ -280,7 +301,7 @@ export function TeamSection() {
           </h2>
 
           {/* Medical Advisory Board Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-stretch max-w-[1040px] mx-auto">
             {medicalAdvisoryBoard.map((member, idx) => (
               <TeamCard key={idx} member={member} index={idx} isFlipCard={true} />
             ))}
@@ -308,7 +329,7 @@ export function TeamSection() {
           </h2>
 
           {/* Core Team Grid */}
-          <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-[1040px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-stretch max-w-[1040px] mx-auto">
             {coreTeam.map((member, idx) => {
               const isAviGrossman = member.name === 'Avi Grossman, MBA';
               const isAkivaPodolsky = member.name === 'Akiva Podolsky';
@@ -316,6 +337,7 @@ export function TeamSection() {
               const isDrJosephChalil = member.name === 'Dr. Joseph M. Chalil';
               
               // Position: Row 1 - Joseph(1), Akiva(2), Dr. Joseph(3); Row 2 - Avi(2, below Akiva)
+              // Desktop positioning only - mobile will reset via CSS
               let gridStyle: React.CSSProperties = {};
               if (isJosephBamberger) {
                 gridStyle = { gridColumn: '1', gridRow: '1' };
@@ -328,7 +350,7 @@ export function TeamSection() {
               }
               
               return (
-                <div key={idx} className="w-full" style={gridStyle}>
+                <div key={idx} className="w-full core-team-card-wrapper" style={gridStyle}>
                   <TeamCard 
                     member={member} 
                     index={idx} 
