@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import React from 'react';
-import unifiedVideo from '../../pics/Gen4.mp4';
+import unifiedVideo from '../../pics/Cinemagraph_30s.mp4';
 
 export function ProductSection() {
   const containerRef = useRef(null);
