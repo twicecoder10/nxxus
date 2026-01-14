@@ -17,6 +17,7 @@ import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.jpg';
 import gauravMalikImage from '../../pics/GauravMalik.jpg';
 import robGondaImage from '../../pics/RobGonda.jpg';
 import jeffMabusImage from '../../pics/JefferyMabus.jpg';
+import isadoreMillerImage from '../../pics/IsadoreMiller.jpg';
 
 export function TeamSection() {
   const containerRef = useRef(null);
@@ -83,6 +84,12 @@ export function TeamSection() {
       title: 'Director of Investor Relations and Strategic Marketing',
       bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
+    },
+    {
+      name: 'Isadore Miller',
+      title: 'Senior Director, Portfolio Companies',
+      bio: 'Growth-focused leader, excelling in entrepreneurship, business strategy, and sales, launching successful entrepreneurial ventures.',
+      image: isadoreMillerImage,
     },
   ];
 
@@ -332,11 +339,12 @@ export function TeamSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-stretch max-w-[1040px] mx-auto">
             {coreTeam.map((member, idx) => {
               const isAviGrossman = member.name === 'Avi Grossman, MBA';
+              const isIsadoreMiller = member.name === 'Isadore Miller';
               const isAkivaPodolsky = member.name === 'Akiva Podolsky';
               const isJosephBamberger = member.name === 'Joseph Bamberger';
               const isDrJosephChalil = member.name === 'Dr. Joseph M. Chalil';
               
-              // Position: Row 1 - Joseph(1), Akiva(2), Dr. Joseph(3); Row 2 - Avi(2, below Akiva)
+              // Position: Row 1 - Joseph(1), Akiva(2), Dr. Joseph(3); Row 2 - Avi and Isadore (centered like Jeff and Tom)
               // Desktop positioning only - mobile will reset via CSS
               let gridStyle: React.CSSProperties = {};
               if (isJosephBamberger) {
@@ -345,8 +353,28 @@ export function TeamSection() {
                 gridStyle = { gridColumn: '2', gridRow: '1' };
               } else if (isDrJosephChalil) {
                 gridStyle = { gridColumn: '3', gridRow: '1' };
-              } else if (isAviGrossman) {
-                gridStyle = { gridColumn: '2', gridRow: '2' };
+              } else if (isAviGrossman || isIsadoreMiller) {
+                // For Avi and Isadore, wrap in centered container like Jeff and Tom
+                if (isAviGrossman) {
+                  gridStyle = { gridColumn: '1 / 3', gridRow: '2' };
+                } else if (isIsadoreMiller) {
+                  gridStyle = { gridColumn: '2 / 4', gridRow: '2' };
+                }
+              }
+              
+              // For Avi and Isadore, wrap in centered container
+              if (isAviGrossman || isIsadoreMiller) {
+                return (
+                  <div key={idx} className="w-full core-team-card-wrapper flex justify-center" style={gridStyle}>
+                    <div className="w-full" style={{ maxWidth: 'calc(50% - 0.5rem)' }}>
+                      <TeamCard 
+                        member={member} 
+                        index={idx} 
+                        isFlipCard={true}
+                      />
+                    </div>
+                  </div>
+                );
               }
               
               return (
