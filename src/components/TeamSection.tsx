@@ -135,6 +135,9 @@ export function TeamSection() {
           .enterprise-leader-wrapper > div {
             max-width: 100% !important;
           }
+          .core-team-card-wrapper.flex > div {
+            max-width: 100% !important;
+          }
         }
         
         @media (min-width: 768px) {
