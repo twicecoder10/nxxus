@@ -437,7 +437,7 @@ function TeamCard({ member, index, shouldCenter = false, isFlipCard = false }: {
             <div className="flip-card-back">
               <div className="bg-white rounded-2xl overflow-hidden border-2 border-[#94B3D8] h-full flex flex-col">
                 <div className="p-4 flex-1 flex items-center justify-center">
-                  <p className="text-[#6B7280] text-center" style={{ fontSize: '20px', lineHeight: 1.6, fontWeight: 300 }}>
+                  <p className="text-[#333333] text-center" style={{ fontSize: '24px', lineHeight: 1.6, fontWeight: 300 }}>
                     {member.bio}
                   </p>
                 </div>
