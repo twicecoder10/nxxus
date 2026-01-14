@@ -81,7 +81,7 @@ export function TeamSection() {
     },
     {
       name: 'Avi Grossman, MBA',
-      title: 'Director of Investor Relations and Strategic Marketing',
+      title: 'Senior Director of Investor Relations and Strategic Marketing',
       bio: 'Capital markets and product strategy background with $200M+ in multifamily transactions and experience in real estate, venture, compliance, and early-stage tech.',
       image: aviImage,
     },
