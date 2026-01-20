@@ -68,38 +68,38 @@ export function ProductSection() {
       <style>{`
         @media (max-width: 1023px) {
           .product-section {
-            overflow-x: visible !important;
-            overflow: visible !important;
+            overflow-x: hidden !important;
+            overflow: hidden !important;
           }
           .product-section-container {
             padding-left: 0 !important;
             padding-right: 0 !important;
-            overflow-x: visible !important;
+            overflow-x: hidden !important;
           }
           .product-section .max-w-7xl {
-            overflow-x: visible !important;
+            overflow-x: hidden !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             max-width: 100% !important;
           }
           .product-section .grid {
-            overflow-x: visible !important;
+            overflow-x: hidden !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
           }
           .unified-video-wrapper {
             position: relative !important;
-            width: 156vw !important;
-            max-width: 156vw !important;
-            margin-left: calc(50% - 78vw) !important;
-            margin-right: calc(50% - 78vw) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             left: 0 !important;
             right: 0 !important;
           }
           .product-section .max-w-7xl {
-            overflow-x: visible !important;
+            overflow-x: hidden !important;
           }
           .product-section .grid > *:first-child {
             grid-column: 1 / -1 !important;
