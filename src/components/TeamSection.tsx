@@ -69,7 +69,7 @@ export function TeamSection() {
     },
     {
       name: 'Akiva Podolsky',
-      title: 'Co-Founder, Managing Partner',
+      title: 'Co-Founder',
       bio: 'Co Founder of Geneva PE with deep experience in alternative investments and large scale portfolio management.',
       image: akivaPodolskyImage,
     },
