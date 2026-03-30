@@ -17,7 +17,7 @@ import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.jpg';
 import gauravMalikImage from '../../pics/GauravMalik.jpg';
 import robGondaImage from '../../pics/RobGonda.jpg';
 import jeffMabusImage from '../../pics/JefferyMabus.jpg';
-import isadoreMillerImage from '../../pics/IsadoreMiller.jpg';
+import isadoreMillerImage from '../../pics/IsadoreMiller2.jpg';
 
 export function TeamSection() {
   const containerRef = useRef(null);
