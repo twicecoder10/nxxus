@@ -217,7 +217,7 @@ export function TeamSection() {
             Our team brings decades of experience building, scaling, and operating technology inside large healthcare systems
           </p>
 
-          {/* The NXXIM Team heading */}
+          {/* The NXXUS Team heading */}
           <motion.div
             className="mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -234,7 +234,7 @@ export function TeamSection() {
                 letterSpacing: '-0.02em' 
               }}
             >
-              The NXXIM Team
+              The NXXUS Team
             </h3>
           </motion.div>
 

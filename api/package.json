@@ -1,5 +1,5 @@
 {
-  "name": "nxxim-email-api",
+  "name": "nxxus-email-api",
   "version": "1.0.0",
   "description": "Backend API for sending emails via SMTP",
   "main": "send-email.js",

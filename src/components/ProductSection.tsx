@@ -184,7 +184,7 @@ export function ProductSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-[#6B7280] max-w-4xl mx-auto" style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}>
-              <br></br>NXXIM brings imaging, surgery, pathology, labs, EHR data, and genomics into a single real-time workspace.
+              <br></br>NXXUS brings imaging, surgery, pathology, labs, EHR data, and genomics into a single real-time workspace.
               AI-powered workflows enable collaboration and smarter diagnostic decisions, while leveraging existing systems with no replacement required.
             </p>
           </motion.div>

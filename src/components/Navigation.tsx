@@ -96,8 +96,12 @@ export function Navigation() {
               transition={{ duration: 0.2 }}
             >
               <img 
-                src={shouldShowWhiteBg ? '/Final long_Long Logo White BG.png' : '/Final long_Long Logo Black BG.png'}
-                alt="NXXIM Logo"
+                src={
+                  shouldShowWhiteBg
+                    ? '/pics/Long Square_white_bg_nxxus.png'
+                    : '/pics/Long Square_Black_bg_nxxus.png'
+                }
+                alt="NXXUS Logo"
                 style={{ height: 'clamp(1.4375rem, 3.45vw, 2.0125rem)', width: 'auto' }}
               />
             </motion.div>

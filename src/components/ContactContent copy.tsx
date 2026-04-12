@@ -50,14 +50,14 @@ export function ContactContent() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
         });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
       });
     } finally {
       setIsSubmitting(false);
@@ -102,8 +102,8 @@ export function ContactContent() {
                 className="text-[#6B7280]"
                 style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
               >
-                Schedule a personalized demo to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
-                <br></br>Not ready to schedule yet? Email us at info@nxxim.com and our team will follow up.
+                Schedule a personalized demo to see how NXXUS unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
+                <br></br>Not ready to schedule yet? Email us at info@nxxus.com and our team will follow up.
               </p>
             </motion.div>
 
@@ -116,7 +116,7 @@ export function ContactContent() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.a
-                href="mailto:info@nxxim.com"
+                href="mailto:info@nxxus.com"
                 className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
                 whileHover={{ y: -5 }}
               >
@@ -124,7 +124,7 @@ export function ContactContent() {
                   Email Us
                 </div>
                 <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                  info@nxxim.com
+                  info@nxxus.com
                 </div>
               </motion.a>
 
@@ -137,12 +137,12 @@ export function ContactContent() {
                   Schedule a Demo
                 </div>
                 <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                  See NXXIM in action with a personalized walkthrough
+                  See NXXUS in action with a personalized walkthrough
                 </div>
               </motion.a>
 
               <motion.a
-                href="mailto:info@nxxim.com?subject=Sales Inquiry"
+                href="mailto:info@nxxus.com?subject=Sales Inquiry"
                 className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
                 whileHover={{ y: -5 }}
               >
@@ -338,7 +338,7 @@ export function ContactContent() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="NXXIM Office Location - 149 Madison Ave 5th Floor, New York, NY 10016"
+              title="NXXUS Office Location - 149 Madison Ave 5th Floor, New York, NY 10016"
             />
           </div>
         </motion.div>*/}

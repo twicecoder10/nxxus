@@ -68,7 +68,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            NXXIM’s AI-native platform modernizes how care teams work together.
+            NXXUS’s AI-native platform modernizes how care teams work together.
           </motion.p>
 
           {/* CTA Buttons */}

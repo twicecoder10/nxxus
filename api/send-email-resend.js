@@ -62,7 +62,7 @@ async function sendWithResend(req, res, { to, subject, html, text }) {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: `${process.env.SMTP_FROM_NAME || "NXXIM"} <${process.env.SMTP_FROM_EMAIL || process.env.RESEND_FROM_EMAIL}>`,
+        from: `${process.env.SMTP_FROM_NAME || "NXXUS"} <${process.env.SMTP_FROM_EMAIL || process.env.RESEND_FROM_EMAIL}>`,
         to: [to],
         subject,
         html,
@@ -121,7 +121,7 @@ async function sendWithSendGrid(req, res, { to, subject, html, text }) {
         }],
         from: {
           email: process.env.SMTP_FROM_EMAIL || process.env.SENDGRID_FROM_EMAIL,
-          name: process.env.SMTP_FROM_NAME || "NXXIM",
+          name: process.env.SMTP_FROM_NAME || "NXXUS",
         },
         subject,
         content: [

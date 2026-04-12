@@ -45,8 +45,8 @@ export function Footer() {
           <div>
             <div className="mb-4">
               <img 
-                src="/Final long_Long Logo Black BG.png"
-                alt="NXXIM Logo"
+                src="/pics/Long Square_Black_bg_nxxus.png"
+                alt="NXXUS Logo"
                 style={{ height: '2.0125rem', width: 'auto' }}
               />
             </div>
@@ -59,7 +59,7 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <div className="text-white mb-4" style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-              NXXIM
+              NXXUS
             </div>
             <div className="space-y-3">
               <a
@@ -101,14 +101,14 @@ export function Footer() {
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:info@nxxim.com"
+                href="mailto:info@nxxus.com"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >
-                info@nxxim.com
+                info@nxxus.com
               </a>
               <a
-                href="https://www.linkedin.com/company/nxxim"
+                href="https://www.linkedin.com/company/nxxus"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >

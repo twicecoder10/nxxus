@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "========================================"
-echo "  Starting NXXIM Email API Server"
+echo "  Starting NXXUS Email API Server"
 echo "========================================"
 echo ""
 

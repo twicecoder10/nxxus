@@ -76,10 +76,10 @@ export function BookDemoPage() {
               className="text-[#6B7280] mb-12 max-w-2xl mx-auto"
               style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
             >
-              Click the button below to open our calendar and select a time that works best for you. We'll walk you through how NXXIM can transform your diagnostic workflow.
+              Click the button below to open our calendar and select a time that works best for you. We'll walk you through how NXXUS can transform your diagnostic workflow.
             </p>
             <motion.a
-              href="https://outlook.office.com/book/NXXIMDemo@claritydiagnostics.com/"
+              href="https://outlook.office.com/book/NXXUSDemo@claritydiagnostics.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block"

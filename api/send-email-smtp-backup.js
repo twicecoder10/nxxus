@@ -131,7 +131,7 @@ module.exports = async (req, res) => {
     }
 
     const info = await transporter.sendMail({
-      from: `"${process.env.SMTP_FROM_NAME || "NXXIM"}" <${process.env.SMTP_FROM_EMAIL}>`,
+      from: `"${process.env.SMTP_FROM_NAME || "NXXUS"}" <${process.env.SMTP_FROM_EMAIL}>`,
       to,
       subject,
       html,

@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://nxxim.com/</loc>
+    <loc>https://nxxus.com/</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- How It Works -->
   <url>
-    <loc>https://nxxim.com/how-it-works</loc>
+    <loc>https://nxxus.com/how-it-works</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
   
   <!-- Specialties -->
   <url>
-    <loc>https://nxxim.com/specialties</loc>
+    <loc>https://nxxus.com/specialties</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -30,7 +30,7 @@
   
   <!-- About -->
   <url>
-    <loc>https://nxxim.com/about</loc>
+    <loc>https://nxxus.com/about</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -38,7 +38,7 @@
   
   <!-- Contact -->
   <url>
-    <loc>https://nxxim.com/contact</loc>
+    <loc>https://nxxus.com/contact</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -46,7 +46,7 @@
   
   <!-- Book Demo -->
   <url>
-    <loc>https://nxxim.com/book-demo</loc>
+    <loc>https://nxxus.com/book-demo</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

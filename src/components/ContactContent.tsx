@@ -54,14 +54,14 @@ export function ContactContent() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
         });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxim.com',
+        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
       });
     } finally {
       setIsSubmitting(false);
@@ -113,8 +113,8 @@ export function ContactContent() {
               className="text-[#6B7280]"
               style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
-              <br></br>Schedule a personalized meeting to see how NXXIM unifies imaging, labs, pathology, and clinical data into a single real-time enterprise diagnostic workspace.
-          {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxim.com" className="text-[#94B3D8] hover:underline">info@nxxim.com</a> and our team will follow up.*/}
+              <br></br>Schedule a personalized meeting to see how NXXUS unifies imaging, labs, pathology, and clinical data into a single real-time enterprise diagnostic workspace.
+          {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxus.com" className="text-[#94B3D8] hover:underline">info@nxxus.com</a> and our team will follow up.*/}
             </p>
             <motion.div
               className="mt-8 flex justify-center"
@@ -360,7 +360,7 @@ export function ContactContent() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="NXXIM Office Location - 149 Madison Ave 5th Floor, New York, NY 10016"
+              title="NXXUS Office Location - 149 Madison Ave 5th Floor, New York, NY 10016"
             />
           </div>
         </motion.div>*/}

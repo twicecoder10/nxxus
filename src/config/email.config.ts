@@ -11,17 +11,17 @@ export const emailConfig = {
     port: 587,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'info@nxxim.com',
+      user: 'info@nxxus.com',
       password: 'wqvjwyphfrqwpqdx'
     }
   },
 
   // Email Addresses
   from: {
-    name: 'NXXIM',
-    email: 'info@nxxim.com'
+    name: 'NXXUS',
+    email: 'info@nxxus.com'
   },
-  adminEmail: 'info@nxxim.com',
+  adminEmail: 'info@nxxus.com',
 
   // Email Templates
   templates: {
@@ -45,7 +45,7 @@ export const emailConfig = {
             </p>
             
             <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
-              Thank you for contacting NXXIM.
+              Thank you for contacting NXXUS.
             </p>
             
             <p style="font-size: 16px; margin-bottom: 20px; text-align: left;">
@@ -54,7 +54,7 @@ export const emailConfig = {
             
             <p style="font-size: 16px; margin-top: 30px; text-align: left;">
               Best regards,<br>
-              <strong>The NXXIM Team</strong>
+              <strong>The NXXUS Team</strong>
             </p>
           </div>
         </body>
@@ -66,20 +66,20 @@ export const emailConfig = {
         return `
 Hi ${name},
 
-Thank you for contacting NXXIM.
+Thank you for contacting NXXUS.
 
 We have received your request. A member of our team will follow up to schedule a meeting.
 
 Best regards,
 
-The NXXIM Team
+The NXXUS Team
       `;
       }
     },
 
     // Notification email sent to admin
     adminNotification: {
-      subject: 'New Meeting Request - NXXIM',
+      subject: 'New Meeting Request - NXXUS',
       getHtml: (formData: {
         fullName: string;
         workEmail: string;
@@ -127,7 +127,7 @@ The NXXIM Team
                 <strong>Action Required:</strong> Please follow up with ${formData.fullName} to schedule their meeting.
               </p>
               <p style="margin-top: 15px;">
-                <a href="mailto:${formData.workEmail}?subject=Re: Meeting Request - NXXIM" 
+                <a href="mailto:${formData.workEmail}?subject=Re: Meeting Request - NXXUS" 
                    style="background-color: #94B3D8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
                   Reply to ${formData.fullName}
                 </a>
