@@ -54,14 +54,14 @@ export function ContactContent() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
+          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.ai',
         });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
+        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.ai',
       });
     } finally {
       setIsSubmitting(false);
@@ -114,7 +114,7 @@ export function ContactContent() {
               style={{ fontSize: '1.40rem', lineHeight: 1.7, fontWeight: 300 }}
             >
               <br></br>Schedule a personalized meeting to see how NXXUS unifies imaging, labs, pathology, and clinical data into a single real-time enterprise diagnostic workspace.
-          {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxus.com" className="text-[#94B3D8] hover:underline">info@nxxus.com</a> and our team will follow up.*/}
+          {/*    <br></br><br></br>Not ready to schedule yet? Email us at <a href="mailto:info@nxxus.ai" className="text-[#94B3D8] hover:underline">info@nxxus.ai</a> and our team will follow up.*/}
             </p>
             <motion.div
               className="mt-8 flex justify-center"

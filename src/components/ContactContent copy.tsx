@@ -50,14 +50,14 @@ export function ContactContent() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
+          message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.ai',
         });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.com',
+        message: 'There was an error submitting your request. Please try again or contact us directly at info@nxxus.ai',
       });
     } finally {
       setIsSubmitting(false);
@@ -103,7 +103,7 @@ export function ContactContent() {
                 style={{ fontSize: '1.25rem', lineHeight: 1.6 }}
               >
                 Schedule a personalized demo to see how NXXUS unifies imaging, labs, pathology, and clinical data into a single real time diagnostic workspace.
-                <br></br>Not ready to schedule yet? Email us at info@nxxus.com and our team will follow up.
+                <br></br>Not ready to schedule yet? Email us at info@nxxus.ai and our team will follow up.
               </p>
             </motion.div>
 
@@ -116,7 +116,7 @@ export function ContactContent() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.a
-                href="mailto:info@nxxus.com"
+                href="mailto:info@nxxus.ai"
                 className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
                 whileHover={{ y: -5 }}
               >
@@ -124,7 +124,7 @@ export function ContactContent() {
                   Email Us
                 </div>
                 <div className="text-[#000000] group-hover:text-[#94B3D8] transition-colors" style={{ fontSize: '1rem', fontWeight: 500 }}>
-                  info@nxxus.com
+                  info@nxxus.ai
                 </div>
               </motion.a>
 
@@ -142,7 +142,7 @@ export function ContactContent() {
               </motion.a>
 
               <motion.a
-                href="mailto:info@nxxus.com?subject=Sales Inquiry"
+                href="mailto:info@nxxus.ai?subject=Sales Inquiry"
                 className="block p-8 rounded-xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#94B3D8] transition-all duration-300 group"
                 whileHover={{ y: -5 }}
               >

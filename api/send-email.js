@@ -55,7 +55,7 @@ async function sendWithResend(req, res, { to, subject, html, text }) {
   }
 
   // Get from email - prioritize RESEND_FROM_EMAIL, fallback to SMTP_FROM_EMAIL
-  const fromEmail = process.env.RESEND_FROM_EMAIL || process.env.SMTP_FROM_EMAIL || 'info@nxxus.com';
+  const fromEmail = process.env.RESEND_FROM_EMAIL || process.env.SMTP_FROM_EMAIL || 'info@nxxus.ai';
   const fromName = process.env.SMTP_FROM_NAME || "NXXUS";
 
   try {

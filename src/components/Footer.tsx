@@ -101,11 +101,11 @@ export function Footer() {
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:info@nxxus.com"
+                href="mailto:info@nxxus.ai"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >
-                info@nxxus.com
+                info@nxxus.ai
               </a>
               <a
                 href="https://www.linkedin.com/company/nxxus"

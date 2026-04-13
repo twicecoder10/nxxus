@@ -11,7 +11,7 @@ export const emailConfig = {
     port: 587,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'info@nxxus.com',
+      user: 'info@nxxus.ai',
       password: 'wqvjwyphfrqwpqdx'
     }
   },
@@ -19,9 +19,9 @@ export const emailConfig = {
   // Email Addresses
   from: {
     name: 'NXXUS',
-    email: 'info@nxxus.com'
+    email: 'info@nxxus.ai'
   },
-  adminEmail: 'info@nxxus.com',
+  adminEmail: 'info@nxxus.ai',
 
   // Email Templates
   templates: {
