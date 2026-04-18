@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import footerLogo from '../../pics/Footer_Long Square_Black_bg_nxxus.png';
 
 export function Footer() {
   const location = useLocation();
@@ -45,8 +46,8 @@ export function Footer() {
           <div>
             <div className="mb-4">
               <img 
-                src="/pics/Long Square_Black_bg_nxxus.png"
-                alt="NXXUS Logo"
+                src={footerLogo}
+                alt="NXXUS logo"
                 style={{ height: '2.0125rem', width: 'auto' }}
               />
             </div>
