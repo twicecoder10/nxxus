@@ -381,7 +381,8 @@ function TeamCard({ member, index, shouldCenter = false, isFlipCard = false }: {
   // Determine object position based on member
   let objectPosition = 'center top';
   if (isJonPennington) {
-    objectPosition = 'center 35%';
+    // Low vertical % adds headroom under the card top (same idea as Dr. Barry / default top alignment)
+    objectPosition = 'center 10%';
   } else if (isTomCoppa) {
     objectPosition = 'center 12%'; // Moved up to reduce gap at top
   } else if (isDrBarryMangel) {
