@@ -8,14 +8,13 @@ import aviImage from '../../pics/avi.jpg';
 import genericImage from '../../pics/genericpic.jpg';
 // Core Team images
 import josephBambergerImage from '../../pics/Geneva-PE-Joseph-Bamberger.jpg';
-import akivaPodolskyImage from '../../pics/Geneva-PE-Akiva-Podolsky.jpg';
 import drJosephChalilImage from '../../pics/Geneva-PE-Dr.-Joseph-M-Chalil.jpg';
 import philipKahnImage from '../../pics/Philip-Kahn-CPA.jpg';
 // Medical Advisory Board images
 import barryMangelImage from '../../pics/Barry-David-Mangel.jpg';
 import drRephaelYechieliImage from '../../pics/Dr-Rephael-Yechieli.jpg';
 import gauravMalikImage from '../../pics/GauravMalik.jpg';
-import robGondaImage from '../../pics/RobGonda.jpg';
+import jonPenningtonImage from '../../pics/JohnPennington.jpg';
 import jeffMabusImage from '../../pics/JefferyMabus.jpg';
 import isadoreMillerImage from '../../pics/IsadoreMiller2.jpg';
 
@@ -34,10 +33,10 @@ export function TeamSection() {
       image: warrenImage,
     },
     {
-      name: 'Rob Gonda',
+      name: 'Jon Pennington',
       title: 'CTO',
-      bio: '25-year AI and digital executive with five exits, leading Fortune 100 transformations, driving sustained revenue growth, and enterprise value.',
-      image: robGondaImage,
+      bio: 'C level executive with more than 40 years of experience in software development and the management of global teams in both commercial and government sectors.',
+      image: jonPenningtonImage,
     },
     {
       name: 'Philip Kahn, CPA',
@@ -66,12 +65,6 @@ export function TeamSection() {
       title: 'Founder and CEO',
       bio: 'Founder of Geneva PE. Previously founded Jade Capital advising UHNW clients in PE and venture.',
       image: josephBambergerImage,
-    },
-    {
-      name: 'Akiva Podolsky',
-      title: 'Co-Founder',
-      bio: 'Co Founder of Geneva PE with deep experience in alternative investments and large scale portfolio management.',
-      image: akivaPodolskyImage,
     },
     {
       name: 'Dr. Joseph M. Chalil',
@@ -238,21 +231,21 @@ export function TeamSection() {
             </h3>
           </motion.div>
 
-          {/* Team Grid - Row 1: Warren(1), Rob(2), Philip(3); Row 2: Jeff(between 1-2), Tom(between 2-3) */}
+          {/* Team Grid - Row 1: Warren(1), Jon(2), Philip(3); Row 2: Jeff(between 1-2), Tom(between 2-3) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 items-stretch max-w-[1040px] mx-auto">
             {enterpriseLeaders.map((member, idx) => {
               const isWarren = member.name === 'Warren Wright';
-              const isRobGonda = member.name === 'Rob Gonda';
+              const isJonPennington = member.name === 'Jon Pennington';
               const isPhilipKahn = member.name === 'Philip Kahn, CPA';
               const isJeffMabus = member.name === 'Jeff Mabus';
               const isTomCoppa = member.name === 'Tom Coppa';
               
-              // Position: Row 1 - Warren(1), Rob(2), Philip(3); Row 2 - Jeff(spans 1-2, centered), Tom(spans 2-3, centered)
+              // Position: Row 1 - Warren(1), Jon(2), Philip(3); Row 2 - Jeff(spans 1-2, centered), Tom(spans 2-3, centered)
               // Desktop positioning only - mobile will reset via CSS
               let gridStyle: React.CSSProperties = {};
               if (isWarren) {
                 gridStyle = { gridColumn: '1', gridRow: '1' };
-              } else if (isRobGonda) {
+              } else if (isJonPennington) {
                 gridStyle = { gridColumn: '2', gridRow: '1' };
               } else if (isPhilipKahn) {
                 gridStyle = { gridColumn: '3', gridRow: '1' };
@@ -341,43 +334,22 @@ export function TeamSection() {
           {/* Core Team Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-stretch max-w-[1040px] mx-auto">
             {coreTeam.map((member, idx) => {
-              const isAviGrossman = member.name === 'Avi Grossman, MBA';
-              const isIsadoreMiller = member.name === 'Isadore Miller';
-              const isAkivaPodolsky = member.name === 'Akiva Podolsky';
               const isJosephBamberger = member.name === 'Joseph Bamberger';
               const isDrJosephChalil = member.name === 'Dr. Joseph M. Chalil';
+              const isAviGrossman = member.name === 'Avi Grossman, MBA';
+              const isIsadoreMiller = member.name === 'Isadore Miller';
               
-              // Position: Row 1 - Joseph(1), Akiva(2), Dr. Joseph(3); Row 2 - Avi and Isadore (centered like Jeff and Tom)
+              // Row 1: Joseph(1), Dr. Joseph(2), Avi(3); Row 2: Isadore centered in column 2
               // Desktop positioning only - mobile will reset via CSS
               let gridStyle: React.CSSProperties = {};
               if (isJosephBamberger) {
                 gridStyle = { gridColumn: '1', gridRow: '1' };
-              } else if (isAkivaPodolsky) {
-                gridStyle = { gridColumn: '2', gridRow: '1' };
               } else if (isDrJosephChalil) {
+                gridStyle = { gridColumn: '2', gridRow: '1' };
+              } else if (isAviGrossman) {
                 gridStyle = { gridColumn: '3', gridRow: '1' };
-              } else if (isAviGrossman || isIsadoreMiller) {
-                // For Avi and Isadore, wrap in centered container like Jeff and Tom
-                if (isAviGrossman) {
-                  gridStyle = { gridColumn: '1 / 3', gridRow: '2' };
-                } else if (isIsadoreMiller) {
-                  gridStyle = { gridColumn: '2 / 4', gridRow: '2' };
-                }
-              }
-              
-              // For Avi and Isadore, wrap in centered container
-              if (isAviGrossman || isIsadoreMiller) {
-                return (
-                  <div key={idx} className="w-full core-team-card-wrapper flex justify-center" style={gridStyle}>
-                    <div className="w-full" style={{ maxWidth: 'calc(50% - 0.5rem)' }}>
-                      <TeamCard 
-                        member={member} 
-                        index={idx} 
-                        isFlipCard={true}
-                      />
-                    </div>
-                  </div>
-                );
+              } else if (isIsadoreMiller) {
+                gridStyle = { gridColumn: '2', gridRow: '2' };
               }
               
               return (
@@ -385,7 +357,6 @@ export function TeamSection() {
                   <TeamCard 
                     member={member} 
                     index={idx} 
-                    shouldCenter={isAviGrossman}
                     isFlipCard={true}
                   />
                 </div>
@@ -402,14 +373,14 @@ export function TeamSection() {
 
 function TeamCard({ member, index, shouldCenter = false, isFlipCard = false }: { member: any; index: number; shouldCenter?: boolean; isFlipCard?: boolean }) {
   const isAviGrossman = member.name === 'Avi Grossman, MBA';
-  const isRobGonda = member.name === 'Rob Gonda';
+  const isJonPennington = member.name === 'Jon Pennington';
   const isTomCoppa = member.name === 'Tom Coppa';
   const isDrBarryMangel = member.name === 'Dr. Barry D. Mangel, MD';
   const isJeffMabus = member.name === 'Jeff Mabus';
   
   // Determine object position based on member
   let objectPosition = 'center top';
-  if (isRobGonda) {
+  if (isJonPennington) {
     objectPosition = 'center 35%';
   } else if (isTomCoppa) {
     objectPosition = 'center 12%'; // Moved up to reduce gap at top
