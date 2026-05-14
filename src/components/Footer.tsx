@@ -109,7 +109,7 @@ export function Footer() {
                 info@nxxus.ai
               </a>
               <a
-                href="https://www.linkedin.com/company/nxxus"
+                href="https://www.linkedin.com/company/nxxusai/"
                 className="block text-[#94B3D8]/60 hover:text-[#94B3D8] transition-colors duration-200"
                 style={{ fontSize: '0.875rem', fontWeight: 500 }}
               >
