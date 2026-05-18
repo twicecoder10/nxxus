@@ -33,8 +33,8 @@ export function TeamSection() {
       image: warrenImage,
     },
     {
-      name: 'Jon Pennington',
-      title: 'CTO',
+      name: 'John Pennington',
+      title: 'COO',
       bio: 'C level executive with more than 40 years of experience in software development and the management of global teams in both commercial and government sectors.',
       image: jonPenningtonImage,
     },
